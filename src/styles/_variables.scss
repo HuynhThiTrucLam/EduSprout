@@ -1,0 +1,34 @@
+// Colors
+$primary-color: #2f7b74;
+$secondary-color: #ff9d06;
+$background-color: #f9f8f4;
+$light-green: #e6f2f1;
+$gray: #828282;
+$black: #373735;
+$white: #ffffff;
+
+// // Typography - Font Paths
+$font-path: "../assets/fonts/";
+
+// Poppins Font File Paths
+$font-poppins-thin: $font-path + "Poppins-Thin.otf";
+$font-poppins-thin-italic: $font-path + "Poppins-ThinItalic.otf";
+$font-poppins-extra-light: $font-path + "Poppins-ExtraLight.otf";
+$font-poppins-extra-light-italic: $font-path + "Poppins-ExtraLightItalic.otf";
+$font-poppins-light: $font-path + "Poppins-Light.otf";
+$font-poppins-light-italic: $font-path + "Poppins-LightItalic.otf";
+$font-poppins-regular: $font-path + "Poppins-Regular.otf";
+$font-poppins-italic: $font-path + "Poppins-Italic.otf";
+$font-poppins-medium: $font-path + "Poppins-Medium.otf";
+$font-poppins-medium-italic: $font-path + "Poppins-MediumItalic.otf";
+$font-poppins-semi-bold: $font-path + "Poppins-SemiBold.otf";
+$font-poppins-semi-bold-italic: $font-path + "Poppins-SemiBoldItalic.otf";
+$font-poppins-bold: $font-path + "Poppins-Bold.otf";
+$font-poppins-bold-italic: $font-path + "Poppins-BoldItalic.otf";
+$font-poppins-extra-bold: $font-path + "Poppins-ExtraBold.otf";
+$font-poppins-extra-bold-italic: $font-path + "Poppins-ExtraBoldItalic.otf";
+$font-poppins-black: $font-path + "Poppins-Black.otf";
+$font-poppins-black-italic: $font-path + "Poppins-BlackItalic.otf";
+
+// // Layout
+$container-width: 90%;
