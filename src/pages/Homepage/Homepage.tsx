@@ -1,7 +1,12 @@
+import Introduction from "./Introduction/Introduction";
+import styles from "./Homepage.module.scss";
+
 const Homepage = () => {
   return (
-    <div>
-      <h1>Homepage</h1>
+    <div className={styles["Homepage"]}>
+      <div className={styles["Homepage-container"]}>
+        <Introduction />
+      </div>
     </div>
   );
 };

@@ -4,13 +4,11 @@ import Header from "../components/Header/Header";
 
 const CommonLayout = () => {
   return (
-    <div
-      style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
-    >
+    <div>
       <Header />
-      <main style={{ flex: 1, padding: "2rem 0" }}>
+      <div style={{ flex: 1, backgroundColor: "#f9f8f4" }}>
         <Outlet />
-      </main>
+      </div>
       <Footer />
     </div>
   );

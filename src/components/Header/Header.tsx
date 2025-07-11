@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/Logo.svg";
+import logo from "../../assets/images/Logo.svg";
 import styles from "./Header.module.scss";
 import Cart from "../../assets/Icons/Cart";
 import Language from "../../assets/Icons/Language";

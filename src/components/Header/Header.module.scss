@@ -1,8 +1,12 @@
 @use "../../styles/_variables.scss" as *;
 
 .Header {
+  width: 100%;
+  z-index: 100;
+  background-color: $background-color;
   padding-block: 1rem;
   border-bottom: 0.25px solid $gray;
+  position: fixed;
   &-container {
     margin: 0 auto;
     width: $container-width;
@@ -31,14 +35,17 @@
   &-item {
     display: flex;
     align-items: center;
+    padding: 0.5rem;
+    &:hover {
+      a {
+        color: $black;
+        font-family: "Poppins SemiBold", "Poppins", sans-serif;
+      }
+    }
     a {
       color: $gray;
       font-size: 12px;
       font-family: "Poppins Light", "Poppins", sans-serif;
-      &:hover {
-        color: $primary-color;
-        font-family: "Poppins SemiBold", "Poppins", sans-serif;
-      }
     }
   }
   &-right {
@@ -49,7 +56,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
       width: 2.5rem;
       height: 2.5rem;
       cursor: pointer;

@@ -1,0 +1,16 @@
+@import "../../styles/variables.scss";
+
+.Homepage {
+  width: 100%;
+  background-color: $background-color;
+  &-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &-introduction {
+    width: $container-width;
+    height: 100vh;
+  }
+}
