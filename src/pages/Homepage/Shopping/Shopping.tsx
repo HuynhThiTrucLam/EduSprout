@@ -6,19 +6,29 @@ import type { Category } from "../../../types/categories";
 import styles from "./Shopping.module.scss";
 import type { Major } from "../../../types/major";
 import type { Language } from "../../../types/language";
+import FilterIcon from "../../../assets/Icons/FilterIcon";
+import GridIcon from "../../../assets/Icons/GridIcon";
 
 const Shopping = () => {
   const [selectedMajor, setSelectedMajor] = useState<Major | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(
     null
   );
+  const [minPrice, setMinPrice] = useState<number | null>(0);
+  const [maxPrice, setMaxPrice] = useState<number | null>(0);
 
   const handleFilter = () => {
     console.log("selectedMajor: ", selectedMajor);
+    console.log("selectedLanguage: ", selectedLanguage);
+    console.log("minPrice: ", minPrice);
+    console.log("maxPrice: ", maxPrice);
   };
 
   const handleResetFilters = () => {
     setSelectedMajor(null);
+    setSelectedLanguage(null);
+    setMinPrice(0);
+    setMaxPrice(0);
     console.log("Filters reset");
   };
 
@@ -41,7 +51,6 @@ const Shopping = () => {
         <div className={styles["Shopping-header"]}>
           <h2>Most Popular Products</h2>
           <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</p>
-          <Search placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry" />
         </div>
         <div className={styles["Shopping-categories"]}>
           <Categories onCategoryChange={handleCategoryChange} />
@@ -55,9 +64,28 @@ const Shopping = () => {
               handleResetFilters={handleResetFilters}
               selectedLanguage={selectedLanguage}
               handleSelectLanguage={handleLanguageChange}
+              minPrice={minPrice}
+              maxPrice={maxPrice}
+              setMinPrice={setMinPrice}
+              setMaxPrice={setMaxPrice}
             />
           </div>
           <div className={styles["Shopping-list"]}>
+            <div className={styles["Shopping-list-header"]}>
+              <div className={styles["Shopping-list-header-left"]}>
+                <p>Results:</p>
+                <span>145 products</span>
+              </div>
+              <div className={styles["Shopping-list-header-right"]}>
+                <div className="item">
+                  <FilterIcon />
+                </div>
+                <div className="item">
+                  <GridIcon />
+                </div>
+                <Search placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry" />
+              </div>
+            </div>
             {selectedCategory && (
               <p>Showing products for: {selectedCategory.title}</p>
             )}

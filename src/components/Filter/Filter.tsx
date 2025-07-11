@@ -13,6 +13,10 @@ interface FilterProps {
   handleSelectLanguage: (option: Language) => void;
   handleFilter: () => void;
   handleResetFilters: () => void;
+  minPrice: number | null;
+  maxPrice: number | null;
+  setMinPrice: (price: number) => void;
+  setMaxPrice: (price: number) => void;
 }
 
 const Filter = ({
@@ -22,6 +26,10 @@ const Filter = ({
   handleSelectLanguage,
   handleFilter,
   handleResetFilters,
+  minPrice,
+  maxPrice,
+  setMinPrice,
+  setMaxPrice,
 }: FilterProps) => {
   const [majorsList, setMajorsList] = useState<Major[]>([]);
   const [languagesList, setLanguagesList] = useState<Language[]>([]);
@@ -48,6 +56,32 @@ const Filter = ({
           <p>Reset Filters</p>
         </div>
       </div>
+      <div className={styles["Filter-price"]}>
+        <div className={styles["Filter-price-min"]}>
+          <p>
+            {" "}
+            Min Price <span>($)</span>
+          </p>
+          <input
+            type="number"
+            placeholder="Min Price"
+            value={minPrice ?? ""}
+            onChange={(e) => setMinPrice(Number(e.target.value))}
+          />
+        </div>
+        <div className={styles["Filter-price-max"]}>
+          <p>
+            {" "}
+            Max Price <span>($)</span>
+          </p>
+          <input
+            type="number"
+            placeholder="Max Price"
+            value={maxPrice ?? ""}
+            onChange={(e) => setMaxPrice(Number(e.target.value))}
+          />
+        </div>
+      </div>
       <Selection
         title="Subject Area"
         options={majorsList}
@@ -64,7 +98,12 @@ const Filter = ({
         getOptionLabel={(option) => option.title}
         getOptionValue={(option) => option.id}
       />
-      <Button text="Filter Now" onClick={handleFilter} />
+
+      <Button
+        text="Filter Now"
+        onClick={handleFilter}
+        className={styles["Filter-button"]}
+      />
     </div>
   );
 };

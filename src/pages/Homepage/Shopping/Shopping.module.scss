@@ -47,5 +47,53 @@
   }
   &-list {
     grid-column: 4 / 13;
+    &-header {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      &-left {
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: center;
+        p {
+          padding-inline: 0.5rem;
+          border-radius: 0.5rem;
+          font-family: "Poppins SemiBold";
+          font-size: 14px;
+          line-height: 1.62;
+          color: $black;
+        }
+        span {
+          padding: 0.5rem 1rem;
+          border-radius: 100rem;
+          font-family: "Poppins SemiBold" !important;
+          background-color: #eff3f3 !important;
+          font-size: 12px;
+          color: $primary-color;
+        }
+      }
+      &-right {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: flex-end;
+        > .item {
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          &:hover {
+            background-color: #eff3f3;
+          }
+        }
+      }
+    }
   }
 }
