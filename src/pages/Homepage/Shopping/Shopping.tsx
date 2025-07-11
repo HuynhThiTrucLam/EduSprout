@@ -1,13 +1,20 @@
-import { useState } from "react";
-import Categories from "../../../components/Category/Categories";
-import Filter from "../../../components/Filter/Filter";
-import Search from "../../../components/Search/Search";
-import type { Category } from "../../../types/categories";
-import styles from "./Shopping.module.scss";
-import type { Major } from "../../../types/major";
-import type { Language } from "../../../types/language";
+import { useEffect, useState } from "react";
 import FilterIcon from "../../../assets/Icons/FilterIcon";
 import GridIcon from "../../../assets/Icons/GridIcon";
+import SearchIcon from "../../../assets/Icons/SearchIcon";
+import Categories from "../../../components/Category/Categories";
+import Filter from "../../../components/Filter/Filter";
+import ProductItem from "../../../components/Product/ProductItem";
+import { Input } from "../../../components/ui/input";
+import {
+  getAllBooksService,
+  getAllCoursesService,
+  getAllDocumentsService,
+} from "../../../services/product_service";
+import { categories, type Category } from "../../../types/categories";
+import type { Language } from "../../../types/language";
+import type { Major } from "../../../types/major";
+import styles from "./Shopping.module.scss";
 
 const Shopping = () => {
   const [selectedMajor, setSelectedMajor] = useState<Major | null>(null);
@@ -16,6 +23,35 @@ const Shopping = () => {
   );
   const [minPrice, setMinPrice] = useState<number | null>(0);
   const [maxPrice, setMaxPrice] = useState<number | null>(0);
+
+  const [isActiveFilter, setIsActiveFilter] = useState<boolean>(false);
+  const [isChangeLayout, setIsChangeLayout] = useState<boolean>(false);
+
+  const [productList, setProductList] = useState<any[]>([]);
+
+  const handleGetProducts = async (category: string) => {
+    try {
+      if (category.toLowerCase() === "course") {
+        const response = await getAllCoursesService();
+        console.log("Courses response:", response);
+        setProductList(response);
+      } else if (category.toLowerCase() === "books") {
+        const response = await getAllBooksService();
+        console.log("Books response:", response);
+        setProductList(response);
+      } else if (category.toLowerCase() === "documents") {
+        const response = await getAllDocumentsService();
+        console.log("Documents response:", response);
+        setProductList(response);
+      } else {
+        console.warn(`No service found for category: ${category}`);
+        setProductList([]);
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      setProductList([]);
+    }
+  };
 
   const handleFilter = () => {
     console.log("selectedMajor: ", selectedMajor);
@@ -29,6 +65,8 @@ const Shopping = () => {
     setSelectedLanguage(null);
     setMinPrice(0);
     setMaxPrice(0);
+
+    setIsActiveFilter(true);
     console.log("Filters reset");
   };
 
@@ -37,13 +75,23 @@ const Shopping = () => {
   };
 
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
-    null
+    categories[0]
   );
 
   const handleCategoryChange = (category: Category) => {
+    console.log("Category changed to:", category);
     setSelectedCategory(category);
     // You can add logic to filter products based on category here
   };
+
+  useEffect(() => {
+    console.log("useEffect triggered - selectedCategory:", selectedCategory);
+    if (selectedCategory?.slug) {
+      console.log("Fetching products for category:", selectedCategory.slug);
+      handleGetProducts(selectedCategory.slug);
+    }
+    setIsActiveFilter(false);
+  }, [isActiveFilter, selectedCategory]);
 
   return (
     <div className={styles["Shopping"]}>
@@ -74,21 +122,36 @@ const Shopping = () => {
             <div className={styles["Shopping-list-header"]}>
               <div className={styles["Shopping-list-header-left"]}>
                 <p>Results:</p>
-                <span>145 products</span>
+                <span>{productList.length} products</span>
               </div>
               <div className={styles["Shopping-list-header-right"]}>
-                <div className="item">
+                <div
+                  className={`${styles["Shopping-list-header-right-item"]} ${
+                    isActiveFilter ? styles["active"] : ""
+                  }`}
+                >
                   <FilterIcon />
                 </div>
-                <div className="item">
+                <div
+                  className={`${styles["Shopping-list-header-right-item"]} ${
+                    isChangeLayout ? styles["active"] : ""
+                  }`}
+                >
                   <GridIcon />
                 </div>
-                <Search placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry" />
+                <div className={styles["Shopping-list-header-right-search"]}>
+                  <Input type="email" placeholder="Search" />
+                  <div className="&:hover:rouded-full">
+                    <SearchIcon />
+                  </div>
+                </div>
               </div>
             </div>
-            {selectedCategory && (
-              <p>Showing products for: {selectedCategory.title}</p>
-            )}
+            <div className={styles["Shopping-list-products"]}>
+              {productList.map((product) => (
+                <ProductItem key={product.id} productInfor={product} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

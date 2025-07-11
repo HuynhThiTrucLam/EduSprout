@@ -5,11 +5,12 @@ import styles from "./Search.module.scss";
 
 interface SearchProps {
   placeholder: string;
+  className?: string;
 }
 
-const Search = ({ placeholder }: SearchProps) => {
+const Search = ({ placeholder, className }: SearchProps) => {
   return (
-    <div className={styles["Search"]}>
+    <div className={`${styles["Search"]} ${className}`}>
       <div className={styles["Search-container"]}>
         <div className={styles["Search-input"]}>
           <SearchIcon />

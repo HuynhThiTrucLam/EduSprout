@@ -1,0 +1,314 @@
+import type { Product } from "./products";
+
+export interface Course {
+  id: string;
+  infor: Product;
+
+  time: number; //months
+  introVideoUrl: string;
+  chapters: Chapter[]; // just see the title and description of the chapter
+
+  createdAt: string;
+  updatedAt: string;
+}
+
+export type Chapter = {
+  id: string;
+  title: string;
+  description: string;
+};
+
+export const mockCourses: Course[] = [
+  {
+    id: "course-001",
+    infor: {
+      id: "prod-001",
+      title: "Mastering UI/UX Design",
+      image:
+        "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      price: 199.99,
+      description:
+        "Learn to design stunning and user-friendly digital interfaces from scratch.",
+      sellNumber: 230,
+      discount: 0.15,
+      rating: 4.8,
+      category: {
+        id: 1,
+        title: "Courses",
+        iconName: "course",
+        slug: "courses",
+        description: "Online courses and tutorials",
+      },
+      comments: [
+        {
+          id: 1,
+          userId: "user-101",
+          content:
+            "This course was incredibly insightful and well-organized. Highly recommended!",
+          rating: 5,
+          createdAt: "2025-06-01T10:15:00Z",
+          updatedAt: "2025-06-01T10:15:00Z",
+        },
+        {
+          id: 2,
+          userId: "user-102",
+          content: "Good content overall, but some chapters felt rushed.",
+          rating: 4,
+          createdAt: "2025-06-03T08:40:00Z",
+          updatedAt: "2025-06-03T08:40:00Z",
+        },
+        {
+          id: 3,
+          userId: "user-103",
+          content:
+            "Clear explanations and great real-world examples. Helped me a lot in my job.",
+          rating: 5,
+          createdAt: "2025-06-05T13:30:00Z",
+          updatedAt: "2025-06-05T13:30:00Z",
+        },
+        {
+          id: 4,
+          userId: "user-104",
+          content:
+            "Not bad, but I expected more in-depth coverage of advanced topics.",
+          rating: 3,
+          createdAt: "2025-06-07T09:20:00Z",
+          updatedAt: "2025-06-07T09:20:00Z",
+        },
+        {
+          id: 5,
+          userId: "user-105",
+          content:
+            "Awesome! The interactive elements really helped me stay engaged.",
+          rating: 5,
+          createdAt: "2025-06-10T14:45:00Z",
+          updatedAt: "2025-06-10T14:45:00Z",
+        },
+      ],
+      majors: [
+        {
+          id: 1,
+          title: "UI/UX Design",
+          description:
+            "UI/UX Design is the practice of designing user-friendly and engaging digital experiences",
+        },
+        {
+          id: 2,
+          title: "Information Technology",
+          description:
+            "Information Technology focuses on managing and supporting computer systems, networks, and data.",
+        },
+      ],
+      language: [{ id: "en", title: "English" }],
+      values: ["Creativity", "Empathy", "Design Thinking"],
+      skills: ["Wireframing", "Prototyping", "User Research"],
+      user: {
+        id: "user-001",
+        name: "CreativeDesign Co.",
+        email: "hello@creativedesign.co",
+        phone: "1234567890",
+        image:
+          "https://media.istockphoto.com/id/1401921776/vi/anh/ch%C3%A2n-dung-%E1%BA%A3nh-d%C3%A0i-%C4%91%E1%BA%A7y-%C4%91%E1%BB%A7-c%E1%BB%A7a-ng%C6%B0%E1%BB%9Di-%C4%91%C3%A0n-%C3%B4ng-m%E1%BB%B9-nh%E1%BA%A3y-m%C3%BAa-b%E1%BB%8B-c%C3%B4-l%E1%BA%ADp-tr%C3%AAn-n%E1%BB%81n-m%C3%A0u-v%C3%A0ng-s%E1%BB%91ng-%C4%91%E1%BB%99ng.jpg?s=1024x1024&w=is&k=20&c=verM_GeitA4UEjjlRcYsj0ULadPSxl6zI-HeoCKdY84=",
+      },
+    },
+    introVideoUrl:
+      "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    chapters: [
+      {
+        id: "ch1",
+        title: "Introduction to UI/UX",
+        description: "Basics and key concepts",
+      },
+      {
+        id: "ch2",
+        title: "Wireframing Tools",
+        description: "Explore Figma, Sketch and more",
+      },
+    ],
+    time: 10,
+
+    createdAt: "2025-01-10",
+    updatedAt: "2025-05-20",
+  },
+  {
+    id: "course-002",
+    infor: {
+      id: "prod-002",
+      title: "Fullstack IT Fundamentals",
+      image:
+        "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      price: 149.99,
+      description:
+        "Build strong foundations in networks, databases, and programming.",
+      sellNumber: 450,
+      discount: 0.2,
+      rating: 4.7,
+      category: {
+        id: 1,
+        title: "Courses",
+        iconName: "course",
+        slug: "courses",
+        description: "Online courses and tutorials",
+      },
+      comments: [],
+      majors: [
+        {
+          id: 2,
+          title: "Information Technology",
+          description:
+            "Information Technology focuses on managing and supporting computer systems, networks, and data.",
+        },
+      ],
+      language: [{ id: "en", title: "English" }],
+      values: ["Problem Solving", "Technical Knowledge", "Security Awareness"],
+      skills: ["Networking", "SQL", "Python Basics"],
+      user: {
+        id: "user-002",
+        name: "IT Gurus Inc.",
+        email: "support@itgurus.io",
+        phone: "1234567890",
+        image:
+          "https://media.istockphoto.com/id/2148824805/vi/anh/%E1%BA%A3nh-k%C3%ADch-th%C6%B0%E1%BB%9Bc-%C4%91%E1%BA%A7y-%C4%91%E1%BB%A7-c%E1%BB%A7a-ng%C6%B0%E1%BB%9Di-%C4%91%C3%A0n-%C3%B4ng-ng%C3%A2y-ng%E1%BA%A5t-m%E1%BA%B7c-%C3%A1o-s%C6%A1-mi-tr%E1%BA%AFng-qu%E1%BA%A7n-short-tr%E1%BA%AFng-gi%C6%A1-tay.jpg?s=612x612&w=0&k=20&c=1zD-38Ni0dMfSaWzvo19j-wwWa9vdJzXdoo6WC2m-CU=",
+      },
+    },
+    introVideoUrl:
+      "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    chapters: [
+      {
+        id: "ch1",
+        title: "Computing Basics",
+        description: "Understand how computers work",
+      },
+      {
+        id: "ch2",
+        title: "Introduction to Python",
+        description: "Your first coding steps",
+      },
+    ],
+    time: 12,
+    createdAt: "2025-02-15",
+    updatedAt: "2025-06-10",
+  },
+  {
+    id: "course-003",
+    infor: {
+      id: "prod-003",
+      title: "Business Strategy 101",
+      image:
+        "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      price: 179.0,
+      description:
+        "Learn how to craft winning strategies for business growth and innovation.",
+      sellNumber: 320,
+      discount: 0.1,
+      rating: 4.6,
+      category: {
+        id: 1,
+        title: "Courses",
+        iconName: "course",
+        slug: "courses",
+        description: "Online courses and tutorials",
+      },
+      comments: [],
+      majors: [
+        {
+          id: 3,
+          title: "Business Administration",
+          description:
+            "Business Administration is the management of business operations and decision-making",
+        },
+      ],
+      language: [{ id: "en", title: "English" }],
+      values: ["Problem Solving", "Technical Knowledge", "Security Awareness"],
+      skills: ["Networking", "SQL", "Python Basics"],
+      user: {
+        id: "user-003",
+        name: "BizEdge Academy",
+        email: "contact@bizedge.ac",
+        phone: "1234567890",
+        image:
+          "https://media.istockphoto.com/id/2220865188/vi/anh/%E1%BA%A3nh-anh-ch%C3%A0ng-thi%C3%AAn-ni%C3%AAn-k%E1%BB%B7-l%E1%BA%A1c-quan-m%E1%BA%B7c-%C3%A1o-s%C6%A1-mi-m%C3%A0u-xanh-l%C3%A1-c%C3%A2y-b%E1%BB%8B-c%C3%B4-l%E1%BA%ADp-tr%C3%AAn-n%E1%BB%81n-m%C3%A0u-v%C3%A0ng.jpg?s=1024x1024&w=is&k=20&c=8xOsDhDEviP7Az2z7yv_QK3qa72_gMe2YhDrjNSo_r0=",
+      },
+    },
+    time: 15,
+    introVideoUrl:
+      "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    chapters: [
+      {
+        id: "ch1",
+        title: "Understanding Markets",
+        description: "Basic market concepts",
+      },
+      {
+        id: "ch2",
+        title: "Strategic Tools",
+        description: "Use of frameworks like SWOT, PESTLE",
+      },
+    ],
+
+    createdAt: "2025-03-12",
+    updatedAt: "2025-06-22",
+  },
+  {
+    id: "course-004",
+    infor: {
+      id: "prod-004",
+      title: "Introduction to Psychology",
+      image:
+        "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      price: 129.5,
+      description: "Delve into human behavior, emotions, and mental processes.",
+      sellNumber: 510,
+      discount: 0.25,
+      rating: 4.9,
+      category: {
+        id: 1,
+        title: "Courses",
+        iconName: "course",
+        slug: "courses",
+        description: "Online courses and tutorials",
+      },
+      comments: [],
+      majors: [
+        {
+          id: 4,
+          title: "Psychology",
+          description:
+            "Psychology is the study of the human mind, behavior, and mental processes",
+        },
+      ],
+      language: [{ id: "en", title: "English" }],
+      values: ["Empathy", "Critical Thinking", "Scientific Inquiry"],
+      skills: [
+        "Cognitive Understanding",
+        "Behavioral Analysis",
+        "Emotional Intelligence",
+      ],
+      user: {
+        id: "user-004",
+        name: "MindScope Academy",
+        email: "info@mindscope.org",
+        phone: "1234567890",
+        image:
+          "https://media.istockphoto.com/id/2210694199/vi/anh/k%C3%ADch-th%C6%B0%E1%BB%9Bc-%E1%BA%A3nh-d%C3%A0i-%C4%91%E1%BA%A7y-%C4%91%E1%BB%A7-c%C3%A1n-b%E1%BB%99-c%E1%BB%A7a-ch%C3%A0ng-trai-tr%E1%BA%BB-nh%E1%BA%A3y-n%E1%BA%AFm-%C4%91%E1%BA%A5m-l%C3%AAn-%C4%83n-m%E1%BB%ABng-c%C3%B4ng-vi%E1%BB%87c-%C4%91%E1%BA%A7u-ti%C3%AAn.jpg?s=612x612&w=0&k=20&c=HN2i8sjldNMTEXu6Wh7M6Y-jcXVX-Mi0fglZfnjEBtQ=",
+      },
+    },
+    introVideoUrl:
+      "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    chapters: [
+      {
+        id: "ch1",
+        title: "What is Psychology?",
+        description: "History and definitions",
+      },
+      {
+        id: "ch2",
+        title: "Branches of Psychology",
+        description: "Clinical, Cognitive, Developmental",
+      },
+    ],
+    time: 6,
+    createdAt: "2025-04-18",
+    updatedAt: "2025-07-01",
+  },
+];

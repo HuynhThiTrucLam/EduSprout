@@ -11,13 +11,19 @@
     font-size: 14px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-bottom: 0.5px solid $gray;
+    align-items: flex-end;
+    border-bottom: 0.25px solid $gray;
     padding-bottom: 1rem;
-    &-reset {
-      font-family: "Poppins Regular";
-      cursor: pointer;
+    &-title {
+      font-family: "Poppins SemiBold";
       font-size: 12px;
+      color: $black;
+    }
+
+    &-reset {
+      font-family: "Poppins Regular" !important;
+      font-size: 11px;
+      cursor: pointer;
       padding: 0.25rem 0.5rem;
       border-radius: 100rem;
       &:hover {
@@ -38,22 +44,25 @@
       gap: 0.5rem;
       p {
         font-family: "Poppins SemiBold";
-        font-size: 12px;
+        font-size: 11px;
         color: $gray;
       }
 
       input {
         width: 100%;
-        border: 1px solid $gray;
+        border: 0.25px solid $gray;
         border-radius: 0.5rem;
         padding: 0.75rem;
-        font-size: 14px;
+        font-size: 12px;
         font-family: "Poppins Regular";
-        color: $black;
+        color: $gray;
         ::placeholder {
           font-family: "Poppins Light";
           font-size: 12px;
           color: $gray;
+        }
+        &:focus {
+          outline: none;
         }
       }
     }
@@ -70,7 +79,7 @@
     p {
       color: $white !important;
       font-family: "Poppins Medium";
-      font-size: 14px !important;
+      font-size: 12px !important;
       color: $white;
       line-height: 1.62;
     }

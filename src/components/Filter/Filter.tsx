@@ -48,7 +48,7 @@ const Filter = ({
   return (
     <div className={styles["Filter"]}>
       <div className={styles["Filter-header"]}>
-        <p>Filter</p>
+        <p className={styles["Filter-header-title"]}>Filter</p>
         <div
           className={styles["Filter-header-reset"]}
           onClick={handleResetFilters}
