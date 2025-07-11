@@ -147,11 +147,17 @@ const Shopping = () => {
                 </div>
               </div>
             </div>
-            <div className={styles["Shopping-list-products"]}>
-              {productList.map((product) => (
-                <ProductItem key={product.id} productInfor={product} />
-              ))}
-            </div>
+            {productList.length > 0 ? (
+              <div className={styles["Shopping-list-products"]}>
+                {productList.map((product) => (
+                  <ProductItem key={product.id} productInfor={product} />
+                ))}
+              </div>
+            ) : (
+              <div className={styles["Shopping-list-empty"]}>
+                <p>No products found</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
