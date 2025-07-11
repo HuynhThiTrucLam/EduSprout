@@ -1,0 +1,73 @@
+@import "../../styles/_variables.scss";
+
+.Categories {
+  width: 100%;
+  height: 100%;
+  &-container {
+    width: 100%;
+    height: 100%;
+    padding-block: 0.75rem;
+    border-block: 0.25px solid $gray;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: center;
+    gap: 3rem;
+    & > *:first-child {
+      border-right: 0.5px solid $gray;
+    }
+  }
+  &-header {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    h3 {
+      font-family: "Poppins Medium";
+      font-size: 12px;
+      text-transform: uppercase;
+      color: $black;
+    }
+  }
+}
+
+.CategoryItem {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  svg {
+    stroke: $primary-color;
+  }
+  p {
+    font-family: "Poppins SemiBold";
+    font-size: 12px;
+    color: $black;
+  }
+  &--active {
+    pointer-events: none;
+    background-color: $primary-color;
+    svg {
+      stroke: $white !important;
+    }
+    p {
+      color: $white;
+    }
+  }
+
+  &:hover {
+    background-color: none;
+    border: 0.5px solid $black;
+    p {
+      color: $black;
+    }
+  }
+}
+.CategoryItem--active svg path {
+  stroke: $white !important;
+}

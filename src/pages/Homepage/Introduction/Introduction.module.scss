@@ -25,12 +25,16 @@
       span {
         position: absolute;
         top: 45%;
-        right: 25%;
+        right: 14%;
+        svg {
+          width: 80%;
+          height: 100%;
+        }
       }
     }
   }
   &-left {
-    width: 50%;
+    width: 46%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,6 +50,7 @@
       margin-left: 2rem;
       gap: 1rem;
       p {
+        padding-block: 0.5rem;
         width: 60%;
         font-family: "Poppins Light";
         font-size: 12px;
@@ -54,8 +59,8 @@
       }
       &-button {
         width: 30%;
-        padding: 0.7rem 1.2rem;
         background-color: $secondary-color;
+        padding: 0.25rem 0.8rem;
         p {
           font-family: "Poppins Medium";
           font-size: 14px;
@@ -88,7 +93,7 @@
         align-items: flex-start;
         h2 {
           font-family: "Poppins SemiBold";
-          font-size: 20px;
+          font-size: 16px;
           color: $black;
           line-height: 1.7;
           span {
@@ -97,9 +102,9 @@
         }
       }
       &-content2 {
-        padding: 1.5rem 1rem;
-        border-radius: 20px;
-        width: 60%;
+        padding: 1rem;
+        border-radius: 16px;
+        width: 70%;
         background-color: #efefef;
         position: relative;
         overflow: hidden;
@@ -118,9 +123,8 @@
         &-image {
           display: flex;
           flex-direction: column;
-          justify-content: flex-start;
+          justify-content: space-between;
           align-items: flex-start;
-          gap: 1rem;
           position: relative;
           &-decorate {
             position: absolute;
@@ -138,11 +142,12 @@
             object-fit: cover;
           }
           p {
-            width: 80%;
+            margin-top: 1rem;
+            width: 65%;
             font-family: "Poppins SemiBold";
-            font-size: 18px;
+            font-size: 14px;
             color: $black;
-            line-height: 1.5;
+            line-height: 1.7;
           }
         }
       }
@@ -187,7 +192,7 @@
   &-right {
     width: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     position: relative;
     &-decorate {
@@ -199,9 +204,9 @@
     }
     &-image {
       position: absolute;
-      bottom: -20%;
+      bottom: -15%;
       right: 0;
-      width: 100%;
+      width: 90%;
     }
   }
 }

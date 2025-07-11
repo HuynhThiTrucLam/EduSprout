@@ -1,0 +1,50 @@
+@import "../../styles/_variables.scss";
+
+.Search {
+  width: 100%;
+  margin-top: 2rem;
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  &-input {
+    width: 80%;
+    border: 0.5px solid $gray;
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-family: "Poppins Light";
+      font-size: 12px;
+    }
+    svg {
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+  }
+  &-button {
+    width: 20%;
+    height: 100%;
+    background-color: $secondary-color;
+    padding: 0.75rem 1.5rem;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0;
+    p {
+      color: $white !important;
+      font-family: "Poppins Medium";
+      font-size: 16px !important;
+      color: $white;
+      line-height: 1.62;
+    }
+  }
+}
