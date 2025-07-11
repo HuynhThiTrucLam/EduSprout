@@ -18,7 +18,7 @@ const Header = () => {
           <div className={styles["Header-items"]}>
             <div className={styles["Header-item"]}>
               <Link to="/" className={styles["Header-item-link"]}>
-                Lorem ipsum
+                Khóa học của tôi
               </Link>
             </div>
             <div className={styles["Header-item"]}>
