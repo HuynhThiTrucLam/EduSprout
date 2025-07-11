@@ -1,0 +1,28 @@
+@import "../../styles/variables.scss";
+
+.Filter {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  &-header {
+    font-family: "Poppins SemiBold";
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.5px solid $gray;
+    padding-bottom: 1rem;
+    &-reset {
+      font-family: "Poppins Regular";
+      cursor: pointer;
+      font-size: 12px;
+      padding: 0.25rem 0.5rem;
+      border-radius: 100rem;
+      &:hover {
+        background-color: #eff3f3;
+        color: $black;
+      }
+    }
+  }
+}

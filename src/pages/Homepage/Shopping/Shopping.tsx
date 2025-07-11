@@ -1,10 +1,31 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Categories from "../../../components/Category/Categories";
+import Filter from "../../../components/Filter/Filter";
 import Search from "../../../components/Search/Search";
-import styles from "./Shopping.module.scss";
 import type { Category } from "../../../types/categories";
+import styles from "./Shopping.module.scss";
+import type { Major } from "../../../types/major";
+import type { Language } from "../../../types/language";
 
 const Shopping = () => {
+  const [selectedMajor, setSelectedMajor] = useState<Major | null>(null);
+  const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(
+    null
+  );
+
+  const handleFilter = () => {
+    console.log("selectedMajor: ", selectedMajor);
+  };
+
+  const handleResetFilters = () => {
+    setSelectedMajor(null);
+    console.log("Filters reset");
+  };
+
+  const handleLanguageChange = (language: Language) => {
+    setSelectedLanguage(language);
+  };
+
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
     null
   );
@@ -25,10 +46,18 @@ const Shopping = () => {
         <div className={styles["Shopping-categories"]}>
           <Categories onCategoryChange={handleCategoryChange} />
         </div>
-        <div className={styles["Shopping-search"]}></div>
         <div className={styles["Shopping-products"]}>
-          <div className={styles["Shopping-products-filter"]}></div>
-          <div className={styles["Shopping-products-list"]}>
+          <div className={styles["Shopping-filter"]}>
+            <Filter
+              selectedMajor={selectedMajor}
+              handleSelectMajor={setSelectedMajor}
+              handleFilter={handleFilter}
+              handleResetFilters={handleResetFilters}
+              selectedLanguage={selectedLanguage}
+              handleSelectLanguage={handleLanguageChange}
+            />
+          </div>
+          <div className={styles["Shopping-list"]}>
             {selectedCategory && (
               <p>Showing products for: {selectedCategory.title}</p>
             )}
