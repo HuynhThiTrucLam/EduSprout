@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { majors, type Major } from "../../types/major";
-import Selection from "../Selection/Selection";
+import { Selection } from "../Selection/Selection";
 import Button from "../commons/Button";
 import styles from "./Filter.module.scss";
 import type { Language } from "../../types/language";
@@ -52,15 +52,15 @@ const Filter = ({
         title="Subject Area"
         options={majorsList}
         selectedOption={selectedMajor}
-        handleSelect={handleSelectMajor}
+        handleSelect={(option) => handleSelectMajor(option as Major)}
         getOptionLabel={(option) => option.title}
-        getOptionValue={(option) => option.id}
+        getOptionValue={(option) => option.id.toString()}
       />
       <Selection
         title="Language"
         options={languagesList}
         selectedOption={selectedLanguage}
-        handleSelect={handleSelectLanguage}
+        handleSelect={(option) => handleSelectLanguage(option as Language)}
         getOptionLabel={(option) => option.title}
         getOptionValue={(option) => option.id}
       />
