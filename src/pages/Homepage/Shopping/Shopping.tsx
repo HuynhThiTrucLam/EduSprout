@@ -4,6 +4,7 @@ import GridIcon from "../../../assets/Icons/GridIcon";
 import SearchIcon from "../../../assets/Icons/SearchIcon";
 import Categories from "../../../components/Category/Categories";
 import Filter from "../../../components/Filter/Filter";
+import NoData from "../../../components/NoData/NoData";
 import ProductItem from "../../../components/Product/ProductItem";
 import { Input } from "../../../components/ui/input";
 import {
@@ -15,7 +16,6 @@ import { categories, type Category } from "../../../types/categories";
 import type { Language } from "../../../types/language";
 import type { Major } from "../../../types/major";
 import styles from "./Shopping.module.scss";
-import NoData from "../../../components/NoData/NoData";
 
 const Shopping = () => {
   const [selectedMajor, setSelectedMajor] = useState<Major | null>(null);
@@ -136,6 +136,7 @@ const Shopping = () => {
                   className={`${styles["Shopping-list-header-right-item"]} ${
                     isChangeLayout ? styles["active"] : ""
                   }`}
+                  onClick={() => setIsChangeLayout(!isChangeLayout)}
                 >
                   <GridIcon />
                 </div>
