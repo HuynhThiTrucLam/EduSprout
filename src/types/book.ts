@@ -15,7 +15,8 @@ export const mockBooks: Book[] = [
     infor: {
       id: "prod-b001",
       title: "Fundamentals of Information Technology",
-      image: "https://example.com/images/it-book.jpg",
+      image:
+        "https://images.pexels.com/photos/3747279/pexels-photo-3747279.jpeg",
       price: 59.99,
       description:
         "A comprehensive textbook for learning foundational IT concepts and skills.",
@@ -40,7 +41,7 @@ export const mockBooks: Book[] = [
         email: "hello@creativedesign.co",
         phone: "1234567890",
         image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAJR1WWvAmcjGC5Vo76-V3Q2_cE34eI9ZPuQ&s",
+          "https://images.pexels.com/photos/32951574/pexels-photo-32951574.jpeg",
       },
     },
     academicYear: "2025-2026",
@@ -52,7 +53,8 @@ export const mockBooks: Book[] = [
     infor: {
       id: "prod-b002",
       title: "Principles of Business Management",
-      image: "https://example.com/images/business-book.jpg",
+      image:
+        "https://images.pexels.com/photos/7821487/pexels-photo-7821487.jpeg",
       price: 69.0,
       description:
         "An essential guide to business administration, covering theories and real-world applications.",
@@ -89,7 +91,8 @@ export const mockBooks: Book[] = [
     infor: {
       id: "prod-b003",
       title: "Introduction to Environmental Science",
-      image: "https://example.com/images/env-sci-book.jpg",
+      image:
+        "https://images.pexels.com/photos/32894584/pexels-photo-32894584.jpeg",
       price: 54.5,
       description:
         "Explore the fundamental concepts of ecology, sustainability, and environmental challenges.",

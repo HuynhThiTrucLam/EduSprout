@@ -2,16 +2,22 @@ import type { Course } from "@/types/course";
 import { useEffect, useState } from "react";
 import ProductItem from "../Product/ProductItem";
 import styles from "./SimilarProduct.module.scss";
-import type { Book } from "@/types/book";
-import type { Document } from "@/types/documents";
-import { getSimilarCoursesService } from "../../services/product_service";
+import type { Book } from "../../types/book";
+import type { Document } from "../../types/documents";
+import { getSimilarProductService } from "../../services/product_service";
 
-const SimilarProduct = () => {
+interface SimilarProductProps {
+  typeOfProduct: string;
+}
+const SimilarProduct = ({ typeOfProduct }: SimilarProductProps) => {
   const [products, setProducts] = useState<Course[] | Book[] | Document[]>([]);
 
   const fetchProducts = async () => {
-    const response = await getSimilarCoursesService();
-    setProducts(response);
+    const response = await getSimilarProductService(
+      typeOfProduct.toLowerCase()
+    );
+    console.log(response);
+    setProducts(response || []);
   };
   useEffect(() => {
     fetchProducts();

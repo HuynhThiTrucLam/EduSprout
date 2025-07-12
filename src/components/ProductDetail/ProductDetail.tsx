@@ -59,7 +59,7 @@ const Productdetail = ({ typeofProduct, productId }: ProductdetailProps) => {
               )}
             </div>
             <div className={styles["ProductDetail-similar"]}>
-              <SimilarProduct />
+              <SimilarProduct typeOfProduct={typeofProduct} />
             </div>
           </div>
         </div>

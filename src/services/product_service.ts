@@ -27,12 +27,20 @@ export const getCourseByIdService = async (id: string) => {
 };
 
 //get similar courses
-export const getSimilarCoursesService = async () => {
+export const getSimilarProductService = async (typeOfProduct: string) => {
   try {
-    //call api get similar courses
+    //call api get similar products
     //but using mock data
-    const response = mockCourses;
-    return response;
+    if (typeOfProduct === "course") {
+      const response = mockCourses;
+      return response;
+    } else if (typeOfProduct === "book") {
+      const response = mockBooks;
+      return response;
+    } else if (typeOfProduct === "document") {
+      const response = mockDocuments;
+      return response;
+    }
   } catch (error) {
     console.error("Error fetching similar courses:", error);
     return [];
