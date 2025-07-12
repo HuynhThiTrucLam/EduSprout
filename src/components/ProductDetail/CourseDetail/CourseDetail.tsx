@@ -60,7 +60,7 @@ const CourseDetail = ({ product }: CourseDetailProps) => {
         <img src={course?.infor?.image} alt={course?.infor?.title} />
       </div>
       <div className={styles["CourseDetail-description"]}>
-        <AttributeTab />
+        <AttributeTab product={course} />
       </div>
     </div>
   );

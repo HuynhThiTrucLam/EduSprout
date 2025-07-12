@@ -100,7 +100,15 @@ export const mockCourses: Course[] = [
         },
       ],
       language: [{ id: "en", title: "English" }],
-      values: ["Creativity", "Empathy", "Design Thinking"],
+      //array of short paragraph
+      values: [
+        "Creativity is the ability to think outside the box and come up with new ideas.",
+        "Empathy is the ability to understand and share the feelings of others.",
+        "Design Thinking is a process for solving problems by understanding the user's needs and creating a solution that meets those needs.",
+        "User Research is the process of gathering information about users to help design a product that meets their needs.",
+        "User Experience is the overall experience of using a product.",
+        "User Interface is the visual and interactive elements of a product.",
+      ],
       skills: ["Wireframing", "Prototyping", "User Research"],
       user: {
         id: "user-001",
@@ -195,7 +203,12 @@ export const mockCourses: Course[] = [
         },
       ],
       language: [{ id: "en", title: "English" }],
-      values: ["Problem Solving", "Technical Knowledge", "Security Awareness"],
+      values: [
+        "Problem Solving Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "Technical Knowledge Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "Security Awareness Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "Design Thinking Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      ],
       skills: ["Networking", "SQL", "Python Basics"],
       user: {
         id: "user-002",
@@ -254,7 +267,11 @@ export const mockCourses: Course[] = [
         },
       ],
       language: [{ id: "en", title: "English" }],
-      values: ["Problem Solving", "Technical Knowledge", "Security Awareness"],
+      values: [
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      ],
       skills: ["Networking", "SQL", "Python Basics"],
       user: {
         id: "user-003",
@@ -313,7 +330,11 @@ export const mockCourses: Course[] = [
         },
       ],
       language: [{ id: "en", title: "English" }],
-      values: ["Empathy", "Critical Thinking", "Scientific Inquiry"],
+      values: [
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      ],
       skills: [
         "Cognitive Understanding",
         "Behavioral Analysis",

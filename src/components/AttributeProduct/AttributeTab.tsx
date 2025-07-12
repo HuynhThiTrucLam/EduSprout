@@ -1,7 +1,12 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import styles from "./AttributeTab.module.scss";
+import InforTab from "./InforTab";
 
-const AttributeTab = () => {
+interface AttributeTabProps {
+  product: any;
+}
+
+const AttributeTab = ({ product }: AttributeTabProps) => {
   return (
     <Tabs defaultValue="information" className={styles["AttributeTab"]}>
       <TabsList className={styles["AttributeTab-tabslist"]}>
@@ -28,7 +33,13 @@ const AttributeTab = () => {
         value="information"
         className={styles["AttributeTab-tabcontent"]}
       >
-        Make changes to your account here.
+        <InforTab
+          rating={product?.infor?.rating}
+          updatedAt={product?.updatedAt}
+          language={product?.infor?.language}
+          values={product?.infor?.values}
+          skills={product?.infor?.skills}
+        />
       </TabsContent>
       <TabsContent
         value="content"

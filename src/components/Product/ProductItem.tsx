@@ -76,7 +76,6 @@ const ProductItem = ({ productInfor }: ProductItemProps) => {
                   {"time" in productInfor
                     ? productInfor.time.toString()
                     : "Không xác định"}{" "}
-                  months
                 </p>
               </div>
               <div className={styles["ProductItem-Subtitle-item"]}>

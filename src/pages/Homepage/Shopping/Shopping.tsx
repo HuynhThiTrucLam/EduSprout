@@ -15,6 +15,7 @@ import { categories, type Category } from "../../../types/categories";
 import type { Language } from "../../../types/language";
 import type { Major } from "../../../types/major";
 import styles from "./Shopping.module.scss";
+import NoData from "../../../components/NoData/NoData";
 
 const Shopping = () => {
   const [selectedMajor, setSelectedMajor] = useState<Major | null>(null);
@@ -154,9 +155,7 @@ const Shopping = () => {
                 ))}
               </div>
             ) : (
-              <div className={styles["Shopping-list-empty"]}>
-                <p>No products found</p>
-              </div>
+              <NoData text="No products found" />
             )}
           </div>
         </div>
