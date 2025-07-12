@@ -1,0 +1,59 @@
+@import "../../styles/variables.scss";
+
+.AttributeTab {
+  width: 100%;
+  margin: 0 auto;
+
+  &-tabslist {
+    display: flex;
+    border-bottom: 1px solid #e2e8f0; // light gray border
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+    gap: 2.5rem;
+  }
+
+  &-tabtrigger {
+    background: none;
+    border: none;
+    font-family: "Poppins SemiBold";
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    color: $black;
+    position: relative;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #1a202c; // darker on hover
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background-color: transparent;
+      border-radius: 2px;
+      transition: background-color 0.3s;
+    }
+
+    &[data-state="active"] {
+      font-family: "Poppins SemiBold";
+      color: $primary-color;
+
+      &::after {
+        background-color: #2f7b74; // green accent underline
+      }
+    }
+  }
+
+  &-tabcontent {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #2d3748;
+  }
+}

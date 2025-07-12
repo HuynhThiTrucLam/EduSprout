@@ -13,6 +13,20 @@ export const getAllCoursesService = async () => {
   }
 };
 
+//get course by id
+export const getCourseByIdService = async (id: string) => {
+  try {
+    //using mock data
+    console.log("Get course by id:", id);
+    const response = mockCourses.find((course) => course.id === id);
+    return response;
+  } catch (error) {
+    console.error("Error fetching course by id:", error);
+    return null;
+  }
+};
+
+//get all books
 export const getAllBooksService = async () => {
   try {
     const response = mockBooks;
@@ -23,6 +37,18 @@ export const getAllBooksService = async () => {
   }
 };
 
+//get book by id
+export const getBookByIdService = async (id: string) => {
+  try {
+    const response = mockBooks.find((book) => book.id === id);
+    return response;
+  } catch (error) {
+    console.error("Error fetching book by id:", error);
+    return null;
+  }
+};
+
+//get all documents
 export const getAllDocumentsService = async () => {
   try {
     const response = mockDocuments;
@@ -30,5 +56,16 @@ export const getAllDocumentsService = async () => {
   } catch (error) {
     console.error("Error fetching documents:", error);
     return [];
+  }
+};
+
+//get document by id
+export const getDocumentByIdService = async (id: string) => {
+  try {
+    const response = mockDocuments.find((document) => document.id === id);
+    return response;
+  } catch (error) {
+    console.error("Error fetching document by id:", error);
+    return null;
   }
 };

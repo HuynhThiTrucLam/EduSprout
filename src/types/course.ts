@@ -4,7 +4,7 @@ export interface Course {
   id: string;
   infor: Product;
 
-  time: number; //months
+  time: string; //months
   introVideoUrl: string;
   chapters: Chapter[]; // just see the title and description of the chapter
 
@@ -25,7 +25,7 @@ export const mockCourses: Course[] = [
       id: "prod-001",
       title: "Mastering UI/UX Design",
       image:
-        "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg",
       price: 199.99,
       description:
         "Learn to design stunning and user-friendly digital interfaces from scratch.",
@@ -112,7 +112,7 @@ export const mockCourses: Course[] = [
       },
     },
     introVideoUrl:
-      "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://d3c33hcgiwev3.cloudfront.net/X4uJy_bFTmGvWNkZxhAXgw.mediaconvert/full/X4uJy_bFTmGvWNkZxhAXgw_bcb6b6db5c844c4f891c9ffb97c917f1_C1M1-Welcome-to-the-Google-UX-Design-Certificate_MP4_540.mp4?Expires=1752451200&Signature=UDJ2lWLwzda2kSvLYTNdms-ZO3Ahd-geA1A8ZZtw5oM7eemsuG7ytlRyKU0rd4JDTO7oK8cAz0mFxfkojsNZBmDBGSnJBdhYX-TtJIji~dsXzU1wDQXqn~sISlWEww-5ktlbFhV5qpItHXO9kQvKhcIswLN9U8joaBNsFcekfB0_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A",
     chapters: [
       {
         id: "ch1",
@@ -124,8 +124,43 @@ export const mockCourses: Course[] = [
         title: "Wireframing Tools",
         description: "Explore Figma, Sketch and more",
       },
+      {
+        id: "ch3",
+        title: "User Research",
+        description: "Understanding user needs and behaviors",
+      },
+      {
+        id: "ch4",
+        title: "Prototyping",
+        description: "Creating interactive prototypes",
+      },
+      {
+        id: "ch5",
+        title: "Design Principles",
+        description: "Principles of good design",
+      },
+      {
+        id: "ch6",
+        title: "Design Principles",
+        description: "Principles of good design",
+      },
+      {
+        id: "ch7",
+        title: "Design Principles",
+        description: "Principles of good design",
+      },
+      {
+        id: "ch8",
+        title: "Design Principles",
+        description: "Principles of good design",
+      },
+      {
+        id: "ch9",
+        title: "Design Principles",
+        description: "Principles of good design",
+      },
     ],
-    time: 10,
+    time: "10 months",
 
     createdAt: "2025-01-10",
     updatedAt: "2025-05-20",
@@ -136,7 +171,7 @@ export const mockCourses: Course[] = [
       id: "prod-002",
       title: "Fullstack IT Fundamentals",
       image:
-        "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlfGVufDB8fDB8fHww",
       price: 149.99,
       description:
         "Build strong foundations in networks, databases, and programming.",
@@ -172,7 +207,7 @@ export const mockCourses: Course[] = [
       },
     },
     introVideoUrl:
-      "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlfGVufDB8fDB8fHww",
     chapters: [
       {
         id: "ch1",
@@ -185,7 +220,7 @@ export const mockCourses: Course[] = [
         description: "Your first coding steps",
       },
     ],
-    time: 12,
+    time: "12 months",
     createdAt: "2025-02-15",
     updatedAt: "2025-06-10",
   },
@@ -195,7 +230,7 @@ export const mockCourses: Course[] = [
       id: "prod-003",
       title: "Business Strategy 101",
       image:
-        "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlfGVufDB8fDB8fHww",
       price: 179.0,
       description:
         "Learn how to craft winning strategies for business growth and innovation.",
@@ -230,9 +265,9 @@ export const mockCourses: Course[] = [
           "https://media.istockphoto.com/id/2220865188/vi/anh/%E1%BA%A3nh-anh-ch%C3%A0ng-thi%C3%AAn-ni%C3%AAn-k%E1%BB%B7-l%E1%BA%A1c-quan-m%E1%BA%B7c-%C3%A1o-s%C6%A1-mi-m%C3%A0u-xanh-l%C3%A1-c%C3%A2y-b%E1%BB%8B-c%C3%B4-l%E1%BA%ADp-tr%C3%AAn-n%E1%BB%81n-m%C3%A0u-v%C3%A0ng.jpg?s=1024x1024&w=is&k=20&c=8xOsDhDEviP7Az2z7yv_QK3qa72_gMe2YhDrjNSo_r0=",
       },
     },
-    time: 15,
+    time: "72 hours",
     introVideoUrl:
-      "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlfGVufDB8fDB8fHww",
     chapters: [
       {
         id: "ch1",
@@ -255,7 +290,7 @@ export const mockCourses: Course[] = [
       id: "prod-004",
       title: "Introduction to Psychology",
       image:
-        "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlfGVufDB8fDB8fHww",
       price: 129.5,
       description: "Delve into human behavior, emotions, and mental processes.",
       sellNumber: 510,
@@ -294,7 +329,7 @@ export const mockCourses: Course[] = [
       },
     },
     introVideoUrl:
-      "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlfGVufDB8fDB8fHww",
     chapters: [
       {
         id: "ch1",
@@ -307,7 +342,7 @@ export const mockCourses: Course[] = [
         description: "Clinical, Cognitive, Developmental",
       },
     ],
-    time: 6,
+    time: "6 months",
     createdAt: "2025-04-18",
     updatedAt: "2025-07-01",
   },

@@ -1,16 +1,22 @@
-import styles from "./Product.module.scss";
+import styles from "./ProductItem.module.scss";
 import type { Book } from "../../types/book";
 import type { Course } from "../../types/course";
 import type { Document } from "../../types/documents";
 import Button from "../commons/Button";
 import Rating from "../Rating/Rating";
 import GridIcon from "../../assets/Icons/GridIcon";
+import { useNavigate } from "react-router-dom";
 
 interface ProductItemProps {
   productInfor: Course | Book | Document;
 }
 
 const ProductItem = ({ productInfor }: ProductItemProps) => {
+  const navigate = useNavigate();
+
+  const handleNavigateToProductDetail = (typeofProduct: string, id: string) => {
+    navigate(`/product/${typeofProduct}/${id}`);
+  };
   return (
     <div className={styles["ProductItem"]}>
       <div className={styles["ProductItem-container"]}>
@@ -36,6 +42,12 @@ const ProductItem = ({ productInfor }: ProductItemProps) => {
             <Button
               text="Xem ngay"
               className={styles["ProductItem-CTA-button"]}
+              onClick={() =>
+                handleNavigateToProductDetail(
+                  productInfor.infor.category.title.toLowerCase(),
+                  productInfor.id.toString()
+                )
+              }
             />
           </div>
           <h3 className={styles["ProductItem-Title"]}>
