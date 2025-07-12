@@ -87,7 +87,7 @@ export function Selection<T>({
                     <CommandItem
                       key={optionValue}
                       value={optionValue}
-                      onSelect={(currentValue) => {
+                      onSelect={(currentValue: string) => {
                         const selected = options.find(
                           (opt) => getOptionValue(opt) === currentValue
                         );
