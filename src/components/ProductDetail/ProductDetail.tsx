@@ -6,8 +6,10 @@ import {
 } from "../../services/product_service";
 import BackPage from "../BackPage/BackPage";
 import styles from "./ProductDetail.module.scss";
-import CourseDetail from "./CourseDetail/CourseDetail";
-import SimilarProduct from "../SimilarProduct/SimilarProduct";
+import Detail from "./Detail/Detail";
+import type { Course } from "../../types/course";
+import type { Book } from "../../types/book";
+import type { Document } from "../../types/documents";
 
 interface ProductdetailProps {
   typeofProduct: string;
@@ -15,21 +17,31 @@ interface ProductdetailProps {
 }
 
 const Productdetail = ({ typeofProduct, productId }: ProductdetailProps) => {
-  const [product, setProduct] = useState<any>();
+  const [product, setProduct] = useState<Course | Book | Document | null>(null);
 
   const handleGetProductDetail = async (
     typeofProduct: string,
     productId: string
   ) => {
+    console.log(
+      "ProductDetail - typeofProduct:",
+      typeofProduct,
+      "productId:",
+      productId
+    );
+
     if (typeofProduct.toLowerCase() === "courses") {
       const product = await getCourseByIdService(productId);
-      setProduct(product);
+      console.log("Course product:", product);
+      setProduct(product || null);
     } else if (typeofProduct.toLowerCase() === "books") {
       const product = await getBookByIdService(productId);
-      setProduct(product);
+      console.log("Book product:", product);
+      setProduct(product || null);
     } else if (typeofProduct.toLowerCase() === "documents") {
       const product = await getDocumentByIdService(productId);
-      setProduct(product);
+      console.log("Document product:", product);
+      setProduct(product || null);
     }
   };
 
@@ -48,18 +60,9 @@ const Productdetail = ({ typeofProduct, productId }: ProductdetailProps) => {
               className={styles["ProductDetail-back"]}
             />
             <div className={styles["ProductDetail-content"]}>
-              {typeofProduct.toLowerCase() === "courses" && product && (
-                <CourseDetail product={product} />
+              {product && (
+                <Detail product={product} typeOfProduct={typeofProduct} />
               )}
-              {typeofProduct.toLowerCase() === "books" && (
-                <div>Book content here</div>
-              )}
-              {typeofProduct.toLowerCase() === "documents" && (
-                <div>Document content here</div>
-              )}
-            </div>
-            <div className={styles["ProductDetail-similar"]}>
-              <SimilarProduct typeOfProduct={typeofProduct} />
             </div>
           </div>
         </div>

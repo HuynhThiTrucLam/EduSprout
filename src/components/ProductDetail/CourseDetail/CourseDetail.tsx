@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Back from "../../../assets/Icons/Back";
 import type { Course } from "../../../types/course";
 import Button from "../../commons/Button";
-import ChapterComponent from "./Chapter";
+import ChapterComponent from "../Detail/Chapter";
 import styles from "./CourseDetail.module.scss";
 import AttributeTab from "../../AttributeProduct/AttributeTab";
 

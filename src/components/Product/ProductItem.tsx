@@ -15,6 +15,8 @@ const ProductItem = ({ productInfor }: ProductItemProps) => {
   const navigate = useNavigate();
 
   const handleNavigateToProductDetail = (typeofProduct: string, id: string) => {
+    console.log("ProductItem - Navigating to:", typeofProduct, "id:", id);
+    console.log("ProductItem - Full URL:", `/product/${typeofProduct}/${id}`);
     navigate(`/product/${typeofProduct}/${id}`);
   };
   return (

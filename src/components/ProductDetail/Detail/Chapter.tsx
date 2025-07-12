@@ -1,7 +1,7 @@
 import type { Chapter as ChapterType } from "@/types/course";
 import NoData from "../../../components/NoData/NoData";
 import { Separator } from "../../ui/separator";
-import styles from "./CourseDetail.module.scss";
+import styles from "./Detail.module.scss";
 
 interface ChapterProps {
   time: string;
@@ -10,13 +10,13 @@ interface ChapterProps {
 
 const Chapter = ({ chapters, time }: ChapterProps) => {
   return (
-    <div className={styles["CourseDetail-chapter"]}>
-      <div className={styles["CourseDetail-chapter-list"]}>
+    <div className={styles["Detail-chapter"]}>
+      <div className={styles["Detail-chapter-list"]}>
         {chapters.length > 0 ? (
           chapters.map((chapter, index) => (
             <div
               key={chapter.id || index}
-              className={styles["CourseDetail-chapter-item"]}
+              className={styles["Detail-chapter-item"]}
             >
               <svg
                 width="20"
@@ -32,7 +32,7 @@ const Chapter = ({ chapters, time }: ChapterProps) => {
                   fill="#2F7B74"
                 />
               </svg>
-              <div className={styles["CourseDetail-chapter-content"]}>
+              <div className={styles["Detail-chapter-content"]}>
                 <h3>{chapter.title}</h3>
                 <p>{`Chapter ${index + 1} | ${time} minutes`}</p>
               </div>
