@@ -16,6 +16,8 @@ import {
 import Author from "../../../assets/Icons/Author";
 import Publisher from "../../../assets/Icons/Publisher";
 import Time from "../../../assets/Icons/Time";
+import Share from "../../../assets/Icons/Share";
+import Favorite from "../../../assets/Icons/Favorite";
 
 type ProductType = Course | Book | Document;
 
@@ -162,7 +164,12 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
               <div className={styles["Detail-book-info-CTA"]}>
                 <Button text="Add to cart" className={styles["button"]} />
                 <div className={styles["Detail-book-info-share"]}>
-                  {/* <Share /> */}
+                  <div className={styles["share"]}>
+                    <Share />
+                  </div>
+                  <div className={styles["favorite"]}>
+                    <Favorite />
+                  </div>
                 </div>
               </div>
             </div>
