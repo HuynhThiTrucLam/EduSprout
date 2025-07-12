@@ -30,19 +30,19 @@ export const categories: Category[] = [
     slug: "course",
     description: "Online courses and tutorials",
   },
-  {
-    id: 2,
-    title: "Documents",
-    iconName: "document",
-    slug: "documents",
-    description: "Educational documents and materials",
-  },
 
   {
-    id: 3,
+    id: 2,
     title: "Books",
     iconName: "books",
     slug: "books",
     description: "Educational books and literature",
+  },
+  {
+    id: 3,
+    title: "Documents",
+    iconName: "document",
+    slug: "documents",
+    description: "Educational documents and materials",
   },
 ];

@@ -78,7 +78,25 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
     <div className={styles["Detail"]}>
       <div className={styles["Detail-header"]}>
         <div className={styles["Detail-header-left"]}>
-          <h1>{currentProduct?.infor?.title}</h1>
+          <div className={styles["Detail-header-left-title"]}>
+            <h1>{currentProduct?.infor?.title}</h1>
+            <div className={styles["Detail-header-left-share"]}>
+              <div
+                className={styles["share"]}
+                data-tooltip={`Share this ${typeOfProduct
+                  .toLowerCase()
+                  .slice(0, -1)}`}
+              >
+                <Share />
+              </div>
+              <div
+                className={styles["favorite"]}
+                data-tooltip="Add to favorites"
+              >
+                <Favorite />
+              </div>
+            </div>
+          </div>
           <div className={styles["Detail-header-left-info"]}>
             <Back />
             <p>{currentProduct?.infor?.title}</p>
@@ -163,14 +181,6 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
               </div>
               <div className={styles["Detail-book-info-CTA"]}>
                 <Button text="Add to cart" className={styles["button"]} />
-                <div className={styles["Detail-book-info-share"]}>
-                  <div className={styles["share"]}>
-                    <Share />
-                  </div>
-                  <div className={styles["favorite"]}>
-                    <Favorite />
-                  </div>
-                </div>
               </div>
             </div>
           </div>
