@@ -23,8 +23,8 @@ const Introduction = () => {
         }
       },
       {
-        threshold: 0.3, // Trigger when 30% of the element is visible
-        rootMargin: "0px 0px -100px 0px", // Trigger slightly before the element is fully in view
+        threshold: 0.5,
+        rootMargin: "0px 0px -100px 0px",
       }
     );
 
@@ -38,6 +38,21 @@ const Introduction = () => {
       }
     };
   }, []);
+
+  const handleGetStartedClick = () => {
+    const shoppingSection = document.getElementById("shopping-section");
+    if (shoppingSection) {
+      const header = document.querySelector(".Header");
+      const headerHeight = header ? header.getBoundingClientRect().height : 80;
+
+      const elementPosition = shoppingSection.offsetTop - headerHeight - 20;
+
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <div className={styles["Introduction"]}>
@@ -58,6 +73,7 @@ const Introduction = () => {
             <Button
               text="Get Started"
               className={styles["Introduction-left-top-button"]}
+              onClick={handleGetStartedClick}
             />
             <div className={styles["Introduction-decorate2"]}>
               <Decorate2 />

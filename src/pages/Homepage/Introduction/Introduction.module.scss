@@ -3,9 +3,10 @@
 .Introduction {
   width: 100%;
   min-height: 100vh;
-  padding-top: 5rem; // Account for fixed header
+  padding-top: 5rem;
   display: flex;
   align-items: center;
+  scroll-behavior: smooth;
 
   &-container {
     padding-block: 3rem;
@@ -259,7 +260,6 @@
   }
 }
 
-// Tablet styles (768px - 1024px)
 @media (max-width: 1024px) {
   .Introduction {
     padding-top: 4.5rem;
@@ -320,7 +320,6 @@
   }
 }
 
-// Mobile styles (up to 767px)
 @media (max-width: 767px) {
   .Introduction {
     padding-top: 4rem;
@@ -421,7 +420,6 @@
   }
 }
 
-// Small mobile styles (up to 480px)
 @media (max-width: 480px) {
   .Introduction {
     padding-top: 3.5rem;

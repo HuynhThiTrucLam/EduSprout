@@ -36,7 +36,6 @@ const Filter = ({
 
   const getLanguages = async () => {
     const languages = await getLanguagesService();
-    // console.log("languages: ", languages);
     setLanguagesList(languages);
   };
 

@@ -195,7 +195,6 @@
     }
   }
 
-  // Mobile Menu Button (hidden on desktop)
   &-mobile-menu {
     display: none;
     cursor: pointer;
@@ -218,7 +217,6 @@
     }
   }
 
-  // Mobile Menu Overlay
   &-mobile-overlay {
     position: fixed;
     top: 0;
@@ -328,7 +326,6 @@
   }
 }
 
-// Slide-in animation for mobile menu
 @keyframes slideIn {
   from {
     transform: translateX(100%);
@@ -338,7 +335,6 @@
   }
 }
 
-// Mobile styles (up to 767px)
 @media (max-width: 768.5px) {
   .Header {
     padding-block: 0.75rem;
@@ -362,11 +358,11 @@
     }
 
     &-items {
-      display: none; // Hide navigation items on mobile
+      display: none;
     }
 
     &-mobile-menu {
-      display: block; // Show mobile menu button
+      display: block;
     }
 
     &-right {

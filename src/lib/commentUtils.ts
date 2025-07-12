@@ -77,28 +77,3 @@ export const getRatingDistribution = (comments: Comment[]) => {
 export const getTotalComments = (comments: Comment[]): number => {
   return comments?.length || 0;
 };
-
-/**
- * Example usage:
- *
- * const comments = [
- *   { id: 1, rating: 5, content: "Great course!", ... },
- *   { id: 2, rating: 4, content: "Good content", ... },
- *   { id: 3, rating: 5, content: "Excellent!", ... },
- *   { id: 4, rating: 3, content: "Average", ... },
- *   { id: 5, rating: 5, content: "Amazing!", ... }
- * ];
- *
- * // Count 5-star ratings
- * const fiveStarCount = countCommentsByRating(comments, 5); // Returns 3
- *
- * // Calculate average rating
- * const averageRating = calculateAverageRating(comments); // Returns 4.4
- *
- * // Get percentage of 5-star ratings
- * const fiveStarPercentage = calculateRatingPercentage(comments, 5); // Returns 60.0
- *
- * // Get full distribution
- * const distribution = getRatingDistribution(comments);
- * // Returns: { 1: { count: 0, percentage: 0 }, 2: { count: 0, percentage: 0 }, ... }
- */

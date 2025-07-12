@@ -4,7 +4,7 @@ export interface Course {
   id: string;
   infor: Product;
 
-  time: string; //months
+  time: string;
   introVideoUrl: string;
   chapters: Chapter[]; // just see the title and description of the chapter
 
@@ -136,7 +136,6 @@ export const mockCourses: Course[] = [
         },
       ],
       language: [{ id: "en", title: "English" }],
-      //array of short paragraph
       values: [
         "Creativity is the ability to think outside the box and come up with new ideas.",
         "Empathy is the ability to understand and share the feelings of others.",

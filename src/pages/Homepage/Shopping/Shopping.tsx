@@ -82,7 +82,6 @@ const Shopping = () => {
   const handleCategoryChange = (category: Category) => {
     console.log("Category changed to:", category);
     setSelectedCategory(category);
-    // You can add logic to filter products based on category here
   };
 
   useEffect(() => {
@@ -95,7 +94,7 @@ const Shopping = () => {
   }, [isActiveFilter, selectedCategory]);
 
   return (
-    <div className={styles["Shopping"]}>
+    <div id="shopping-section" className={styles["Shopping"]}>
       <div className={styles["Shopping-container"]}>
         <div className={styles["Shopping-header"]}>
           <h2>Most Popular Products</h2>

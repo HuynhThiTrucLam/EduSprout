@@ -1,6 +1,4 @@
 import type { Product } from "./products";
-
-// Define Document interface to match the structure
 export interface Document {
   id: string;
   infor: Product;

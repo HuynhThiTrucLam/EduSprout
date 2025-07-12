@@ -1,8 +1,22 @@
-// Import variables first
 @use "variables" as *;
 
-// Tailwind CSS directives
 @import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  font-family: "Poppins", "Poppins", sans-serif;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
 
 // CSS Variables for shadcn/ui
 :root {
@@ -111,19 +125,4 @@
   src: url($font-poppins-light) format("opentype");
   font-weight: 300;
   font-style: normal;
-}
-// Global styles
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-}
-
-a {
-  font-family: "Poppins", "Poppins", sans-serif;
-  text-decoration: none;
-  transition: all 0.3s ease;
 }
