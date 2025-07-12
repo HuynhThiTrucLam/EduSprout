@@ -1,13 +1,26 @@
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 import logo from "../../assets/images/Logo.svg";
 import styles from "./Header.module.scss";
 import Cart from "../../assets/Icons/Cart";
 import Language from "../../assets/Icons/Language";
 import Notification from "../../assets/Icons/Notification";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import Menu from "../../assets/Icons/Menu";
+import Close from "../../assets/Icons/Close";
+import Contact from "../../assets/Icons/Contact";
+import Home from "../../assets/Icons/Home";
+import Favorite from "../../assets/Icons/Favorite";
+import CourseIcon from "../../assets/Icons/CourseIcon";
+import Account from "../../assets/Icons/Account";
 
 const Header = () => {
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   const isActive = (path: string) => {
     if (path === "/") {
@@ -55,6 +68,7 @@ const Header = () => {
             </div>
           </div>
         </div>
+
         <div className={styles["Header-right"]}>
           <div className={styles["Header-right-item"]}>
             <Cart />
@@ -104,7 +118,95 @@ const Header = () => {
             </PopoverContent>
           </Popover>
         </div>
+
+        <div
+          className={styles["Header-mobile-menu"]}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          <Menu />
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div
+          className={styles["Header-mobile-overlay"]}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <div
+            className={styles["Header-mobile-menu-content"]}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={styles["Header-mobile-menu-header"]}>
+              <h3>Menu</h3>
+              <button
+                className={styles["Header-mobile-menu-close"]}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                }}
+                aria-label="Close mobile menu"
+              >
+                <Close />
+              </button>
+            </div>
+            <div className={styles["Header-mobile-menu-items"]}>
+              <Link
+                to="/"
+                className={`${styles["Header-mobile-menu-item"]} ${
+                  isActive("/") ? styles["Header-mobile-menu-item--active"] : ""
+                }`}
+                onClick={closeMobileMenu}
+              >
+                <Home /> Trang chủ
+              </Link>
+              <Link
+                to="/my-course"
+                className={`${styles["Header-mobile-menu-item"]} ${
+                  isActive("/my-course")
+                    ? styles["Header-mobile-menu-item--active"]
+                    : ""
+                }`}
+                onClick={closeMobileMenu}
+              >
+                <CourseIcon /> Khóa học của tôi
+              </Link>
+              <Link
+                to="/favorites"
+                className={`${styles["Header-mobile-menu-item"]} ${
+                  isActive("/favorites")
+                    ? styles["Header-mobile-menu-item--active"]
+                    : ""
+                }`}
+                onClick={closeMobileMenu}
+              >
+                <Favorite /> Danh sách yêu thích
+              </Link>
+              <Link
+                to="/profile"
+                className={`${styles["Header-mobile-menu-item"]} ${
+                  isActive("/profile")
+                    ? styles["Header-mobile-menu-item--active"]
+                    : ""
+                }`}
+                onClick={closeMobileMenu}
+              >
+                <Account /> Tài khoản của tôi
+              </Link>
+              <Link
+                to="/help"
+                className={`${styles["Header-mobile-menu-item"]} ${
+                  isActive("/help")
+                    ? styles["Header-mobile-menu-item--active"]
+                    : ""
+                }`}
+                onClick={closeMobileMenu}
+              >
+                <Contact /> Trợ giúp
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

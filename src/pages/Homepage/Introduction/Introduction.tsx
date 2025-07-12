@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import Deacorate1 from "../../../assets/Icons/Deacorate1";
 import Decorate2 from "../../../assets/Icons/Decorate2";
 import Decorate3 from "../../../assets/Icons/Decorate3";
@@ -10,6 +11,34 @@ import IntroDecorate from "../../../assets/Icons/IntroDecorate";
 import boy from "../../../assets/images/boy.png";
 
 const Introduction = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.3, // Trigger when 30% of the element is visible
+        rootMargin: "0px 0px -100px 0px", // Trigger slightly before the element is fully in view
+      }
+    );
+
+    if (contentRef.current) {
+      observer.observe(contentRef.current);
+    }
+
+    return () => {
+      if (contentRef.current) {
+        observer.unobserve(contentRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className={styles["Introduction"]}>
       <div className={styles["Introduction-container"]}>
@@ -22,7 +51,7 @@ const Introduction = () => {
               </span>
             </h1>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
+              Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever
             </p>
@@ -34,7 +63,12 @@ const Introduction = () => {
               <Decorate2 />
             </div>
           </div>
-          <div className={styles["Introduction-left-bottom"]}>
+          <div
+            ref={contentRef}
+            className={`${styles["Introduction-left-bottom"]} ${
+              isVisible ? styles["Introduction-left-bottom--visible"] : ""
+            }`}
+          >
             <div className={styles["Introduction-left-bottom-decorate"]}>
               <Decorate3 />
             </div>
