@@ -26,6 +26,19 @@ export const getCourseByIdService = async (id: string) => {
   }
 };
 
+//get similar courses
+export const getSimilarCoursesService = async () => {
+  try {
+    //call api get similar courses
+    //but using mock data
+    const response = mockCourses;
+    return response;
+  } catch (error) {
+    console.error("Error fetching similar courses:", error);
+    return [];
+  }
+};
+
 //get all books
 export const getAllBooksService = async () => {
   try {

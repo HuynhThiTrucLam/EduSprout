@@ -1,6 +1,8 @@
+import NoData from "../NoData/NoData";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import styles from "./AttributeTab.module.scss";
 import InforTab from "./InforTab";
+import RatingTab from "./RatingTab";
 
 interface AttributeTabProps {
   product: any;
@@ -15,12 +17,6 @@ const AttributeTab = ({ product }: AttributeTabProps) => {
           className={styles["AttributeTab-tabtrigger"]}
         >
           Thông tin
-        </TabsTrigger>
-        <TabsTrigger
-          value="content"
-          className={styles["AttributeTab-tabtrigger"]}
-        >
-          Nội dung
         </TabsTrigger>
         <TabsTrigger
           value="reviews"
@@ -42,10 +38,17 @@ const AttributeTab = ({ product }: AttributeTabProps) => {
         />
       </TabsContent>
       <TabsContent
-        value="content"
+        value="reviews"
         className={styles["AttributeTab-tabcontent"]}
       >
-        Change your password here.
+        {product.infor?.comments.length > 0 ? (
+          <RatingTab comments={product.infor.comments} />
+        ) : (
+          <NoData
+            className="w-full h-full min-h-[400px]"
+            text="Chưa có đánh giá"
+          />
+        )}
       </TabsContent>
     </Tabs>
   );

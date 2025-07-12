@@ -1,0 +1,26 @@
+@import "../../styles/variables.scss";
+
+.SimilarProduct {
+  width: 100%;
+  padding-block: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  &-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    p {
+      font-family: "Poppins Medium";
+      font-size: 24px;
+      color: $black;
+    }
+  }
+  &-list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}

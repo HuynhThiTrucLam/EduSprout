@@ -7,6 +7,7 @@ import {
 import BackPage from "../BackPage/BackPage";
 import styles from "./ProductDetail.module.scss";
 import CourseDetail from "./CourseDetail/CourseDetail";
+import SimilarProduct from "../SimilarProduct/SimilarProduct";
 
 interface ProductdetailProps {
   typeofProduct: string;
@@ -56,6 +57,9 @@ const Productdetail = ({ typeofProduct, productId }: ProductdetailProps) => {
               {typeofProduct.toLowerCase() === "documents" && (
                 <div>Document content here</div>
               )}
+            </div>
+            <div className={styles["ProductDetail-similar"]}>
+              <SimilarProduct />
             </div>
           </div>
         </div>
