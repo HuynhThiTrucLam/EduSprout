@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import CommonLayout from "../layouts/CommonLayout";
 import Homepage from "../pages/Homepage/Homepage";
 import Productdetail from "../components/ProductDetail/ProductDetail";
+import MyCourse from "../pages/MyCourse/MyCourse";
 
-// Wrapper component to access route parameters
 const ProductDetailWrapper = () => {
   const { typeofProduct, id } = useParams();
   return (
@@ -23,6 +23,7 @@ const AppRouter = () => (
           path="/product/:typeofProduct/:id"
           element={<ProductDetailWrapper />}
         />
+        <Route path="/my-course" element={<MyCourse />} />
       </Route>
     </Routes>
   </BrowserRouter>

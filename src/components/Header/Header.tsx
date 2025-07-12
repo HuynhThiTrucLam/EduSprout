@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/images/Logo.svg";
 import styles from "./Header.module.scss";
 import Cart from "../../assets/Icons/Cart";
@@ -7,6 +7,15 @@ import Notification from "../../assets/Icons/Notification";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 const Header = () => {
+  const location = useLocation();
+
+  const isActive = (path: string) => {
+    if (path === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname.startsWith(path);
+  };
+
   return (
     <div className={styles["Header"]}>
       <div className={styles["Header-container"]}>
@@ -17,19 +26,31 @@ const Header = () => {
             </Link>
           </div>
           <div className={styles["Header-items"]}>
-            <div className={styles["Header-item"]}>
-              <Link to="/" className={styles["Header-item-link"]}>
+            <div
+              className={`${styles["Header-item"]} ${
+                isActive("/my-course") ? styles["Header-item--active"] : ""
+              }`}
+            >
+              <Link to="/my-course" className={styles["Header-item-link"]}>
                 Khóa học của tôi
               </Link>
             </div>
-            <div className={styles["Header-item"]}>
-              <Link to="/" className={styles["Header-item-link"]}>
+            <div
+              className={`${styles["Header-item"]} ${
+                isActive("/favorites") ? styles["Header-item--active"] : ""
+              }`}
+            >
+              <Link to="/favorites" className={styles["Header-item-link"]}>
                 Danh sách yêu thích
               </Link>
             </div>
-            <div className={styles["Header-item"]}>
-              <Link to="/" className={styles["Header-item-link"]}>
-                Lorem ipsum
+            <div
+              className={`${styles["Header-item"]} ${
+                isActive("/help") ? styles["Header-item--active"] : ""
+              }`}
+            >
+              <Link to="/help" className={styles["Header-item-link"]}>
+                Trợ giúp
               </Link>
             </div>
           </div>
@@ -72,7 +93,7 @@ const Header = () => {
                   </div>
                 </div>
                 <div className={styles["Header-popover-menu"]}>
-                  <Link to="/profile" className={styles["Header-popover-item"]}>
+                  <Link to="/help" className={styles["Header-popover-item"]}>
                     Trợ giúp
                   </Link>
                   <button className={styles["Header-popover-item"]}>
