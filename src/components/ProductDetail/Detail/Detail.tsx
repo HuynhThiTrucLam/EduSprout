@@ -13,11 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../../../components/ui/accordion";
-import {
-  getBookByIdService,
-  getCourseByIdService,
-  getDocumentByIdService,
-} from "../../../services/product_service";
+
 import type { Book } from "../../../types/book";
 import type { Course } from "../../../types/course";
 import type { Document } from "../../../types/documents";
@@ -39,36 +35,8 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [currentProduct, setCurrentProduct] = useState<ProductType | null>(
-    null
+    product
   );
-  const [loading, setLoading] = useState(true);
-
-  const getProductSpecificInfo = async (typeOfProduct: string) => {
-    switch (typeOfProduct.toLowerCase()) {
-      case "courses":
-        const course = await getCourseByIdService(product.id);
-        // console.log("Detail - Course fetched:", course);
-        return course as Course;
-      case "books":
-        const book = await getBookByIdService(product.id);
-        // console.log("Detail - Book fetched:", book);
-        return book as Book;
-      case "documents":
-        const document = await getDocumentByIdService(product.id);
-        // console.log("Detail - Document fetched:", document);
-        return document as Document;
-      default:
-        console.log("Detail - Unknown product type:", typeOfProduct);
-        return null;
-    }
-  };
-
-  const fetchProduct = async () => {
-    setLoading(true);
-    const fetchedProduct = await getProductSpecificInfo(typeOfProduct);
-    setCurrentProduct(fetchedProduct);
-    setLoading(false);
-  };
 
   const handleAddToFavorite = () => {
     if (!user) {
@@ -95,11 +63,21 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
   };
 
   useEffect(() => {
-    fetchProduct();
-  }, [typeOfProduct]);
+    if (product) {
+      setCurrentProduct(product);
+    }
+  }, [product]);
 
-  if (loading || !currentProduct) {
-    return <div>Loading product details...</div>;
+  if (!currentProduct) {
+    return (
+      <div className={styles["Detail-skeleton"]}>
+        <div className={styles["Detail-skeleton-header"]}>
+          <div className={styles["Detail-skeleton-header-left"]}>
+            <div className={styles["Detail-skeleton-header-left-title"]}></div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
