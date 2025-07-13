@@ -207,11 +207,13 @@ const Shopping = () => {
                 ))}
               </div>
             ) : productList.length > 0 ? (
-              <div className={styles["Shopping-list-products"]}>
-                {productList.map((product) => (
-                  <ProductItem key={product.id} productInfor={product} />
-                ))}
-              </div>
+              <>
+                <div className={styles["Shopping-list-products"]}>
+                  {productList.map((product) => (
+                    <ProductItem key={product.id} productInfor={product} />
+                  ))}
+                </div>
+              </>
             ) : (
               <NoData text="No products found" />
             )}

@@ -12,6 +12,7 @@ import Decorate2 from "../../assets/Icons/Decorate2";
 import Decorate3 from "../../assets/Icons/Decorate3";
 import Decorate4 from "../../assets/Icons/Decorate4";
 import IntroDecorate from "../../assets/Icons/IntroDecorate";
+import Suggest from "../../assets/Icons/Suggest";
 import type { IconName } from "../../types/categories";
 
 interface IconRegistryProps {
@@ -33,6 +34,7 @@ const iconMap: Record<IconName, React.ComponentType<{ className?: string }>> = {
   decorate3: Decorate3,
   decorate4: Decorate4,
   introDecorate: IntroDecorate,
+  suggest: Suggest,
 };
 
 const IconRegistry: React.FC<IconRegistryProps> = ({ name, className }) => {

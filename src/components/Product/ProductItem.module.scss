@@ -17,12 +17,56 @@
   }
   &-image {
     width: 100%;
+    position: relative;
     img {
       width: 100%;
       aspect-ratio: 2/1;
       border-radius: 0.5rem;
       height: 100%;
       object-fit: cover;
+    }
+  }
+  &-type {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: max-content;
+    padding: 0.25rem 0.5rem;
+
+    // Glassmorphism effect
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3rem;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+    // Add a subtle gradient overlay
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+      );
+      border-radius: 3rem;
+      pointer-events: none;
+    }
+
+    p {
+      position: relative;
+      z-index: 1;
+      font-family: "Poppins Medium";
+      font-size: 10px;
+      color: $white;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      margin: 0;
+      letter-spacing: 0.5px;
     }
   }
   &-info {

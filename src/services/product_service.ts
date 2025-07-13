@@ -245,3 +245,12 @@ export const filterProductsService = async (
     return [];
   }
 };
+
+//suggest products
+export const suggestProductsService = async () => {
+  try {
+  } catch (error) {
+    console.error("Error fetching suggest products:", error);
+    return [];
+  }
+};

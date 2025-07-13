@@ -402,6 +402,260 @@ export const mockCourses: Course[] = [
     createdAt: "2025-04-18",
     updatedAt: "2025-07-01",
   },
+  {
+    id: "course-005",
+    infor: {
+      id: "prod-005",
+      title: "Understanding Human Behavior through Sociology",
+      image:
+        "https://images.pexels.com/photos/3184407/pexels-photo-3184407.jpeg",
+      price: 109.0,
+      description:
+        "Explore the foundations of sociology and learn how social structures, norms, and cultures shape human behavior.",
+      sellNumber: 410,
+      discount: 0.15,
+      rating: 4.8,
+      category: {
+        id: 1,
+        title: "Courses",
+        iconName: "course",
+        slug: "courses",
+        description: "Online courses and tutorials",
+      },
+      comments: [],
+      majors: [
+        {
+          id: 6,
+          title: "Sociology",
+          description:
+            "Sociology is the study of social life, groups, and societies.",
+        },
+      ],
+      language: [{ id: "en", title: "English" }],
+      values: [
+        "Introduction to key sociological concepts like norms, roles, and institutions.",
+        "Real-world examples and case studies in social behavior.",
+        "Encourages critical thinking about society and the individual.",
+      ],
+      skills: [
+        "Critical Thinking",
+        "Cultural Awareness",
+        "Group Behavior Analysis",
+      ],
+      user: {
+        id: "user-005",
+        name: "SocialSphere Institute",
+        email: "hello@socialsphere.io",
+        phone: "9876543210",
+        image:
+          "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+      },
+    },
+    introVideoUrl:
+      "https://videos.pexels.com/video-files/3184407/3184407-hd.mp4",
+    chapters: [
+      {
+        id: "ch1",
+        title: "Introduction to Sociology",
+        description: "Social structures and norms",
+      },
+      {
+        id: "ch2",
+        title: "The Self in Society",
+        description: "Identity, interaction, and roles",
+      },
+      {
+        id: "ch3",
+        title: "Institutions and Power",
+        description: "Family, education, government, and inequality",
+      },
+    ],
+    time: "5 months",
+    createdAt: "2025-05-20",
+    updatedAt: "2025-07-10",
+  },
+  {
+    id: "course-006",
+    infor: {
+      id: "prod-006",
+      title: "Data Science for Beginners",
+      image:
+        "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg",
+      price: 149.0,
+      description:
+        "Learn the fundamentals of data science, from statistics to Python and real-world analysis.",
+      sellNumber: 820,
+      discount: 0.2,
+      rating: 4.6,
+      category: {
+        id: 1,
+        title: "Courses",
+        iconName: "course",
+        slug: "courses",
+        description: "Online courses and tutorials",
+      },
+      comments: [],
+      majors: [
+        {
+          id: 7,
+          title: "Data Science",
+          description:
+            "Study of extracting insights from structured and unstructured data.",
+        },
+      ],
+      language: [{ id: "en", title: "English" }],
+      values: [
+        "Basic statistics and probability.",
+        "Python for data analysis and visualization.",
+        "Case studies using real-world datasets.",
+      ],
+      skills: ["Python", "Statistics", "Pandas", "Data Visualization"],
+      user: {
+        id: "user-006",
+        name: "DataStart Academy",
+        email: "contact@datastart.io",
+        phone: "1122334455",
+        image:
+          "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg",
+      },
+    },
+    introVideoUrl:
+      "https://videos.pexels.com/video-files/3183197/3183197-hd.mp4",
+    chapters: [
+      {
+        id: "ch1",
+        title: "Intro to Data Science",
+        description: "What is data science?",
+      },
+      {
+        id: "ch2",
+        title: "Using Python for Analysis",
+        description: "Basic programming and data wrangling",
+      },
+    ],
+    time: "4 months",
+    createdAt: "2025-06-01",
+    updatedAt: "2025-07-10",
+  },
+  {
+    id: "course-007",
+    infor: {
+      id: "prod-007",
+      title: "Effective Communication Skills",
+      image:
+        "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg",
+      price: 89.0,
+      description:
+        "Master verbal and non-verbal communication techniques to enhance personal and professional relationships.",
+      sellNumber: 670,
+      discount: 0.1,
+      rating: 4.5,
+      category: {
+        id: 1,
+        title: "Courses",
+        iconName: "course",
+        slug: "courses",
+        description: "Online courses and tutorials",
+      },
+      comments: [],
+      majors: [],
+      language: [{ id: "en", title: "English" }],
+      values: [
+        "Learn public speaking and active listening.",
+        "Improve interpersonal communication.",
+        "Practice professional written and verbal interactions.",
+      ],
+      skills: ["Speaking", "Listening", "Conflict Resolution", "Presentation"],
+      user: {
+        id: "user-007",
+        name: "SkillBoost Academy",
+        email: "hello@skillboost.io",
+        phone: "1231231234",
+        image:
+          "https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg",
+      },
+    },
+    introVideoUrl:
+      "https://videos.pexels.com/video-files/1181406/1181406-hd.mp4",
+    chapters: [
+      {
+        id: "ch1",
+        title: "Communication Fundamentals",
+        description: "Verbal, non-verbal, and written forms",
+      },
+      {
+        id: "ch2",
+        title: "Professional Communication",
+        description: "Meetings, reports, and conflict management",
+      },
+    ],
+    time: "2 months",
+    createdAt: "2025-06-10",
+    updatedAt: "2025-07-10",
+  },
+  {
+    id: "course-008",
+    infor: {
+      id: "prod-008",
+      title: "UI/UX Design Essentials",
+      image:
+        "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
+      price: 139.0,
+      description:
+        "Learn the principles of user interface and experience design to create beautiful, user-centered apps.",
+      sellNumber: 950,
+      discount: 0.2,
+      rating: 4.8,
+      category: {
+        id: 1,
+        title: "Courses",
+        iconName: "course",
+        slug: "courses",
+        description: "Online courses and tutorials",
+      },
+      comments: [],
+      majors: [
+        {
+          id: 5,
+          title: "Design",
+          description:
+            "The discipline of visual, interaction, and product design",
+        },
+      ],
+      language: [{ id: "en", title: "English" }],
+      values: [
+        "Figma and wireframing fundamentals.",
+        "User research and prototyping.",
+        "Design thinking and accessibility.",
+      ],
+      skills: ["Figma", "Wireframing", "Prototyping", "Design Thinking"],
+      user: {
+        id: "user-008",
+        name: "Creative UX Studio",
+        email: "design@uxstudio.io",
+        phone: "9999999999",
+        image:
+          "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
+      },
+    },
+    introVideoUrl:
+      "https://videos.pexels.com/video-files/3184465/3184465-hd.mp4",
+    chapters: [
+      {
+        id: "ch1",
+        title: "Intro to UI/UX",
+        description: "What makes a great product experience?",
+      },
+      {
+        id: "ch2",
+        title: "Wireframing with Figma",
+        description: "Hands-on tutorial with tools",
+      },
+    ],
+    time: "3 months",
+    createdAt: "2025-05-25",
+    updatedAt: "2025-07-10",
+  },
 ];
 
 export const mockFinishedCourses: Course[] = [mockCourses[0]];

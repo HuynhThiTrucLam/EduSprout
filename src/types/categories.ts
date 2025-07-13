@@ -20,7 +20,8 @@ export type IconName =
   | "decorate2"
   | "decorate3"
   | "decorate4"
-  | "introDecorate";
+  | "introDecorate"
+  | "suggest";
 
 export const categories: Category[] = [
   {
@@ -44,5 +45,12 @@ export const categories: Category[] = [
     iconName: "document",
     slug: "documents",
     description: "Educational documents and materials",
+  },
+  {
+    id: 4,
+    title: "Suggestions",
+    iconName: "suggest",
+    slug: "suggestions",
+    description: "Suggestions for you",
   },
 ];

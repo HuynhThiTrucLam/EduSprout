@@ -36,6 +36,9 @@ const ProductItem = ({ productInfor }: ProductItemProps) => {
               src={productInfor.infor.image}
               alt={productInfor.infor.title}
             />
+            <div className={styles["ProductItem-type"]}>
+              <p>{productInfor.infor.category.title}</p>
+            </div>
           </div>
         ) : (
           <div className={styles["ProductItem-image"]}></div>
@@ -49,6 +52,7 @@ const ProductItem = ({ productInfor }: ProductItemProps) => {
               />
               <p>{productInfor.infor.user.name}</p>
             </div>
+
             <Button
               text="Xem ngay"
               className={styles["ProductItem-CTA-button"]}
