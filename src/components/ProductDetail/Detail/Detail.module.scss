@@ -583,5 +583,23 @@
     &-description {
       padding: 1rem 1.5rem;
     }
+    &-book {
+      height: 100%;
+      flex-direction: column-reverse;
+      img {
+        width: 100%;
+        aspect-ratio: 1/1;
+      }
+      &-content {
+        width: 100%;
+      }
+      &-info {
+        &-CTA {
+          & .button {
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 }
