@@ -7,6 +7,7 @@ import Filter from "../../../components/Filter/Filter";
 import NoData from "../../../components/NoData/NoData";
 import ProductItem from "../../../components/Product/ProductItem";
 import { Input } from "../../../components/ui/input";
+
 import {
   filterProductsService,
   getAllBooksService,
@@ -32,6 +33,23 @@ const Shopping = () => {
   const [isOpenMobileFilter, setIsOpenMobileFilter] = useState<boolean>(false);
 
   const [productList, setProductList] = useState<any[]>([]);
+
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isPaginationLoading, setIsPaginationLoading] =
+    useState<boolean>(false);
+  const itemsPerPage = 6;
+
+  // Calculate pagination values
+  const totalPages = Math.ceil(productList.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentProducts = productList.slice(startIndex, endIndex);
+
+  // Reset to first page when filters change or category changes
+  const resetPagination = () => {
+    setCurrentPage(1);
+  };
 
   const handleGetProducts = async (category: string) => {
     try {
@@ -130,6 +148,70 @@ const Shopping = () => {
     setSelectedCategory(category);
   };
 
+  // Handle page change
+  const handlePageChange = (page: number, event?: React.MouseEvent) => {
+    if (event) {
+      event.preventDefault();
+    }
+
+    if (page === currentPage) return;
+
+    // Add loading state for smooth transition
+    setIsPaginationLoading(true);
+
+    // Smooth scroll to top of product list
+    const productListElement = document.querySelector(
+      `.${styles["Shopping-list-products"]}`
+    );
+    if (productListElement) {
+      productListElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // Simulate loading delay for better UX
+    setTimeout(() => {
+      setCurrentPage(page);
+      setIsPaginationLoading(false);
+    }, 300);
+  };
+
+  // Generate page numbers for pagination
+  const getPageNumbers = () => {
+    const pages = [];
+    const maxVisiblePages = 5;
+
+    if (totalPages <= maxVisiblePages) {
+      // Show all pages if total is small
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Show limited pages with ellipsis
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) {
+          pages.push(i);
+        }
+        pages.push("...");
+        pages.push(totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1);
+        pages.push("...");
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          pages.push(i);
+        }
+      } else {
+        pages.push(1);
+        pages.push("...");
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+          pages.push(i);
+        }
+        pages.push("...");
+        pages.push(totalPages);
+      }
+    }
+
+    return pages;
+  };
+
   useEffect(() => {
     console.log("useEffect triggered - selectedCategory:", selectedCategory);
     if (selectedCategory?.slug) {
@@ -137,6 +219,7 @@ const Shopping = () => {
       handleGetProducts(selectedCategory.slug);
     }
     setIsActiveFilter(false);
+    resetPagination();
   }, [isActiveFilter, selectedCategory]);
 
   return (
@@ -195,21 +278,76 @@ const Shopping = () => {
                 </div>
               </div>
             </div>
+            {/* Custom Pagination */}
+            {totalPages > 1 && (
+              <div className={styles["Shopping-pagination"]}>
+                <div className={styles["pagination-container"]}>
+                  <button
+                    className={`${styles["pagination-btn"]} ${
+                      styles["pagination-prev"]
+                    } ${currentPage === 1 ? styles["disabled"] : ""}`}
+                    onClick={(e) =>
+                      handlePageChange(Math.max(1, currentPage - 1), e)
+                    }
+                    disabled={currentPage === 1}
+                  >
+                    <span className={styles["pagination-text"]}>Previous</span>
+                  </button>
+
+                  <div className={styles["pagination-numbers"]}>
+                    {getPageNumbers().map((page, index) => (
+                      <div key={index}>
+                        {page === "..." ? (
+                          <span className={styles["pagination-ellipsis"]}>
+                            ...
+                          </span>
+                        ) : (
+                          <button
+                            className={`${styles["pagination-number"]} ${
+                              currentPage === page ? styles["active"] : ""
+                            }`}
+                            onClick={(e) => handlePageChange(page as number, e)}
+                          >
+                            {page}
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  <button
+                    className={`${styles["pagination-btn"]} ${
+                      styles["pagination-next"]
+                    } ${currentPage === totalPages ? styles["disabled"] : ""}`}
+                    onClick={(e) =>
+                      handlePageChange(Math.min(totalPages, currentPage + 1), e)
+                    }
+                    disabled={currentPage === totalPages}
+                  >
+                    <span className={styles["pagination-text"]}>Next</span>
+                  </button>
+                </div>
+              </div>
+            )}
 
             {isLoading ? (
               <div className={styles["Shopping-list-products"]}>
-                {Array.from({ length: 6 }).map((_) => (
-                  <div className={styles["ProductItemSkeleton"]}>
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <div key={index} className={styles["ProductItemSkeleton"]}>
                     <div className={styles["ProductItemSkeletonImage"]} />
                     <div className={styles["ProductItemSkeletonTitle"]} />
                     <div className={styles["ProductItemSkeletonDetails"]} />
                   </div>
                 ))}
               </div>
-            ) : productList.length > 0 ? (
+            ) : currentProducts.length > 0 ? (
               <>
-                <div className={styles["Shopping-list-products"]}>
-                  {productList.map((product) => (
+                <div
+                  className={`${styles["Shopping-list-products"]} ${
+                    isPaginationLoading ? styles["loading"] : ""
+                  }`}
+                >
+                  {currentProducts.map((product) => (
                     <ProductItem key={product.id} productInfor={product} />
                   ))}
                 </div>
