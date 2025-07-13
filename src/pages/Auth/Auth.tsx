@@ -6,6 +6,7 @@ import { useAuth } from "../../services/auth_service";
 import styles from "./Auth.module.scss";
 import { Toaster } from "../../components/ui/sonner";
 import { toast } from "sonner";
+import { EyeOff } from "lucide-react";
 
 interface AuthFormData {
   email: string;
@@ -150,29 +151,59 @@ const Auth = () => {
 
             <div className={styles["Auth-field"]}>
               <label htmlFor="password">Password</label>
-              <Input
-                id="password"
-                name="password"
-                type="password"
-                placeholder="Enter your password"
-                value={formData.password}
-                onChange={handleInputChange}
-                required
-              />
+              <div className={styles["Auth-password-wrapper"]}>
+                <Input
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  required
+                />
+                <button
+                  type="button"
+                  className={styles["Auth-eye-icon"]}
+                  onClick={() => {
+                    const input = document.getElementById(
+                      "password"
+                    ) as HTMLInputElement;
+                    input.type =
+                      input.type === "password" ? "text" : "password";
+                  }}
+                >
+                  <EyeOff size={18} />
+                </button>
+              </div>
             </div>
 
             {isSignUp && (
               <div className={styles["Auth-field"]}>
                 <label htmlFor="confirmPassword">Confirm Password</label>
-                <Input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="password"
-                  placeholder="Confirm your password"
-                  value={formData.confirmPassword}
-                  onChange={handleInputChange}
-                  required={isSignUp}
-                />
+                <div className={styles["Auth-password-wrapper"]}>
+                  <Input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    placeholder="Confirm your password"
+                    value={formData.confirmPassword}
+                    onChange={handleInputChange}
+                    required={isSignUp}
+                  />
+                  <button
+                    type="button"
+                    className={styles["Auth-eye-icon"]}
+                    onClick={() => {
+                      const input = document.getElementById(
+                        "confirmPassword"
+                      ) as HTMLInputElement;
+                      input.type =
+                        input.type === "password" ? "text" : "password";
+                    }}
+                  >
+                    <EyeOff size={18} />
+                  </button>
+                </div>
               </div>
             )}
 

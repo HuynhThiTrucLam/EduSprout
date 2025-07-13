@@ -16,13 +16,17 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import styles from "./Header.module.scss";
 
 const Header = () => {
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+  };
+
+  const handleSignOut = () => {
+    signOut();
   };
 
   const isActive = (path: string) => {
@@ -111,7 +115,10 @@ const Header = () => {
                     <Link to="/help" className={styles["Header-popover-item"]}>
                       Trợ giúp
                     </Link>
-                    <button className={styles["Header-popover-item"]}>
+                    <button
+                      className={styles["Header-popover-item"]}
+                      onClick={handleSignOut}
+                    >
                       Đăng xuất
                     </button>
                   </div>

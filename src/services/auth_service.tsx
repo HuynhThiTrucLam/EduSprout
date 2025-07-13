@@ -58,7 +58,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // Mock authentication logic
-      if (email === "user@example.com" && password === "password123@") {
+      if (email === "john.doe@example.com" && password === "password") {
         const userData: User = {
           id: "user-0001",
           image:
