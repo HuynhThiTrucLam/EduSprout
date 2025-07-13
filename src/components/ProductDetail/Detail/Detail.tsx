@@ -39,25 +39,25 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
   const [loading, setLoading] = useState(true);
 
   const getProductSpecificInfo = async (typeOfProduct: string) => {
-    console.log(
-      "Detail - getProductSpecificInfo typeOfProduct:",
-      typeOfProduct,
-      "product.id:",
-      product.id
-    );
+    // console.log(
+    //   "Detail - getProductSpecificInfo typeOfProduct:",
+    //   typeOfProduct,
+    //   "product.id:",
+    //   product.id
+    // );
 
     switch (typeOfProduct.toLowerCase()) {
       case "courses":
         const course = await getCourseByIdService(product.id);
-        console.log("Detail - Course fetched:", course);
+        // console.log("Detail - Course fetched:", course);
         return course as Course;
       case "books":
         const book = await getBookByIdService(product.id);
-        console.log("Detail - Book fetched:", book);
+        // console.log("Detail - Book fetched:", book);
         return book as Book;
       case "documents":
         const document = await getDocumentByIdService(product.id);
-        console.log("Detail - Document fetched:", document);
+        // console.log("Detail - Document fetched:", document);
         return document as Document;
       default:
         console.log("Detail - Unknown product type:", typeOfProduct);

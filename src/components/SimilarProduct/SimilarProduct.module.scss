@@ -24,3 +24,42 @@
     gap: 1rem;
   }
 }
+
+@media (max-width: 425.5px) {
+  .SimilarProduct {
+    padding-top: 0;
+    margin-top: -1rem;
+
+    &-header {
+      p {
+        font-size: 20px;
+      }
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    &-list {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 0.5rem;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      > * {
+        flex: 0 0 auto;
+        width: 300px;
+        scroll-snap-align: start;
+      }
+    }
+  }
+}

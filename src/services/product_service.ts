@@ -17,7 +17,7 @@ export const getAllCoursesService = async () => {
 export const getCourseByIdService = async (id: string) => {
   try {
     //using mock data
-    console.log("Get course by id:", id);
+    // console.log("Get course by id:", id);
     const response = mockCourses.find((course) => course.id === id);
     return response;
   } catch (error) {
@@ -31,13 +31,13 @@ export const getSimilarProductService = async (typeOfProduct: string) => {
   try {
     //call api get similar products
     //but using mock data
-    if (typeOfProduct === "course") {
+    if (typeOfProduct === "courses") {
       const response = mockCourses;
       return response;
-    } else if (typeOfProduct === "book") {
+    } else if (typeOfProduct === "books") {
       const response = mockBooks;
       return response;
-    } else if (typeOfProduct === "document") {
+    } else if (typeOfProduct === "documents") {
       const response = mockDocuments;
       return response;
     }

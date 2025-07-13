@@ -19,28 +19,32 @@ interface ProductdetailProps {
 const Productdetail = ({ typeofProduct, productId }: ProductdetailProps) => {
   const [product, setProduct] = useState<Course | Book | Document | null>(null);
 
+  const handleBack = () => {
+    window.history.back();
+  };
+
   const handleGetProductDetail = async (
     typeofProduct: string,
     productId: string
   ) => {
-    console.log(
-      "ProductDetail - typeofProduct:",
-      typeofProduct,
-      "productId:",
-      productId
-    );
+    // console.log(
+    //   "ProductDetail - typeofProduct:",
+    //   typeofProduct,
+    //   "productId:",
+    //   productId
+    // );
 
     if (typeofProduct.toLowerCase() === "courses") {
       const product = await getCourseByIdService(productId);
-      console.log("Course product:", product);
+      // console.log("Course product:", product);
       setProduct(product || null);
     } else if (typeofProduct.toLowerCase() === "books") {
       const product = await getBookByIdService(productId);
-      console.log("Book product:", product);
+      // console.log("Book product:", product);
       setProduct(product || null);
     } else if (typeofProduct.toLowerCase() === "documents") {
       const product = await getDocumentByIdService(productId);
-      console.log("Document product:", product);
+      // console.log("Document product:", product);
       setProduct(product || null);
     }
   };
@@ -55,8 +59,8 @@ const Productdetail = ({ typeofProduct, productId }: ProductdetailProps) => {
         <div className={styles["ProductDetail-content"]}>
           <div className={styles["ProductDetail-content-container"]}>
             <BackPage
-              onClick={() => {}}
-              text="Back to home"
+              onClick={handleBack}
+              text="Quay lại trang trước"
               className={styles["ProductDetail-back"]}
             />
             <div className={styles["ProductDetail-content"]}>
