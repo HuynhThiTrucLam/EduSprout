@@ -22,12 +22,27 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const handleSignOut = () => {
+  const setTimeOut = () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        setIsLoggingOut(false);
+        resolve(true);
+      }, 3000);
+    });
+  };
+
+  const handleSignOut = async () => {
+    setIsLoggingOut(true);
+
+    // Show loading for 3 seconds, then sign out
+    await setTimeOut();
+
     signOut();
   };
 
@@ -44,6 +59,15 @@ const Header = () => {
 
   return (
     <div className={styles["Header"]}>
+      {isLoggingOut && (
+        <div className={styles["Header-loading-overlay"]}>
+          <div className={styles["Header-loading-spinner"]}>
+            <div className={styles["Header-loading-circle"]}></div>
+            <p>Đang đăng xuất...</p>
+          </div>
+        </div>
+      )}
+
       <div className={styles["Header-container"]}>
         <div className={styles["Header-left"]}>
           <div className={styles["Header-logo"]}>
@@ -264,16 +288,18 @@ const Header = () => {
               >
                 <Contact /> Trợ giúp
               </Link>
-              <Link
-                to="#"
+              <button
                 className={`${styles["Header-mobile-menu-item"]} ${
                   isActive("#") ? styles["Header-mobile-menu-item--active"] : ""
                 }`}
-                onClick={closeMobileMenu}
+                onClick={() => {
+                  closeMobileMenu();
+                  handleSignOut();
+                }}
                 data-tooltip="Đăng xuất"
               >
                 <SignOut /> Đăng xuất
-              </Link>
+              </button>
             </div>
           </div>
         </div>
