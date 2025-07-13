@@ -6,6 +6,11 @@ export interface Major {
 
 export const majors: Major[] = [
   {
+    id: 0,
+    title: "All",
+    description: "All majors",
+  },
+  {
     id: 1,
     title: "UI/UX Design",
     description:

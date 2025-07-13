@@ -13,5 +13,9 @@ export const getLanguagesService = async () => {
     id: language.code,
     title: language.name,
   }));
+  languages.unshift({
+    id: "0",
+    title: "All",
+  });
   return languages;
 };

@@ -128,3 +128,120 @@ export const getDocumentByIdService = async (id: string) => {
 export const getAllFavoriteDocumentsService = async () => {
   return [];
 };
+
+//filter products
+export const filterProductsService = async (
+  typeOfProduct: string,
+  selectedMajorId?: string | null,
+  selectedLanguageId?: string | null,
+  minPrice?: number,
+  maxPrice?: number
+) => {
+  try {
+    //wait 2 seconds
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    switch (typeOfProduct) {
+      case "course":
+        // filter courses by major and language and price
+        console.log("Filtering courses with:", {
+          selectedMajorId,
+          selectedLanguageId,
+          minPrice,
+          maxPrice,
+        });
+        const filteredCourses = mockCourses.filter((course) => {
+          const majorMatch =
+            !selectedMajorId ||
+            selectedMajorId === "0" ||
+            course.infor.majors.some(
+              (major) => major.id.toString() === selectedMajorId
+            );
+
+          const languageMatch =
+            !selectedLanguageId ||
+            selectedLanguageId === "0" ||
+            course.infor.language.some(
+              (lang) => lang.id === selectedLanguageId
+            );
+
+          let priceMatch = true;
+          if (typeof minPrice === "number" && minPrice > 0) {
+            priceMatch = priceMatch && course.infor.price >= minPrice;
+          }
+          if (typeof maxPrice === "number" && maxPrice > 0) {
+            priceMatch = priceMatch && course.infor.price <= maxPrice;
+          }
+
+          console.log(`Course ${course.infor.title}:`, {
+            majorMatch,
+            languageMatch,
+            priceMatch,
+            price: course.infor.price,
+          });
+          return majorMatch && languageMatch && priceMatch;
+        });
+        console.log("Filtered courses count:", filteredCourses.length);
+        return filteredCourses;
+      case "book":
+        // filter books by major and language and price
+        const filteredBooks = mockBooks.filter((book) => {
+          const majorMatch =
+            !selectedMajorId ||
+            selectedMajorId === "0" ||
+            book.infor.majors.some(
+              (major) => major.id.toString() === selectedMajorId
+            );
+
+          const languageMatch =
+            !selectedLanguageId ||
+            selectedLanguageId === "0" ||
+            book.infor.language.some((lang) => lang.id === selectedLanguageId);
+
+          let priceMatch = true;
+          if (typeof minPrice === "number" && minPrice > 0) {
+            priceMatch = priceMatch && book.infor.price >= minPrice;
+          }
+          if (typeof maxPrice === "number" && maxPrice > 0) {
+            priceMatch = priceMatch && book.infor.price <= maxPrice;
+          }
+
+          return majorMatch && languageMatch && priceMatch;
+        });
+        return filteredBooks;
+      case "document":
+        // filter documents by major and language and price
+        const filteredDocuments = mockDocuments.filter((document) => {
+          const majorMatch =
+            !selectedMajorId ||
+            selectedMajorId === "0" ||
+            document.infor.majors.some(
+              (major) => major.id.toString() === selectedMajorId
+            );
+
+          const languageMatch =
+            !selectedLanguageId ||
+            selectedLanguageId === "0" ||
+            document.infor.language.some(
+              (lang) => lang.id === selectedLanguageId
+            );
+
+          let priceMatch = true;
+          if (typeof minPrice === "number" && minPrice > 0) {
+            priceMatch = priceMatch && document.infor.price >= minPrice;
+          }
+          if (typeof maxPrice === "number" && maxPrice > 0) {
+            priceMatch = priceMatch && document.infor.price <= maxPrice;
+          }
+
+          return majorMatch && languageMatch && priceMatch;
+        });
+        return filteredDocuments;
+      default:
+        return [];
+    }
+  } catch (error) {
+    console.error("Error filtering products:", error);
+    return [];
+  }
+};

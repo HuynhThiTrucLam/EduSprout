@@ -8,22 +8,24 @@ import NoData from "../../../components/NoData/NoData";
 import ProductItem from "../../../components/Product/ProductItem";
 import { Input } from "../../../components/ui/input";
 import {
+  filterProductsService,
   getAllBooksService,
   getAllCoursesService,
   getAllDocumentsService,
 } from "../../../services/product_service";
 import { categories, type Category } from "../../../types/categories";
-import type { Language } from "../../../types/language";
-import type { Major } from "../../../types/major";
+import { languages, type Language } from "../../../types/language";
+import { majors, type Major } from "../../../types/major";
 import styles from "./Shopping.module.scss";
 
 const Shopping = () => {
-  const [selectedMajor, setSelectedMajor] = useState<Major | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [selectedMajor, setSelectedMajor] = useState<Major | null>(majors[0]);
   const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(
-    null
+    languages[0]
   );
-  const [minPrice, setMinPrice] = useState<number | null>(0);
-  const [maxPrice, setMaxPrice] = useState<number | null>(0);
+  const [minPrice, setMinPrice] = useState<string>("");
+  const [maxPrice, setMaxPrice] = useState<string>("");
 
   const [isActiveFilter, setIsActiveFilter] = useState<boolean>(false);
   const [isChangeLayout, setIsChangeLayout] = useState<boolean>(false);
@@ -59,18 +61,57 @@ const Shopping = () => {
     setIsOpenMobileFilter(true);
   };
 
-  const handleFilter = () => {
+  const handleFilter = async () => {
     console.log("selectedMajor: ", selectedMajor);
     console.log("selectedLanguage: ", selectedLanguage);
     console.log("minPrice: ", minPrice);
     console.log("maxPrice: ", maxPrice);
+    setIsLoading(true);
+
+    // Build parameters object based on conditions
+    const params: any = {
+      typeOfProduct: selectedCategory?.slug || "courses",
+    };
+
+    // Only add major filter if not "All"
+    if (selectedMajor && selectedMajor.title !== "All") {
+      params.selectedMajorId = selectedMajor.id.toString();
+    }
+
+    // Only add language filter if not "All"
+    if (selectedLanguage && selectedLanguage.title !== "All") {
+      params.selectedLanguageId = selectedLanguage.id.toString();
+    }
+
+    // Only add price filters if both are not 0
+    if (minPrice !== "" || maxPrice !== "") {
+      const min = minPrice ? Number(minPrice) : 0;
+      const max = maxPrice ? Number(maxPrice) : 0;
+      params.minPrice = min;
+      params.maxPrice = max;
+    }
+
+    const responseFilter = await filterProductsService(
+      params.typeOfProduct,
+      params.selectedMajorId,
+      params.selectedLanguageId,
+      params.minPrice,
+      params.maxPrice
+    );
+
+    console.log("responseFilter: ", responseFilter);
+    console.log("params: ", params);
+
+    // Update the product list with filtered results
+    setProductList(responseFilter);
+    setIsLoading(false);
   };
 
   const handleResetFilters = () => {
-    setSelectedMajor(null);
-    setSelectedLanguage(null);
-    setMinPrice(0);
-    setMaxPrice(0);
+    setSelectedMajor(majors[0]);
+    setSelectedLanguage(languages[0]);
+    setMinPrice("");
+    setMaxPrice("");
 
     setIsActiveFilter(true);
     console.log("Filters reset");
@@ -154,7 +195,18 @@ const Shopping = () => {
                 </div>
               </div>
             </div>
-            {productList.length > 0 ? (
+
+            {isLoading ? (
+              <div className={styles["Shopping-list-products"]}>
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <div className={styles["ProductItemSkeleton"]}>
+                    <div className={styles["ProductItemSkeletonImage"]} />
+                    <div className={styles["ProductItemSkeletonTitle"]} />
+                    <div className={styles["ProductItemSkeletonDetails"]} />
+                  </div>
+                ))}
+              </div>
+            ) : productList.length > 0 ? (
               <div className={styles["Shopping-list-products"]}>
                 {productList.map((product) => (
                   <ProductItem key={product.id} productInfor={product} />

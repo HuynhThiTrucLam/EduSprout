@@ -13,10 +13,10 @@ interface FilterProps {
   handleSelectLanguage: (option: Language) => void;
   handleFilter: () => void;
   handleResetFilters: () => void;
-  minPrice: number | null;
-  maxPrice: number | null;
-  setMinPrice: (price: number) => void;
-  setMaxPrice: (price: number) => void;
+  minPrice: string;
+  maxPrice: string;
+  setMinPrice: (price: string) => void;
+  setMaxPrice: (price: string) => void;
 }
 
 const Filter = ({
@@ -58,26 +58,24 @@ const Filter = ({
       <div className={styles["Filter-price"]}>
         <div className={styles["Filter-price-min"]}>
           <p>
-            {" "}
             Min Price <span>($)</span>
           </p>
           <input
             type="number"
             placeholder="Min Price"
-            value={minPrice ?? ""}
-            onChange={(e) => setMinPrice(Number(e.target.value))}
+            value={minPrice}
+            onChange={(e) => setMinPrice(e.target.value)}
           />
         </div>
         <div className={styles["Filter-price-max"]}>
           <p>
-            {" "}
             Max Price <span>($)</span>
           </p>
           <input
             type="number"
             placeholder="Max Price"
-            value={maxPrice ?? ""}
-            onChange={(e) => setMaxPrice(Number(e.target.value))}
+            value={maxPrice}
+            onChange={(e) => setMaxPrice(e.target.value)}
           />
         </div>
       </div>
