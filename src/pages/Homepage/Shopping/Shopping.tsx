@@ -131,7 +131,7 @@ const Shopping = () => {
               </div>
               <div className={styles["Shopping-list-header-right"]}>
                 <div
-                  className={`${styles["Shopping-list-header-right-item"]} ${
+                  className={`${styles["Shopping-mobile-filter-icon"]} ${
                     isActiveFilter ? styles["active"] : ""
                   }`}
                   onClick={handleOpenMobileFilter}
