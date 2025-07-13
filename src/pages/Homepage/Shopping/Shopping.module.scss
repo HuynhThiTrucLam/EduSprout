@@ -149,6 +149,9 @@
       gap: 1rem;
     }
   }
+  &-mobile-filter {
+    display: none;
+  }
 }
 
 @media (max-width: 425.5px) {
@@ -159,6 +162,7 @@
     }
     &-header {
       h2 {
+        text-align: center;
         font-size: 1.65rem;
       }
       p {
@@ -222,6 +226,7 @@
         }
       }
       &-products {
+        position: relative;
         display: flex;
         flex-direction: row;
         gap: 1rem;
@@ -241,6 +246,20 @@
           width: 280px;
           scroll-snap-align: start;
         }
+      }
+    }
+    &-mobile-filter {
+      display: block;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background-color: $white;
+      z-index: 100;
+
+      & .Filter {
+        display: block;
       }
     }
   }

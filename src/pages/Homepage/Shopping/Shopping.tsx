@@ -27,6 +27,7 @@ const Shopping = () => {
 
   const [isActiveFilter, setIsActiveFilter] = useState<boolean>(false);
   const [isChangeLayout, setIsChangeLayout] = useState<boolean>(false);
+  const [isOpenMobileFilter, setIsOpenMobileFilter] = useState<boolean>(false);
 
   const [productList, setProductList] = useState<any[]>([]);
 
@@ -52,6 +53,10 @@ const Shopping = () => {
       console.error("Error fetching products:", error);
       setProductList([]);
     }
+  };
+
+  const handleOpenMobileFilter = () => {
+    setIsOpenMobileFilter(true);
   };
 
   const handleFilter = () => {
@@ -129,6 +134,7 @@ const Shopping = () => {
                   className={`${styles["Shopping-list-header-right-item"]} ${
                     isActiveFilter ? styles["active"] : ""
                   }`}
+                  onClick={handleOpenMobileFilter}
                 >
                   <FilterIcon />
                 </div>
@@ -158,6 +164,22 @@ const Shopping = () => {
               <NoData text="No products found" />
             )}
           </div>
+          {isOpenMobileFilter && (
+            <div className={styles["Shopping-mobile-filter"]}>
+              <Filter
+                selectedMajor={selectedMajor}
+                handleSelectMajor={setSelectedMajor}
+                handleFilter={handleFilter}
+                handleResetFilters={handleResetFilters}
+                selectedLanguage={selectedLanguage}
+                handleSelectLanguage={handleLanguageChange}
+                minPrice={minPrice}
+                maxPrice={maxPrice}
+                setMinPrice={setMinPrice}
+                setMaxPrice={setMaxPrice}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>
