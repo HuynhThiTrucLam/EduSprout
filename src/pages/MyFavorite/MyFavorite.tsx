@@ -1,32 +1,22 @@
+import { useEffect, useState } from "react";
 import BackPage from "../../components/BackPage/BackPage";
-import styles from "./MyFavorite.module.scss";
+import NoData from "../../components/NoData/NoData";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "../../components/ui/tabs";
-import { useEffect, useState } from "react";
-import type { Book } from "../../types/book";
-import ProductItem from "../../components/Product/ProductItem";
-import NoData from "../../components/NoData/NoData";
-import type { Course } from "../../types/course";
-import {
-  getAllFavoriteBooksService,
-  getAllFavoriteCoursesService,
-} from "../../services/product_service";
+import { getAllFavoriteService } from "../../services/product_service";
+import FavoriteList from "./FavoriteList";
+import styles from "./MyFavorite.module.scss";
 
 const MyFavorite = () => {
-  const [favoriteBookList, setFavoriteBookList] = useState<Book[]>([]);
-  const [favoriteCourseList, setFavoriteCourseList] = useState<Course[]>([]);
-  const getFavoriteBookList = async () => {
-    const response = await getAllFavoriteBooksService();
-    setFavoriteBookList(response);
-  };
+  const [favoriteList, setFavoriteList] = useState<any[]>([]);
 
-  const getFavoriteCourseList = async () => {
-    const response = await getAllFavoriteCoursesService();
-    setFavoriteCourseList(response);
+  const getFavoriteList = async () => {
+    const response = await getAllFavoriteService();
+    setFavoriteList(response);
   };
 
   const handleBack = () => {
@@ -34,7 +24,7 @@ const MyFavorite = () => {
   };
 
   useEffect(() => {
-    getFavoriteCourseList();
+    getFavoriteList();
   }, []);
 
   return (
@@ -62,7 +52,6 @@ const MyFavorite = () => {
                 <TabsTrigger
                   value="books"
                   className={styles["MyFavorite-content-trigger"]}
-                  onClick={() => getFavoriteBookList()}
                 >
                   Sách
                 </TabsTrigger>
@@ -79,12 +68,14 @@ const MyFavorite = () => {
                 value="courses"
                 className={styles["MyFavorite-content-tabcontent"]}
               >
-                {favoriteCourseList.length > 0 ? (
-                  <div className={styles["MyFavorite-list"]}>
-                    {favoriteCourseList.map((course) => (
-                      <ProductItem key={course.id} productInfor={course} />
-                    ))}
-                  </div>
+                {favoriteList.some(
+                  (item) => item.product.infor.category.slug === "courses"
+                ) ? (
+                  <FavoriteList
+                    favoriteList={favoriteList.filter(
+                      (item) => item.product.infor.category.slug === "courses"
+                    )}
+                  />
                 ) : (
                   <NoData text="Danh sách yêu thích của bạn đang trống" />
                 )}
@@ -93,12 +84,14 @@ const MyFavorite = () => {
                 value="books"
                 className={styles["MyFavorite-content-tabcontent"]}
               >
-                {favoriteBookList.length > 0 ? (
-                  <div className={styles["MyFavorite-list"]}>
-                    {favoriteBookList.map((book) => (
-                      <ProductItem key={book.id} productInfor={book} />
-                    ))}
-                  </div>
+                {favoriteList.some(
+                  (item) => item.product.infor.category.slug === "courses"
+                ) ? (
+                  <FavoriteList
+                    favoriteList={favoriteList.filter(
+                      (item) => item.product.infor.category.slug === "books"
+                    )}
+                  />
                 ) : (
                   <NoData text="Danh sách yêu thích của bạn đang trống" />
                 )}
@@ -107,7 +100,17 @@ const MyFavorite = () => {
                 value="documents"
                 className={styles["MyFavorite-content-tabcontent"]}
               >
-                <NoData text="Danh sách yêu thích của bạn đang trống" />
+                {favoriteList.some(
+                  (item) => item.product.infor.category.slug === "documents"
+                ) ? (
+                  <FavoriteList
+                    favoriteList={favoriteList.filter(
+                      (item) => item.product.infor.category.slug === "documents"
+                    )}
+                  />
+                ) : (
+                  <NoData text="Danh sách yêu thích của bạn đang trống" />
+                )}
               </TabsContent>
             </Tabs>
           </div>

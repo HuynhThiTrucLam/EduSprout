@@ -1,6 +1,7 @@
 import { mockDocuments } from "../types/documents";
 import { mockBooks, mockFavoriteBooks } from "../types/book";
 import { mockCourses, mockFinishedCourses } from "./../types/course";
+import { mockFavorites } from "../types/favorite";
 
 //get all Course
 export const getAllCoursesService = async () => {
@@ -39,8 +40,15 @@ export const getAllFinishedCoursesService = async () => {
 };
 
 //get all favorite courses
-export const getAllFavoriteCoursesService = async () => {
-  return [];
+export const getAllFavoriteService = async () => {
+  try {
+    const response = mockFavorites;
+    console.log("responseFavorite", response);
+    return response;
+  } catch (error) {
+    console.error("Error fetching favorite courses:", error);
+    return [];
+  }
 };
 
 //get all in progress courses
