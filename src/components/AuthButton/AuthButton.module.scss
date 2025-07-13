@@ -1,0 +1,74 @@
+@import "../../styles/variables.scss";
+
+.AuthButton {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &-welcome {
+    font-family: "Poppins Medium";
+    font-size: 0.875rem;
+    color: $black;
+    white-space: nowrap;
+  }
+
+  &-signin {
+    background-color: $primary-color;
+    color: $white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-family: "Poppins Medium";
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+      transform: translateY(-1px);
+    }
+
+    p {
+      margin: 0;
+      color: inherit;
+    }
+  }
+
+  &-signout {
+    background-color: $gray;
+    color: $white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-family: "Poppins Medium";
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: darken($gray, 15%);
+      transform: translateY(-1px);
+    }
+
+    p {
+      margin: 0;
+      color: inherit;
+    }
+  }
+}
+
+@media (max-width: 425.5px) {
+  .AuthButton {
+    &-welcome {
+      display: none;
+    }
+
+    &-signin,
+    &-signout {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+    }
+  }
+}

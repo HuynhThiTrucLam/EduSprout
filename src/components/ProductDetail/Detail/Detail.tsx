@@ -1,29 +1,32 @@
+import { StarIcon } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+import Author from "../../../assets/Icons/Author";
 import Back from "../../../assets/Icons/Back";
-import type { Course } from "../../../types/course";
-import type { Book } from "../../../types/book";
-import type { Document } from "../../../types/documents";
-import Button from "../../commons/Button";
-import ChapterComponent from "./Chapter";
-import styles from "./Detail.module.scss";
-import AttributeTab from "../../AttributeProduct/AttributeTab";
-import SimilarProduct from "../../SimilarProduct/SimilarProduct";
-import {
-  getBookByIdService,
-  getCourseByIdService,
-  getDocumentByIdService,
-} from "../../../services/product_service";
+import Publisher from "../../../assets/Icons/Publisher";
+import Share from "../../../assets/Icons/Share";
+import Time from "../../../assets/Icons/Time";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../../../components/ui/accordion";
-import Author from "../../../assets/Icons/Author";
-import Publisher from "../../../assets/Icons/Publisher";
-import Time from "../../../assets/Icons/Time";
-import Share from "../../../assets/Icons/Share";
-import Favorite from "../../../assets/Icons/Favorite";
+import {
+  getBookByIdService,
+  getCourseByIdService,
+  getDocumentByIdService,
+} from "../../../services/product_service";
+import type { Book } from "../../../types/book";
+import type { Course } from "../../../types/course";
+import type { Document } from "../../../types/documents";
+import AttributeTab from "../../AttributeProduct/AttributeTab";
+import Button from "../../commons/Button";
+import SimilarProduct from "../../SimilarProduct/SimilarProduct";
+import ChapterComponent from "./Chapter";
+import styles from "./Detail.module.scss";
+import { useAuth } from "../../../services/auth_service";
 
 type ProductType = Course | Book | Document;
 
@@ -33,19 +36,14 @@ interface DetailProps {
 }
 
 const Detail = ({ product, typeOfProduct }: DetailProps) => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
   const [currentProduct, setCurrentProduct] = useState<ProductType | null>(
     null
   );
   const [loading, setLoading] = useState(true);
 
   const getProductSpecificInfo = async (typeOfProduct: string) => {
-    // console.log(
-    //   "Detail - getProductSpecificInfo typeOfProduct:",
-    //   typeOfProduct,
-    //   "product.id:",
-    //   product.id
-    // );
-
     switch (typeOfProduct.toLowerCase()) {
       case "courses":
         const course = await getCourseByIdService(product.id);
@@ -70,6 +68,30 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
     const fetchedProduct = await getProductSpecificInfo(typeOfProduct);
     setCurrentProduct(fetchedProduct);
     setLoading(false);
+  };
+
+  const handleAddToFavorite = () => {
+    if (!user) {
+      toast.error("Vui lòng đăng nhập để thêm vào danh sách yêu thích", {
+        action: {
+          label: "Đăng nhập",
+          onClick: () => {
+            navigate("/auth");
+          },
+        },
+      });
+      return;
+    } else {
+      toast.success("Đã thêm vào danh sách yêu thích", {
+        action: {
+          label: "Xem thêm",
+          onClick: () => {
+            navigate("/favorites");
+          },
+        },
+      });
+      console.log("Đã thêm vào danh sách yêu thích");
+    }
   };
 
   useEffect(() => {
@@ -98,8 +120,13 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
               <div
                 className={styles["favorite"]}
                 data-tooltip="Add to favorites"
+                onClick={handleAddToFavorite}
               >
-                <Favorite />
+                <StarIcon
+                  style={{
+                    strokeWidth: 1.5,
+                  }}
+                />
               </div>
             </div>
           </div>

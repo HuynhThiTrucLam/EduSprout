@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
+import { Toaster } from "../components/ui/sonner";
 
 const CommonLayout = () => {
   return (
@@ -29,6 +30,7 @@ const CommonLayout = () => {
         <Outlet />
       </main>
       <Footer />
+      <Toaster />
     </div>
   );
 };
