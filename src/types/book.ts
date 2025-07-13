@@ -150,3 +150,5 @@ export const mockBooks: Book[] = [
     updatedAt: "2025-07-01T09:00:00Z",
   },
 ];
+
+export const mockFavoriteBooks: Book[] = [mockBooks[0]];

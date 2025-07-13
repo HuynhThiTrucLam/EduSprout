@@ -403,3 +403,5 @@ export const mockCourses: Course[] = [
     updatedAt: "2025-07-01",
   },
 ];
+
+export const mockFinishedCourses: Course[] = [mockCourses[0]];

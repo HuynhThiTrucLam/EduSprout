@@ -1,6 +1,6 @@
 import { mockDocuments } from "../types/documents";
-import { mockBooks } from "../types/book";
-import { mockCourses } from "./../types/course";
+import { mockBooks, mockFavoriteBooks } from "../types/book";
+import { mockCourses, mockFinishedCourses } from "./../types/course";
 
 //get all Course
 export const getAllCoursesService = async () => {
@@ -24,6 +24,28 @@ export const getCourseByIdService = async (id: string) => {
     console.error("Error fetching course by id:", error);
     return null;
   }
+};
+
+//get all finished courses
+export const getAllFinishedCoursesService = async () => {
+  try {
+    //using mock data
+    const response = mockFinishedCourses;
+    return response;
+  } catch (error) {
+    console.error("Error fetching finished courses:", error);
+    return [];
+  }
+};
+
+//get all favorite courses
+export const getAllFavoriteCoursesService = async () => {
+  return [];
+};
+
+//get all in progress courses
+export const getAllInProgressCoursesService = async () => {
+  return [];
 };
 
 //get similar courses
@@ -69,6 +91,17 @@ export const getBookByIdService = async (id: string) => {
   }
 };
 
+//get all favorite books
+export const getAllFavoriteBooksService = async () => {
+  try {
+    const response = mockFavoriteBooks;
+    return response;
+  } catch (error) {
+    console.error("Error fetching favorite books:", error);
+    return [];
+  }
+};
+
 //get all documents
 export const getAllDocumentsService = async () => {
   try {
@@ -89,4 +122,9 @@ export const getDocumentByIdService = async (id: string) => {
     console.error("Error fetching document by id:", error);
     return null;
   }
+};
+
+//get all favorite documents
+export const getAllFavoriteDocumentsService = async () => {
+  return [];
 };

@@ -86,7 +86,7 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
         action: {
           label: "Xem thêm",
           onClick: () => {
-            navigate("/favorites");
+            navigate("/my-favorite");
           },
         },
       });

@@ -217,7 +217,7 @@ const UserMenu = ({ user, favorites }: UserMenuProps) => {
                 ))}
                 {favorites.length > 5 && (
                   <div className={styles["UserMenu-favorites-more"]}>
-                    <Link to="/favorites">
+                    <Link to="/my-favorite">
                       View all {favorites.length} favorites
                     </Link>
                   </div>

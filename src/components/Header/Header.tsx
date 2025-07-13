@@ -57,10 +57,10 @@ const Header = () => {
             </div>
             <div
               className={`${styles["Header-item"]} ${
-                isActive("/favorites") ? styles["Header-item--active"] : ""
+                isActive("/my-favorite") ? styles["Header-item--active"] : ""
               }`}
             >
-              <Link to="/favorites" className={styles["Header-item-link"]}>
+              <Link to="/my-favorite" className={styles["Header-item-link"]}>
                 Danh sách yêu thích
               </Link>
             </div>
@@ -221,9 +221,9 @@ const Header = () => {
                 <CourseIcon /> Khóa học của tôi
               </Link>
               <Link
-                to="/favorites"
+                to="/my-favorite"
                 className={`${styles["Header-mobile-menu-item"]} ${
-                  isActive("/favorites")
+                  isActive("/my-favorite")
                     ? styles["Header-mobile-menu-item--active"]
                     : ""
                 }`}
