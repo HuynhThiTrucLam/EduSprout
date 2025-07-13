@@ -71,3 +71,24 @@
 .CategoryItem--active svg path {
   stroke: $white !important;
 }
+
+@media (max-width: 425.5px) {
+  .Categories {
+    &-container {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    &-header {
+      display: none;
+    }
+  }
+  .CategoryItem {
+    gap: 0;
+    svg {
+      width: 2rem;
+    }
+    p {
+      font-size: 10px;
+    }
+  }
+}

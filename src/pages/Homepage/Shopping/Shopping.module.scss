@@ -118,6 +118,7 @@
           padding: 0.55rem 1rem;
           border-radius: 0.5rem;
           border: 0.5px solid $gray;
+          --search-icon-stroke: #828282;
           input {
             width: 100%;
             border: none;
@@ -146,6 +147,101 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
+    }
+  }
+}
+
+@media (max-width: 425.5px) {
+  .Shopping {
+    &-container {
+      width: 90%;
+      align-self: center;
+    }
+    &-header {
+      h2 {
+        font-size: 1.65rem;
+      }
+      p {
+        width: 80%;
+        text-align: center;
+        font-size: 12px;
+      }
+    }
+    &-categories {
+      height: 130px;
+    }
+    &-products {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    &-list {
+      width: 100%;
+      gap: 1rem;
+
+      &-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        &-left {
+          width: 100%;
+          p {
+            padding-inline: 0;
+          }
+        }
+        &-right {
+          width: 100%;
+          &-item {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            svg {
+              width: 1rem;
+              height: 1rem;
+            }
+          }
+          &-item:not(:first-child) {
+            display: none;
+          }
+          &-search {
+            width: 100%;
+            padding: 0;
+            padding-left: 1rem;
+            --search-icon-stroke: white;
+            --search-icon-stroke-width: 2px;
+            > div {
+              width: 3rem;
+              height: 3rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: $secondary-color;
+              border-top-right-radius: 0.5rem;
+              border-bottom-right-radius: 0.5rem;
+            }
+          }
+        }
+      }
+      &-products {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        > * {
+          flex: 0 0 auto;
+          width: 280px;
+          scroll-snap-align: start;
+        }
+      }
     }
   }
 }

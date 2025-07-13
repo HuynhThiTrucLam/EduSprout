@@ -1,0 +1,35 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.main {
+  flex: 1;
+  background-color: #f9f8f4;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+// Additional mobile-specific constraints
+@media (max-width: 768px) {
+  .layout {
+    position: relative;
+  }
+
+  .main {
+    // Ensure content doesn't exceed viewport on mobile
+    min-width: 0;
+
+    // Additional constraint for deeply nested content
+    * {
+      max-width: 100%;
+    }
+  }
+}

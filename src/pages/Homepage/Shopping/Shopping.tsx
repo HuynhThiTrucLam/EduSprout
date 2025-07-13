@@ -142,8 +142,8 @@ const Shopping = () => {
                 </div>
                 <div className={styles["Shopping-list-header-right-search"]}>
                   <Input type="email" placeholder="Search" />
-                  <div className="&:hover:rouded-full">
-                    <SearchIcon />
+                  <div className="&:hover:rouded-full ">
+                    <SearchIcon strokeColor="var(--search-icon-stroke)" />
                   </div>
                 </div>
               </div>

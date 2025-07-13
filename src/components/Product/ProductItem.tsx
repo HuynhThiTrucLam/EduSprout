@@ -20,7 +20,15 @@ const ProductItem = ({ productInfor }: ProductItemProps) => {
     navigate(`/product/${typeofProduct}/${id}`);
   };
   return (
-    <div className={styles["ProductItem"]}>
+    <div
+      className={styles["ProductItem"]}
+      onClick={() =>
+        handleNavigateToProductDetail(
+          productInfor.infor.category.title.toLowerCase(),
+          productInfor.id.toString()
+        )
+      }
+    >
       <div className={styles["ProductItem-container"]}>
         {productInfor.infor.image ? (
           <div className={styles["ProductItem-image"]}>

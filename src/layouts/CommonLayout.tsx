@@ -9,6 +9,9 @@ const CommonLayout = () => {
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
+        width: "100%",
+        maxWidth: "100vw",
+        overflowX: "hidden",
       }}
     >
       <Header />
@@ -18,6 +21,9 @@ const CommonLayout = () => {
           backgroundColor: "#f9f8f4",
           display: "flex",
           flexDirection: "column",
+          width: "100%",
+          maxWidth: "100vw",
+          overflowX: "hidden",
         }}
       >
         <Outlet />
