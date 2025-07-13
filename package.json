@@ -50,6 +50,6 @@
     "vite": "^7.0.4"
   },
   "resolutions": {
-  "@rollup/rollup-linux-x64-gnu": "file:empty-module"
-},
+    "@rollup/rollup-linux-x64-gnu": "file:empty-module"
+  }
 }
