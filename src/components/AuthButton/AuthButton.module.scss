@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss" as *;
 
 .AuthButton {
   display: flex;
@@ -28,7 +28,7 @@
     transition: all 0.2s ease;
 
     &:hover {
-      background-color: darken($primary-color, 10%);
+      background-color: color.adjust($primary-color, $lightness: -10%);
       transform: translateY(-1px);
     }
 

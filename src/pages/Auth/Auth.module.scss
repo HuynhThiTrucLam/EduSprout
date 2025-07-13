@@ -1,4 +1,5 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss" as *;
+@use "sass:color";
 
 .Auth {
   width: 100%;
@@ -138,7 +139,7 @@
     margin-top: 0.5rem;
 
     &:hover {
-      background-color: darken($primary-color, 10%);
+      background-color: color.adjust($primary-color, $lightness: -10%);
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(47, 123, 116, 0.3);
     }

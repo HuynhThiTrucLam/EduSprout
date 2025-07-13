@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss" as *;
 
 .AttributeTab {
   width: 100%;

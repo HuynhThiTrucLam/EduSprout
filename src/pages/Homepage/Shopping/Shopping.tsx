@@ -198,7 +198,7 @@ const Shopping = () => {
 
             {isLoading ? (
               <div className={styles["Shopping-list-products"]}>
-                {Array.from({ length: 6 }).map((_, index) => (
+                {Array.from({ length: 6 }).map((_) => (
                   <div className={styles["ProductItemSkeleton"]}>
                     <div className={styles["ProductItemSkeletonImage"]} />
                     <div className={styles["ProductItemSkeletonTitle"]} />

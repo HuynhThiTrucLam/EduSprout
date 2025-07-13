@@ -66,10 +66,10 @@ const Header = () => {
             </div>
             <div
               className={`${styles["Header-item"]} ${
-                isActive("/help") ? styles["Header-item--active"] : ""
+                isActive("/") ? styles["Header-item--active"] : ""
               }`}
             >
-              <Link to="/help" className={styles["Header-item-link"]}>
+              <Link to="/" className={styles["Header-item-link"]}>
                 Trợ giúp
               </Link>
             </div>
@@ -112,7 +112,7 @@ const Header = () => {
                     </div>
                   </div>
                   <div className={styles["Header-popover-menu"]}>
-                    <Link to="/help" className={styles["Header-popover-item"]}>
+                    <Link to="/" className={styles["Header-popover-item"]}>
                       Trợ giúp
                     </Link>
                     <button
@@ -151,7 +151,7 @@ const Header = () => {
               >
                 <div className={styles["Header-notAuth-content"]}>
                   <div className={styles["Header-notAuth-menu"]}>
-                    <Link to="/help" className={styles["Header-notAuth-item"]}>
+                    <Link to="/" className={styles["Header-notAuth-item"]}>
                       <Contact /> Trợ giúp
                     </Link>
                     <button
@@ -243,11 +243,9 @@ const Header = () => {
                 <Account /> Tài khoản của tôi
               </Link>
               <Link
-                to="/help"
+                to="/"
                 className={`${styles["Header-mobile-menu-item"]} ${
-                  isActive("/help")
-                    ? styles["Header-mobile-menu-item--active"]
-                    : ""
+                  isActive("/") ? styles["Header-mobile-menu-item--active"] : ""
                 }`}
                 onClick={closeMobileMenu}
               >

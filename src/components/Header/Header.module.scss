@@ -197,9 +197,6 @@
   }
 
   &-notAuth {
-    &-icon {
-      cursor: pointer;
-    }
     background-color: $white;
     border-radius: 0.5rem;
     min-width: 280px;
@@ -209,6 +206,9 @@
     position: relative;
     z-index: 1000;
     animation: popoverFadeIn 0.2s ease-out;
+    &-icon {
+      cursor: pointer;
+    }
 
     &-content {
       padding: 1rem;
