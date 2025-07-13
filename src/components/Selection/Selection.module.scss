@@ -1,4 +1,4 @@
-@import "../../styles/_variables.scss"; // Adjust path if needed
+@use "../../styles/variables.scss" as *;
 
 .Selection {
   width: 100%;
