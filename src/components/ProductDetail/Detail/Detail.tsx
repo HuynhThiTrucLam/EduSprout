@@ -13,6 +13,12 @@ import {
   getCourseByIdService,
   getDocumentByIdService,
 } from "../../../services/product_service";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../../../components/ui/accordion";
 import Author from "../../../assets/Icons/Author";
 import Publisher from "../../../assets/Icons/Publisher";
 import Time from "../../../assets/Icons/Time";
@@ -133,6 +139,24 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
             src={currentProduct?.infor?.image}
             alt={currentProduct?.infor?.title}
           />
+
+          <Accordion
+            type="single"
+            collapsible
+            className={styles["Detail-course-mobile"]}
+          >
+            <AccordionItem value="item-1">
+              <AccordionTrigger>Course Content</AccordionTrigger>
+              <AccordionContent className={styles["Detail-course-mobile-item"]}>
+                <div className={styles["Detail-course-mobile-content"]}>
+                  <ChapterComponent
+                    chapters={(currentProduct as Course)?.chapters || []}
+                    time={(currentProduct as Course)?.time || ""}
+                  />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       )}
 

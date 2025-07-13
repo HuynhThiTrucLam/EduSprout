@@ -44,3 +44,15 @@
     min-height: 0;
   }
 }
+
+@media (max-width: 425.5px) {
+  .ProductDetail {
+    &-content {
+      &-container {
+        margin-top: 6rem;
+        width: 90%;
+        gap: 2rem;
+      }
+    }
+  }
+}
