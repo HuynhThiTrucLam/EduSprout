@@ -3,8 +3,8 @@ import "./Footer.scss";
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer__container">
-        &copy; {new Date().getFullYear()} MyShop. All rights reserved.
+      <div className="footer-container">
+        <p>&copy; {new Date().getFullYear()} TruLem. All rights reserved.</p>
       </div>
     </footer>
   );

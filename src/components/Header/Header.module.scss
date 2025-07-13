@@ -80,6 +80,43 @@
       width: 2.5rem;
       height: 2.5rem;
       cursor: pointer;
+      position: relative;
+
+      // Tooltip styles
+      &::before {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: -2.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.375rem;
+        font-size: 0.75rem;
+        font-family: "Poppins Medium", sans-serif;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s ease;
+        z-index: 1000;
+        pointer-events: none;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 0.375rem solid transparent;
+        border-top-color: rgba(0, 0, 0, 0.8);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s ease;
+        z-index: 1000;
+        pointer-events: none;
+      }
 
       &:hover {
         width: 2.5rem;
@@ -92,6 +129,12 @@
           }
         }
         border-radius: 50%;
+
+        &::before,
+        &::after {
+          opacity: 1;
+          visibility: visible;
+        }
       }
     }
 
@@ -102,6 +145,51 @@
       cursor: pointer;
       object-fit: cover;
       overflow: hidden;
+      position: relative;
+
+      // Tooltip styles
+      &::before {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: -2.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.375rem;
+        font-size: 0.75rem;
+        font-family: "Poppins Medium", sans-serif;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s ease;
+        z-index: 1000;
+        pointer-events: none;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 0.375rem solid transparent;
+        border-top-color: rgba(0, 0, 0, 0.8);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s ease;
+        z-index: 1000;
+        pointer-events: none;
+      }
+
+      &:hover {
+        &::before,
+        &::after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
 
       img {
         width: 100%;
@@ -199,7 +287,7 @@
   &-notAuth {
     background-color: $white;
     border-radius: 0.5rem;
-    min-width: 280px;
+    min-width: 200px;
     padding: 0;
     border: 1px solid $gray;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -235,7 +323,7 @@
       border-radius: 0.5rem;
       text-decoration: none;
       font-family: "Poppins Regular", "Poppins", sans-serif;
-      font-size: 14px;
+      font-size: 12px;
       color: $black;
       background: none;
       border: none;
@@ -271,11 +359,54 @@
     padding: 0.5rem;
     border-radius: 0.5rem;
     transition: background-color 0.2s ease;
+    position: relative;
+
+    // Tooltip styles
+    &::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      font-size: 0.75rem;
+      font-family: "Poppins Medium", sans-serif;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 0.375rem solid transparent;
+      border-top-color: rgba(0, 0, 0, 0.8);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+      z-index: 1000;
+      pointer-events: none;
+    }
 
     &:hover {
       background-color: $secondary-color;
       svg {
         color: $white;
+      }
+
+      &::before,
+      &::after {
+        opacity: 1;
+        visibility: visible;
       }
     }
 
@@ -337,10 +468,52 @@
     border-radius: 50%;
     transition: background-color 0.2s ease;
     cursor: pointer;
+    position: relative;
 
-    &:hover {
-      background-color: $gray;
-      color: $white;
+    // Tooltip styles
+    &::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      font-family: "Poppins Medium";
+      font-size: 11px;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(8px);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 0.375rem solid transparent;
+      border-top-color: rgba(0, 0, 0, 0.9);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+      margin-bottom: 0.25rem;
+    }
+
+    &:hover::before,
+    &:hover::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(-2px);
     }
 
     svg {
@@ -367,6 +540,43 @@
     color: $black;
     transition: all 0.2s ease;
     cursor: pointer;
+    position: relative;
+
+    // Tooltip styles for mobile menu items
+    &::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: calc(100% + 0.75rem);
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      font-size: 0.75rem;
+      font-family: "Poppins Medium", sans-serif;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: calc(100% + 0.25rem);
+      top: 50%;
+      transform: translateY(-50%);
+      border: 0.375rem solid transparent;
+      border-right-color: rgba(0, 0, 0, 0.8);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+      z-index: 1000;
+      pointer-events: none;
+    }
 
     svg {
       width: 1.25rem;
@@ -381,6 +591,12 @@
       color: $white;
       svg {
         color: $white;
+      }
+
+      &::before,
+      &::after {
+        opacity: 1;
+        visibility: visible;
       }
     }
 

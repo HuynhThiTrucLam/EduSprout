@@ -14,6 +14,8 @@ import logo from "../../assets/images/Logo.svg";
 import { useAuth } from "../../services/auth_service";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import styles from "./Header.module.scss";
+import { toast } from "sonner";
+import SignOut from "../../assets/Icons/SignOut";
 
 const Header = () => {
   const { user, signOut } = useAuth();
@@ -27,6 +29,10 @@ const Header = () => {
 
   const handleSignOut = () => {
     signOut();
+  };
+
+  const handleToast = () => {
+    toast.success("Đây là chức năng sẽ phát triển trong tương lai");
   };
 
   const isActive = (path: string) => {
@@ -64,32 +70,38 @@ const Header = () => {
                 Danh sách yêu thích
               </Link>
             </div>
-            <div
-              className={`${styles["Header-item"]} ${
-                isActive("/") ? styles["Header-item--active"] : ""
-              }`}
-            >
-              <Link to="/" className={styles["Header-item-link"]}>
-                Trợ giúp
-              </Link>
-            </div>
           </div>
         </div>
 
         <div className={styles["Header-right"]}>
-          <div className={styles["Header-right-item"]}>
+          <div
+            className={styles["Header-right-item"]}
+            data-tooltip="Giỏ hàng"
+            onClick={handleToast}
+          >
             <Cart />
           </div>
-          <div className={styles["Header-right-item"]}>
+          <div
+            className={styles["Header-right-item"]}
+            data-tooltip="Ngôn ngữ"
+            onClick={handleToast}
+          >
             <Language />
           </div>
-          <div className={styles["Header-right-item"]}>
+          <div
+            className={styles["Header-right-item"]}
+            data-tooltip="Thông báo"
+            onClick={handleToast}
+          >
             <Notification />
           </div>
           {user ? (
             <Popover>
               <PopoverTrigger asChild>
-                <div className={styles["Header-right-img"]}>
+                <div
+                  className={styles["Header-right-img"]}
+                  data-tooltip="Tài khoản"
+                >
                   <img
                     src="https://media.istockphoto.com/id/2218571532/vi/anh/h%C3%ACnh-%E1%BA%A3nh-t%C3%A1c-ph%E1%BA%A9m-ngh%E1%BB%87-thu%E1%BA%ADt-xu-h%C6%B0%E1%BB%9Bng-t%E1%BB%95ng-h%E1%BB%A3p-%E1%BA%A3nh-gh%C3%A9p-3d-c%E1%BB%A7a-m%C3%A0u-xanh-m%C3%B2ng-k%C3%A9t-ph%C3%B4ng-n%E1%BB%81n-c%C3%B4.jpg?s=1024x1024&w=is&k=20&c=cTEL_rNHibQ6sjxNEli8KvvO8oR7S2hzdtvvVGCYiBI="
                     alt="avatar"
@@ -135,6 +147,7 @@ const Header = () => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   className={styles["Header-notAuth-icon"]}
+                  data-tooltip="Đăng nhập"
                 >
                   <path
                     fill-rule="evenodd"
@@ -172,6 +185,7 @@ const Header = () => {
         <div
           className={styles["Header-mobile-menu"]}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          data-tooltip="Menu"
         >
           <Menu />
         </div>
@@ -195,6 +209,7 @@ const Header = () => {
                   setIsMobileMenuOpen(false);
                 }}
                 aria-label="Close mobile menu"
+                data-tooltip="Đóng menu"
               >
                 <Close />
               </button>
@@ -206,6 +221,7 @@ const Header = () => {
                   isActive("/") ? styles["Header-mobile-menu-item--active"] : ""
                 }`}
                 onClick={closeMobileMenu}
+                data-tooltip="Trang chủ"
               >
                 <Home /> Trang chủ
               </Link>
@@ -217,6 +233,7 @@ const Header = () => {
                     : ""
                 }`}
                 onClick={closeMobileMenu}
+                data-tooltip="Khóa học của tôi"
               >
                 <CourseIcon /> Khóa học của tôi
               </Link>
@@ -228,28 +245,34 @@ const Header = () => {
                     : ""
                 }`}
                 onClick={closeMobileMenu}
+                data-tooltip="Danh sách yêu thích"
               >
-                <StarIcon /> Danh sách yêu thích
-              </Link>
-              <Link
-                to="/profile"
-                className={`${styles["Header-mobile-menu-item"]} ${
-                  isActive("/profile")
-                    ? styles["Header-mobile-menu-item--active"]
-                    : ""
-                }`}
-                onClick={closeMobileMenu}
-              >
-                <Account /> Tài khoản của tôi
+                <StarIcon
+                  style={{
+                    strokeWidth: 1.5,
+                  }}
+                />{" "}
+                Danh sách yêu thích
               </Link>
               <Link
                 to="/"
                 className={`${styles["Header-mobile-menu-item"]} ${
-                  isActive("/") ? styles["Header-mobile-menu-item--active"] : ""
+                  isActive("#") ? styles["Header-mobile-menu-item--active"] : ""
                 }`}
                 onClick={closeMobileMenu}
+                data-tooltip="Trợ giúp"
               >
                 <Contact /> Trợ giúp
+              </Link>
+              <Link
+                to="#"
+                className={`${styles["Header-mobile-menu-item"]} ${
+                  isActive("#") ? styles["Header-mobile-menu-item--active"] : ""
+                }`}
+                onClick={closeMobileMenu}
+                data-tooltip="Đăng xuất"
+              >
+                <SignOut /> Đăng xuất
               </Link>
             </div>
           </div>
