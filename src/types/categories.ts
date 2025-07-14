@@ -26,7 +26,7 @@ export type IconName =
 export const categories: Category[] = [
   {
     id: 1,
-    title: "Courses",
+    title: "Khoá học",
     iconName: "course",
     slug: "course",
     description: "Online courses and tutorials",
@@ -34,14 +34,14 @@ export const categories: Category[] = [
 
   {
     id: 2,
-    title: "Books",
+    title: "Sách",
     iconName: "books",
     slug: "books",
     description: "Educational books and literature",
   },
   {
     id: 3,
-    title: "Documents",
+    title: "Tài liệu",
     iconName: "document",
     slug: "documents",
     description: "Educational documents and materials",

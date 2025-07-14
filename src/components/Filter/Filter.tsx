@@ -47,30 +47,25 @@ const Filter = ({
   return (
     <div className={styles["Filter"]}>
       <div className={styles["Filter-header"]}>
-        <p className={styles["Filter-header-title"]}>Filter</p>
+        <p className={styles["Filter-header-title"]}>Bộ lọc tìm kiếm</p>
         <div
           className={styles["Filter-header-reset"]}
           onClick={handleResetFilters}
         >
-          <p>Reset Filters</p>
+          <p>Bỏ lọc</p>
         </div>
       </div>
       <div className={styles["Filter-price"]}>
-        <div className={styles["Filter-price-min"]}>
-          <p>
-            Min Price <span>($)</span>
-          </p>
+        <p>
+          Khoảng giá <span>(VND)</span>
+        </p>
+        <div className={styles["Filter-input"]}>
           <input
             type="number"
             placeholder="Min Price"
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
           />
-        </div>
-        <div className={styles["Filter-price-max"]}>
-          <p>
-            Max Price <span>($)</span>
-          </p>
           <input
             type="number"
             placeholder="Max Price"
@@ -80,7 +75,7 @@ const Filter = ({
         </div>
       </div>
       <Selection
-        title="Subject Area"
+        title="Chuyên ngành"
         options={majorsList}
         selectedOption={selectedMajor}
         handleSelect={(option) => handleSelectMajor(option as Major)}
@@ -88,7 +83,7 @@ const Filter = ({
         getOptionValue={(option) => option.id.toString()}
       />
       <Selection
-        title="Language"
+        title="Ngôn ngữ"
         options={languagesList}
         selectedOption={selectedLanguage}
         handleSelect={(option) => handleSelectLanguage(option as Language)}
@@ -97,7 +92,7 @@ const Filter = ({
       />
 
       <Button
-        text="Filter Now"
+        text="Áp dụng"
         onClick={handleFilter}
         className={styles["Filter-button"]}
       />

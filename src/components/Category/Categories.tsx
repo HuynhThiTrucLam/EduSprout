@@ -21,7 +21,7 @@ const Categories: React.FC<CategoriesProps> = ({ onCategoryChange }) => {
     <div className={styles["Categories"]}>
       <div className={styles["Categories-container"]}>
         <div className={styles["Categories-header"]}>
-          <h3>Categories</h3>
+          <h3>Phân loại</h3>
         </div>
         {categories.map((category) => (
           <CategoryItem

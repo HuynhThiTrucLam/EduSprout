@@ -239,8 +239,11 @@ const Shopping = () => {
     <div id="shopping-section" className={styles["Shopping"]}>
       <div className={styles["Shopping-container"]}>
         <div className={styles["Shopping-header"]}>
-          <h2>Most Popular Products</h2>
-          <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</p>
+          <h2>Danh sách sản phẩm</h2>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry
+          </p>
         </div>
         <div className={styles["Shopping-categories"]}>
           <Categories onCategoryChange={handleCategoryChange} />
@@ -263,8 +266,8 @@ const Shopping = () => {
           <div className={styles["Shopping-list"]}>
             <div className={styles["Shopping-list-header"]}>
               <div className={styles["Shopping-list-header-left"]}>
-                <p>Results:</p>
-                <span>{productList.length} products</span>
+                <p>Kết quả tìm kiếm:</p>
+                <span>{productList.length} sản phẩm</span>
               </div>
               <div className={styles["Shopping-list-header-right"]}>
                 <div
@@ -374,7 +377,7 @@ const Shopping = () => {
                 </div>
               </>
             ) : (
-              <NoData text="No products found" />
+              <NoData text="Danh sách sản phẩm trống" />
             )}
           </div>
           {isOpenMobileFilter && (

@@ -71,7 +71,7 @@ const Introduction = () => {
               ever
             </p>
             <Button
-              text="Get Started"
+              text="Khám phá ngay"
               className={styles["Introduction-left-top-button"]}
               onClick={handleGetStartedClick}
             />

@@ -16,7 +16,7 @@ const Search = ({ placeholder, className }: SearchProps) => {
           <SearchIcon />
           <Input type="email" placeholder={placeholder} />
         </div>
-        <Button text="Search Now" className={styles["Search-button"]} />
+        <Button text="Tìm ngay" className={styles["Search-button"]} />
       </div>
     </div>
   );

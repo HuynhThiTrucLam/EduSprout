@@ -56,13 +56,13 @@ const MyCourse = () => {
                   value="finished"
                   className={styles["MyCourse-content-trigger"]}
                 >
-                  Finished
+                  Đã hoàn thành
                 </TabsTrigger>
                 <TabsTrigger
                   value="inprogress"
                   className={styles["MyCourse-content-trigger"]}
                 >
-                  In Progress
+                  Đang học
                 </TabsTrigger>
               </TabsList>
               <TabsContent

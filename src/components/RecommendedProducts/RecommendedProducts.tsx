@@ -87,13 +87,13 @@ const RecommendedProducts = ({
                 alt=""
               />
               <div className={styles["RecommendedProducts-suggest-content"]}>
-                <h3>Discover Personalized Recommendations</h3>
+                <h3>Khám phá gợi ý phù hợp dành riêng cho bạn</h3>
                 <p>
-                  Get product suggestions tailored to your interests and
-                  browsing history
+                  Nhận đề xuất sản phẩm dựa theo sở thích và lịch sử truy cập
+                  của bạn
                 </p>
                 <Button
-                  text="Suggest for me"
+                  text="Khám phá ngay"
                   onClick={handleShowRecommendations}
                   className={styles["RecommendedProducts-suggest-button"]}
                 />
