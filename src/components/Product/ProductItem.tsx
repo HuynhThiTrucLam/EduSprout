@@ -6,6 +6,7 @@ import Button from "../commons/Button";
 import Rating from "../Rating/Rating";
 import GridIcon from "../../assets/Icons/GridIcon";
 import { useNavigate } from "react-router-dom";
+import { formatPrice } from "../../lib/utils";
 
 interface ProductItemProps {
   productInfor: Course | Book | Document;
@@ -85,7 +86,7 @@ const ProductItem = ({ productInfor }: ProductItemProps) => {
                     stroke-linejoin="round"
                   />
                 </svg>
-                <p>Time: </p>
+                <p>Thời gian: </p>
                 <p>
                   {"time" in productInfor
                     ? productInfor.time.toString()
@@ -94,10 +95,10 @@ const ProductItem = ({ productInfor }: ProductItemProps) => {
               </div>
               <div className={styles["ProductItem-Subtitle-item"]}>
                 <GridIcon />
-                <p>Chapters: </p>
+                <p>Nội dung: </p>
                 <p>
                   {"chapters" in productInfor
-                    ? `${productInfor.chapters.length.toString()} chapters`
+                    ? `${productInfor.chapters.length.toString()} phần `
                     : ""}
                 </p>
               </div>
@@ -137,14 +138,16 @@ const ProductItem = ({ productInfor }: ProductItemProps) => {
           <div className={styles["ProductItem-Price"]}>
             <div className={styles["ProductItem-Price-container"]}>
               <p className={styles["ProductItem-Price-container-end"]}>
-                {productInfor.infor.price} VND
+                {formatPrice(
+                  Math.round(
+                    productInfor.infor.price *
+                      (1 - (productInfor.infor.discount || 0))
+                  )
+                )}{" "}
+                VND
               </p>
               <p className={styles["ProductItem-Price-container-discount"]}>
-                {(
-                  productInfor.infor.price *
-                  (1 - (productInfor.infor.discount || 0))
-                ).toFixed(0)}
-                VND
+                {formatPrice(productInfor.infor.price)} VND
               </p>
             </div>
             <Rating rating={productInfor.infor.rating} size="small" />

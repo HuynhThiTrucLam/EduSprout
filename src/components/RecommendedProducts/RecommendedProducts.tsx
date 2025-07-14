@@ -104,10 +104,13 @@ const RecommendedProducts = ({
           <>
             <div className={styles["RecommendedProducts-header"]}>
               <div className={styles["RecommendedProducts-header-flex"]}>
-                <h3>Recommended for You</h3>
-                <p>{recommendations.length} products</p>
+                <h3>Gợi ý dành cho bạn</h3>
+                <p>{recommendations.length} sản phẩm</p>
               </div>
-              <p className={styles["hide"]}>Based on your browsing history</p>
+              <p className={styles["hide"]}>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry
+              </p>
             </div>
 
             <div className={styles["RecommendedProducts-list"]}>

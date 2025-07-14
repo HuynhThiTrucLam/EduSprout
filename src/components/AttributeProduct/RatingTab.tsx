@@ -102,7 +102,9 @@ const RatingTab = ({ comments }: RatingTabProps) => {
                       <img src={comment.user.image} alt="avatar" />
                       <div className={styles["AttributeTab-rating-item-infor"]}>
                         <p>{comment.user.name}</p>
-                        <p>Created at: {comment.createdAt.split("T")[0]}</p>
+                        <p>
+                          Ngày tạo đánh giá: {comment.createdAt.split("T")[0]}
+                        </p>
                       </div>
                     </div>
                     <Rating

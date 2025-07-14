@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 import CommonLayout from "../layouts/CommonLayout";
 import Homepage from "../pages/Homepage/Homepage";
 import Productdetail from "../components/ProductDetail/ProductDetail";
@@ -17,20 +17,18 @@ const ProductDetailWrapper = () => {
 };
 
 const AppRouter = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/auth" element={<Auth />} />
-      <Route element={<CommonLayout />}>
-        <Route path="/" element={<Homepage />} />
-        <Route
-          path="/product/:typeofProduct/:id"
-          element={<ProductDetailWrapper />}
-        />
-        <Route path="/my-course" element={<MyCourse />} />
-        <Route path="/my-favorite" element={<MyFavorite />} />
-      </Route>
-    </Routes>
-  </BrowserRouter>
+  <Routes>
+    <Route path="/auth" element={<Auth />} />
+    <Route element={<CommonLayout />}>
+      <Route path="/" element={<Homepage />} />
+      <Route
+        path="/product/:typeofProduct/:id"
+        element={<ProductDetailWrapper />}
+      />
+      <Route path="/my-course" element={<MyCourse />} />
+      <Route path="/my-favorite" element={<MyFavorite />} />
+    </Route>
+  </Routes>
 );
 
 export default AppRouter;

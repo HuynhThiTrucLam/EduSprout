@@ -26,7 +26,7 @@ export const mockCourses: Course[] = [
       title: "Mastering UI/UX Design",
       image:
         "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg",
-      price: 199.99,
+      price: 199999,
       description:
         "Learn to design stunning and user-friendly digital interfaces from scratch.",
       sellNumber: 230,
@@ -203,7 +203,7 @@ export const mockCourses: Course[] = [
         description: "Principles of good design",
       },
     ],
-    time: "10 months",
+    time: "10 tháng",
 
     createdAt: "2025-01-10",
     updatedAt: "2025-05-20",
@@ -215,7 +215,7 @@ export const mockCourses: Course[] = [
       title: "Fullstack IT Fundamentals",
       image:
         "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlfGVufDB8fDB8fHww",
-      price: 149.99,
+      price: 149999,
       description:
         "Build strong foundations in networks, databases, and programming.",
       sellNumber: 450,
@@ -268,7 +268,7 @@ export const mockCourses: Course[] = [
         description: "Your first coding steps",
       },
     ],
-    time: "12 months",
+    time: "12 tháng",
     createdAt: "2025-02-15",
     updatedAt: "2025-06-10",
   },
@@ -279,7 +279,7 @@ export const mockCourses: Course[] = [
       title: "Business Strategy 101",
       image:
         "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlfGVufDB8fDB8fHww",
-      price: 179.0,
+      price: 179000,
       description:
         "Learn how to craft winning strategies for business growth and innovation.",
       sellNumber: 320,
@@ -317,7 +317,7 @@ export const mockCourses: Course[] = [
           "https://media.istockphoto.com/id/2220865188/vi/anh/%E1%BA%A3nh-anh-ch%C3%A0ng-thi%C3%AAn-ni%C3%AAn-k%E1%BB%B7-l%E1%BA%A1c-quan-m%E1%BA%B7c-%C3%A1o-s%C6%A1-mi-m%C3%A0u-xanh-l%C3%A1-c%C3%A2y-b%E1%BB%8B-c%C3%B4-l%E1%BA%ADp-tr%C3%AAn-n%E1%BB%81n-m%C3%A0u-v%C3%A0ng.jpg?s=1024x1024&w=is&k=20&c=8xOsDhDEviP7Az2z7yv_QK3qa72_gMe2YhDrjNSo_r0=",
       },
     },
-    time: "72 hours",
+    time: "72 giờ",
     introVideoUrl:
       "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlfGVufDB8fDB8fHww",
     chapters: [
@@ -343,7 +343,7 @@ export const mockCourses: Course[] = [
       title: "Introduction to Psychology",
       image:
         "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlfGVufDB8fDB8fHww",
-      price: 129.5,
+      price: 129999,
       description: "Delve into human behavior, emotions, and mental processes.",
       sellNumber: 510,
       discount: 0.25,
@@ -398,7 +398,7 @@ export const mockCourses: Course[] = [
         description: "Clinical, Cognitive, Developmental",
       },
     ],
-    time: "6 months",
+    time: "6 tháng",
     createdAt: "2025-04-18",
     updatedAt: "2025-07-01",
   },
@@ -409,7 +409,7 @@ export const mockCourses: Course[] = [
       title: "Understanding Human Behavior through Sociology",
       image:
         "https://images.pexels.com/photos/3184407/pexels-photo-3184407.jpeg",
-      price: 109.0,
+      price: 109000,
       description:
         "Explore the foundations of sociology and learn how social structures, norms, and cultures shape human behavior.",
       sellNumber: 410,
@@ -470,7 +470,7 @@ export const mockCourses: Course[] = [
         description: "Family, education, government, and inequality",
       },
     ],
-    time: "5 months",
+    time: "5 tháng",
     createdAt: "2025-05-20",
     updatedAt: "2025-07-10",
   },
@@ -481,7 +481,7 @@ export const mockCourses: Course[] = [
       title: "Data Science for Beginners",
       image:
         "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg",
-      price: 149.0,
+      price: 149000,
       description:
         "Learn the fundamentals of data science, from statistics to Python and real-world analysis.",
       sellNumber: 820,
@@ -533,7 +533,7 @@ export const mockCourses: Course[] = [
         description: "Basic programming and data wrangling",
       },
     ],
-    time: "4 months",
+    time: "4 tháng",
     createdAt: "2025-06-01",
     updatedAt: "2025-07-10",
   },
@@ -544,7 +544,7 @@ export const mockCourses: Course[] = [
       title: "Effective Communication Skills",
       image:
         "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg",
-      price: 89.0,
+      price: 89000,
       description:
         "Master verbal and non-verbal communication techniques to enhance personal and professional relationships.",
       sellNumber: 670,
@@ -589,7 +589,7 @@ export const mockCourses: Course[] = [
         description: "Meetings, reports, and conflict management",
       },
     ],
-    time: "2 months",
+    time: "2 tháng",
     createdAt: "2025-06-10",
     updatedAt: "2025-07-10",
   },
@@ -600,7 +600,7 @@ export const mockCourses: Course[] = [
       title: "UI/UX Design Essentials",
       image:
         "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
-      price: 139.0,
+      price: 139000,
       description:
         "Learn the principles of user interface and experience design to create beautiful, user-centered apps.",
       sellNumber: 950,
@@ -652,7 +652,7 @@ export const mockCourses: Course[] = [
         description: "Hands-on tutorial with tools",
       },
     ],
-    time: "3 months",
+    time: "3 tháng",
     createdAt: "2025-05-25",
     updatedAt: "2025-07-10",
   },

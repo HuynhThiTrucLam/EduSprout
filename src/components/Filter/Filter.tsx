@@ -62,13 +62,13 @@ const Filter = ({
         <div className={styles["Filter-input"]}>
           <input
             type="number"
-            placeholder="Min Price"
+            placeholder="Từ ..."
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
           />
           <input
             type="number"
-            placeholder="Max Price"
+            placeholder="Đến ..."
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
           />
@@ -82,14 +82,14 @@ const Filter = ({
         getOptionLabel={(option) => option.title}
         getOptionValue={(option) => option.id.toString()}
       />
-      <Selection
+      {/* <Selection
         title="Ngôn ngữ"
         options={languagesList}
         selectedOption={selectedLanguage}
         handleSelect={(option) => handleSelectLanguage(option as Language)}
         getOptionLabel={(option) => option.title}
         getOptionValue={(option) => option.id}
-      />
+      /> */}
 
       <Button
         text="Áp dụng"

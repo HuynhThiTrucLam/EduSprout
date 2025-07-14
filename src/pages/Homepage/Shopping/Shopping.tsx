@@ -315,7 +315,7 @@ const Shopping = () => {
                     }
                     disabled={currentPage === 1}
                   >
-                    <span className={styles["pagination-text"]}>Previous</span>
+                    <span className={styles["pagination-text"]}>Trước</span>
                   </button>
 
                   <div className={styles["pagination-numbers"]}>
@@ -348,7 +348,7 @@ const Shopping = () => {
                     }
                     disabled={currentPage === totalPages}
                   >
-                    <span className={styles["pagination-text"]}>Next</span>
+                    <span className={styles["pagination-text"]}>Sau</span>
                   </button>
                 </div>
               </div>
@@ -377,7 +377,7 @@ const Shopping = () => {
                 </div>
               </>
             ) : (
-              <NoData text="Danh sách sản phẩm trống" />
+              <NoData text="Hiện chưa có sản phẩm nào" />
             )}
           </div>
           {isOpenMobileFilter && (

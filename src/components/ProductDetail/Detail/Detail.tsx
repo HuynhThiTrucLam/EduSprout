@@ -23,6 +23,7 @@ import SimilarProduct from "../../SimilarProduct/SimilarProduct";
 import ChapterComponent from "./Chapter";
 import styles from "./Detail.module.scss";
 import { useAuth } from "../../../services/auth_service";
+import { formatPrice } from "../../../lib/utils";
 
 type ProductType = Course | Book | Document;
 
@@ -87,17 +88,12 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
           <div className={styles["Detail-header-left-title"]}>
             <h1>{currentProduct?.infor?.title}</h1>
             <div className={styles["Detail-header-left-share"]}>
-              <div
-                className={styles["share"]}
-                data-tooltip={`Share this ${typeOfProduct
-                  .toLowerCase()
-                  .slice(0, -1)}`}
-              >
+              <div className={styles["share"]} data-tooltip={"Chia sẻ ngay"}>
                 <Share />
               </div>
               <div
                 className={styles["favorite"]}
-                data-tooltip="Add to favorites"
+                data-tooltip="Thêm vào yêu thích"
                 onClick={handleAddToFavorite}
               >
                 <StarIcon
@@ -115,17 +111,22 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
         </div>
         <div className={styles["Detail-header-right"]}>
           <div className={styles["Detail-price"]}>
-            <p>Best Price:</p>
-            <span>{currentProduct?.infor?.price || 0} VND</span>
+            <p>Giá tốt nhất:</p>
+            <span>
+              {formatPrice(
+                Math.round(
+                  currentProduct?.infor?.price *
+                    (1 - (currentProduct?.infor?.discount || 0))
+                )
+              )}{" "}
+              VND
+            </span>
             <p className={styles["ProductItem-price-discount"]}>
-              {(
-                (currentProduct?.infor?.price || 0) *
-                (1 - (currentProduct?.infor?.discount || 0))
-              ).toFixed(0)}
+              {formatPrice(currentProduct?.infor?.price || 0)}
               VND
             </p>
           </div>
-          <Button text="Buy now" className={styles["Detail-button"]} />
+          <Button text="Mua ngay" className={styles["Detail-button"]} />
         </div>
       </div>
 

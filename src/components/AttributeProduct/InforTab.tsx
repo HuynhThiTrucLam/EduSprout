@@ -22,7 +22,7 @@ const InforTab = ({
     <div className={styles["AttributeTab-infor"]}>
       <div className={styles["AttributeTab-infor-container"]}>
         <div className={styles["AttributeTab-value"]}>
-          <p>What you'll learn</p>
+          <p>Bạn sẽ học được gì?</p>
           <div className={styles["AttributeTab-value-item"]}>
             {values && values.length > 0
               ? values.map((value) => (

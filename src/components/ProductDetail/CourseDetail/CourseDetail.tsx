@@ -5,6 +5,7 @@ import Button from "../../commons/Button";
 import ChapterComponent from "../Detail/Chapter";
 import styles from "./CourseDetail.module.scss";
 import AttributeTab from "../../AttributeProduct/AttributeTab";
+import { formatPrice } from "../../../lib/utils";
 
 interface CourseDetailProps {
   product: Course;
@@ -37,17 +38,21 @@ const CourseDetail = ({ product }: CourseDetailProps) => {
         </div>
         <div className={styles["CourseDetail-header-right"]}>
           <div className={styles["CourseDetail-price"]}>
-            <p>Best Price:</p>
-            <span>{course?.infor?.price || 0} VND</span>
+            <p>Giá tốt nhất:</p>
+            <span>
+              {formatPrice(
+                Math.round(
+                  course?.infor?.price * (1 - (course?.infor?.discount || 0))
+                )
+              )}{" "}
+              VND
+            </span>
             <p className={styles["ProductItem-price-discount"]}>
-              {(
-                (course?.infor?.price || 0) *
-                (1 - (course?.infor?.discount || 0))
-              ).toFixed(0)}
+              {formatPrice(course?.infor?.price || 0)}
               VND
             </p>
           </div>
-          <Button text="Buy now" className={styles["CourseDetail-button"]} />
+          <Button text="Mua ngay" className={styles["CourseDetail-button"]} />
         </div>
       </div>
       <div className={styles["CourseDetail-image"]}>
