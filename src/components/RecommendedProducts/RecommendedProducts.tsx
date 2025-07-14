@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRecommendations } from "../../hooks/useRecommendations";
 import {
   getAllBooksService,
@@ -8,9 +8,9 @@ import {
 import type { Book } from "../../types/book";
 import type { Course } from "../../types/course";
 import type { Document } from "../../types/documents";
+import Button from "../commons/Button";
 import ProductItem from "../Product/ProductItem";
 import styles from "./RecommendedProducts.module.scss";
-import Button from "../commons/Button";
 
 interface RecommendedProductsProps {
   currentProductId?: string;
