@@ -146,9 +146,12 @@ const Shopping = () => {
     categories[0]
   );
 
-  const handleCategoryChange = (category: Category) => {
+  const handleCategoryChange = async (category: Category) => {
+    setIsLoading(true);
     console.log("Category changed to:", category);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setSelectedCategory(category);
+    setIsLoading(false);
   };
 
   // Handle page change

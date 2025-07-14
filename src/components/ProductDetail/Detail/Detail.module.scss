@@ -156,7 +156,7 @@
 
   &-course {
     width: 100%;
-    min-height: 55vh;
+    max-height: 55vh;
     display: flex;
     justify-content: space-between;
     gap: 1.5rem;
