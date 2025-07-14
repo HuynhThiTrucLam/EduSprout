@@ -46,11 +46,4 @@ export const categories: Category[] = [
     slug: "documents",
     description: "Educational documents and materials",
   },
-  {
-    id: 4,
-    title: "Suggestions",
-    iconName: "suggest",
-    slug: "suggestions",
-    description: "Suggestions for you",
-  },
 ];

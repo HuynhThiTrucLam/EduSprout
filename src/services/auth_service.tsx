@@ -1,5 +1,6 @@
 import type { User } from "@/types/user";
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { initializeRecommendationService } from "../lib/recommendationUtils";
 
 interface AuthServiceType {
   user: User | null;
@@ -39,12 +40,20 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const token = localStorage.getItem("authToken");
 
       if (savedUser && token) {
-        setUser(JSON.parse(savedUser));
+        const userData = JSON.parse(savedUser);
+        setUser(userData);
+        // Initialize recommendation service with user ID
+        initializeRecommendationService(userData.id);
+      } else {
+        // Initialize recommendation service for anonymous user
+        initializeRecommendationService(null);
       }
     } catch (error) {
       console.error("Error checking auth status:", error);
       localStorage.removeItem("user");
       localStorage.removeItem("authToken");
+      // Initialize recommendation service for anonymous user
+      initializeRecommendationService(null);
     } finally {
       setIsLoading(false);
     }
@@ -73,6 +82,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         localStorage.setItem("authToken", "mock-jwt-token");
 
         setUser(userData);
+        // Initialize recommendation service with user ID
+        initializeRecommendationService(userData.id);
       } else {
         throw new Error("Invalid email or password");
       }
@@ -93,6 +104,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     localStorage.removeItem("user");
     localStorage.removeItem("authToken");
     setUser(null);
+    // Initialize recommendation service for anonymous user
+    initializeRecommendationService(null);
     window.location.reload();
   };
 

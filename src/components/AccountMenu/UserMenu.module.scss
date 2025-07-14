@@ -20,7 +20,7 @@
     background: linear-gradient(
       135deg,
       $primary-color 0%,
-      darken($primary-color, 10%) 100%
+      color.adjust($primary-color, $lightness: -10%) 100%
     );
     color: $white;
 
@@ -323,7 +323,7 @@
       transition: all 0.2s ease;
 
       &:hover {
-        color: darken($primary-color, 10%);
+        color: color.adjust($primary-color, $lightness: -10%);
         text-decoration: underline;
       }
     }

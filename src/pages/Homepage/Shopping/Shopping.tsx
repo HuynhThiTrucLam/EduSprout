@@ -18,6 +18,7 @@ import { categories, type Category } from "../../../types/categories";
 import { languages, type Language } from "../../../types/language";
 import { majors, type Major } from "../../../types/major";
 import styles from "./Shopping.module.scss";
+import { trackSearch } from "../../../lib/recommendationUtils";
 
 const Shopping = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -31,6 +32,8 @@ const Shopping = () => {
   const [isActiveFilter, setIsActiveFilter] = useState<boolean>(false);
   const [isChangeLayout, setIsChangeLayout] = useState<boolean>(false);
   const [isOpenMobileFilter, setIsOpenMobileFilter] = useState<boolean>(false);
+
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   const [productList, setProductList] = useState<any[]>([]);
 
@@ -212,6 +215,14 @@ const Shopping = () => {
     return pages;
   };
 
+  // Handle search
+  const handleSearch = (searchString: string) => {
+    if (searchString.trim()) {
+      trackSearch(searchString.trim());
+    }
+    console.log("searchTerm: ", searchString);
+  };
+
   useEffect(() => {
     console.log("useEffect triggered - selectedCategory:", selectedCategory);
     if (selectedCategory?.slug) {
@@ -221,7 +232,6 @@ const Shopping = () => {
     setIsActiveFilter(false);
     resetPagination();
   }, [isActiveFilter, selectedCategory]);
-
   return (
     <div id="shopping-section" className={styles["Shopping"]}>
       <div className={styles["Shopping-container"]}>
@@ -271,8 +281,16 @@ const Shopping = () => {
                   <GridIcon />
                 </div>
                 <div className={styles["Shopping-list-header-right-search"]}>
-                  <Input type="email" placeholder="Search" />
-                  <div className="&:hover:rouded-full ">
+                  <Input
+                    type="email"
+                    placeholder="Search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                  <div
+                    className="&:hover:rouded-full "
+                    onClick={() => handleSearch(searchTerm)}
+                  >
                     <SearchIcon strokeColor="var(--search-icon-stroke)" />
                   </div>
                 </div>

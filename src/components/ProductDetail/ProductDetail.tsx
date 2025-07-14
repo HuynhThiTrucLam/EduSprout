@@ -10,6 +10,10 @@ import Detail from "./Detail/Detail";
 import type { Course } from "../../types/course";
 import type { Book } from "../../types/book";
 import type { Document } from "../../types/documents";
+import {
+  trackProductView,
+  trackTimeSpent,
+} from "../../lib/recommendationUtils";
 
 interface ProductdetailProps {
   typeofProduct: string;
@@ -18,6 +22,7 @@ interface ProductdetailProps {
 
 const Productdetail = ({ typeofProduct, productId }: ProductdetailProps) => {
   const [product, setProduct] = useState<Course | Book | Document | null>(null);
+  const [startTime, setStartTime] = useState<number>(Date.now());
 
   const handleBack = () => {
     window.history.back();
@@ -27,13 +32,6 @@ const Productdetail = ({ typeofProduct, productId }: ProductdetailProps) => {
     typeofProduct: string,
     productId: string
   ) => {
-    // console.log(
-    //   "ProductDetail - typeofProduct:",
-    //   typeofProduct,
-    //   "productId:",
-    //   productId
-    // );
-
     if (typeofProduct.toLowerCase() === "courses") {
       const product = await getCourseByIdService(productId);
       // console.log("Course product:", product);
@@ -52,6 +50,28 @@ const Productdetail = ({ typeofProduct, productId }: ProductdetailProps) => {
   useEffect(() => {
     handleGetProductDetail(typeofProduct, productId);
   }, [typeofProduct, productId]);
+
+  // Track when user views a product
+  useEffect(() => {
+    if (product) {
+      trackProductView(
+        product.id,
+        product.infor.category.title.toLowerCase(),
+        product.infor.price
+      );
+      setStartTime(Date.now());
+    }
+  }, [product]);
+
+  // Track time spent when component unmounts
+  useEffect(() => {
+    return () => {
+      if (product) {
+        const timeSpent = Math.floor((Date.now() - startTime) / 1000);
+        trackTimeSpent(product.id, timeSpent);
+      }
+    };
+  }, [product, startTime]);
 
   return (
     <div className={styles["ProductDetail"]}>
