@@ -66,10 +66,10 @@
       padding-block: 0.5rem;
       padding-inline: 1rem;
       background-color: $secondary-color;
-      border-top-left-radius: 0.45rem;
-      border-bottom-left-radius: 0.45rem;
-      border-top-right-radius: 0.45rem;
-      border-bottom-right-radius: 0;
+      border-top-left-radius: 0.85rem;
+      border-bottom-left-radius: 0.85rem;
+      border-top-right-radius: 0.85rem;
+      border-bottom-right-radius: 0.085;
       p {
         cursor: pointer;
         color: $white;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useRecommendations } from "../../hooks/useRecommendations";
 import {
   getAllBooksService,
@@ -25,10 +25,23 @@ const RecommendedProducts = ({
   const [isLoadingProducts, setIsLoadingProducts] = useState(false);
   const [showRecommendations, setShowRecommendations] = useState(false);
   const [hasFetched, setHasFetched] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const ref = useRef(null);
 
   // Use the recommendations hook
   const { recommendations } = useRecommendations(allProducts, 6);
   const isLoading = isLoadingProducts || (showRecommendations && !hasFetched);
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.1 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
 
   const handleShowRecommendations = async () => {
     setShowRecommendations(true);
@@ -59,7 +72,12 @@ const RecommendedProducts = ({
   }
 
   return (
-    <div className={styles["RecommendedProducts"]}>
+    <div
+      ref={ref}
+      className={`${styles.RecommendedProducts} ${
+        visible ? styles.visible : ""
+      }`}
+    >
       <div className={styles["RecommendedProducts-container"]}>
         {!showRecommendations ? (
           <div className={styles["RecommendedProducts-suggest"]}>
@@ -89,7 +107,7 @@ const RecommendedProducts = ({
                 <h3>Recommended for You</h3>
                 <p>{recommendations.length} products</p>
               </div>
-              <p>Based on your browsing history</p>
+              <p className={styles["hide"]}>Based on your browsing history</p>
             </div>
 
             <div className={styles["RecommendedProducts-list"]}>

@@ -98,3 +98,20 @@
     gap: 1rem;
   }
 }
+
+@media (max-width: 425.5px) {
+  .MyFavorite {
+    &-list {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 1rem;
+      -webkit-overflow-scrolling: touch;
+
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}

@@ -72,10 +72,10 @@
     height: 100%;
     background-color: $primary-color;
     padding: 0.75rem 1.5rem;
-    border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    border-bottom-right-radius: 0;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 0.1rem;
     p {
       color: $white !important;
       font-family: "Poppins Medium";
