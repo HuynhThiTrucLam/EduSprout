@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+// import { getLanguagesService } from "../../services/language_service";
+import type { Language } from "../../types/language";
 import { majors, type Major } from "../../types/major";
 import { Selection } from "../Selection/Selection";
 import Button from "../commons/Button";
 import styles from "./Filter.module.scss";
-import type { Language } from "../../types/language";
-import { getLanguagesService } from "../../services/language_service";
 
 interface FilterProps {
   selectedMajor: Major | null;
@@ -22,8 +22,8 @@ interface FilterProps {
 const Filter = ({
   selectedMajor,
   handleSelectMajor,
-  selectedLanguage,
-  handleSelectLanguage,
+  // selectedLanguage,
+  // handleSelectLanguage,
   handleFilter,
   handleResetFilters,
   minPrice,
@@ -32,16 +32,16 @@ const Filter = ({
   setMaxPrice,
 }: FilterProps) => {
   const [majorsList, setMajorsList] = useState<Major[]>([]);
-  const [languagesList, setLanguagesList] = useState<Language[]>([]);
+  // const [languagesList, setLanguagesList] = useState<Language[]>([]);
 
-  const getLanguages = async () => {
-    const languages = await getLanguagesService();
-    setLanguagesList(languages);
-  };
+  // const getLanguages = async () => {
+  //   const languages = await getLanguagesService();
+  //   setLanguagesList(languages);
+  // };
 
   useEffect(() => {
     setMajorsList(majors);
-    getLanguages();
+    // getLanguages();
   }, []);
 
   return (
