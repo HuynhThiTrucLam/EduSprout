@@ -8,24 +8,23 @@ import NoData from "../../../components/NoData/NoData";
 import ProductItem from "../../../components/Product/ProductItem";
 import { Input } from "../../../components/ui/input";
 
+import { filterProducts, type FilterOptions } from "../../../lib/filterUtils";
+import { trackSearch } from "../../../lib/recommendationUtils";
 import {
-  filterProductsService,
   getAllBooksService,
   getAllCoursesService,
   getAllDocumentsService,
 } from "../../../services/product_service";
 import { categories, type Category } from "../../../types/categories";
-import { languages, type Language } from "../../../types/language";
 import { majors, type Major } from "../../../types/major";
 import styles from "./Shopping.module.scss";
-import { trackSearch } from "../../../lib/recommendationUtils";
 
 const Shopping = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedMajor, setSelectedMajor] = useState<Major | null>(majors[0]);
-  const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(
-    languages[0]
-  );
+  // const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(
+  //   languages[0]
+  // );
   const [minPrice, setMinPrice] = useState<string>("");
   const [maxPrice, setMaxPrice] = useState<string>("");
 
@@ -35,6 +34,7 @@ const Shopping = () => {
 
   const [searchTerm, setSearchTerm] = useState<string>("");
 
+  const [allProducts, setAllProducts] = useState<any[]>([]);
   const [productList, setProductList] = useState<any[]>([]);
 
   // Pagination state
@@ -56,18 +56,21 @@ const Shopping = () => {
 
   const handleGetProducts = async (category: string) => {
     try {
-      if (category.toLowerCase() === "course") {
+      if (category.toLowerCase() === "courses") {
         const response = await getAllCoursesService();
         console.log("Courses response:", response);
-        setProductList(response);
+        setAllProducts(response); // Save all products
+        setProductList(response); // Show all by default
       } else if (category.toLowerCase() === "books") {
         const response = await getAllBooksService();
         console.log("Books response:", response);
-        setProductList(response);
+        setAllProducts(response); // Save all products
+        setProductList(response); // Show all by default
       } else if (category.toLowerCase() === "documents") {
         const response = await getAllDocumentsService();
         console.log("Documents response:", response);
-        setProductList(response);
+        setAllProducts(response); // Save all products
+        setProductList(response); // Show all by default
       } else {
         console.warn(`No service found for category: ${category}`);
         setProductList([]);
@@ -83,54 +86,22 @@ const Shopping = () => {
   };
 
   const handleFilter = async () => {
-    console.log("selectedMajor: ", selectedMajor);
-    console.log("selectedLanguage: ", selectedLanguage);
-    console.log("minPrice: ", minPrice);
-    console.log("maxPrice: ", maxPrice);
-    setIsLoading(true);
-
-    // Build parameters object based on conditions
-    const params: any = {
-      typeOfProduct: selectedCategory?.slug || "courses",
+    setIsLoading(true); // Show skeleton
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const options: FilterOptions = {
+      major: selectedMajor,
+      // language: selectedLanguage,
+      minPrice: minPrice ? Number(minPrice) : undefined,
+      maxPrice: maxPrice ? Number(maxPrice) : undefined,
     };
-
-    // Only add major filter if not "All"
-    if (selectedMajor && selectedMajor.title !== "All") {
-      params.selectedMajorId = selectedMajor.id.toString();
-    }
-
-    // Only add language filter if not "All"
-    if (selectedLanguage && selectedLanguage.title !== "All") {
-      params.selectedLanguageId = selectedLanguage.id.toString();
-    }
-
-    // Only add price filters if both are not 0
-    if (minPrice !== "" || maxPrice !== "") {
-      const min = minPrice ? Number(minPrice) : 0;
-      const max = maxPrice ? Number(maxPrice) : 0;
-      params.minPrice = min;
-      params.maxPrice = max;
-    }
-
-    const responseFilter = await filterProductsService(
-      params.typeOfProduct,
-      params.selectedMajorId,
-      params.selectedLanguageId,
-      params.minPrice,
-      params.maxPrice
-    );
-
-    console.log("responseFilter: ", responseFilter);
-    console.log("params: ", params);
-
-    // Update the product list with filtered results
-    setProductList(responseFilter);
-    setIsLoading(false);
+    const filtered = filterProducts(allProducts, options);
+    setProductList(filtered);
+    setIsLoading(false); // Hide skeleton
   };
 
   const handleResetFilters = () => {
     setSelectedMajor(majors[0]);
-    setSelectedLanguage(languages[0]);
+    // setSelectedLanguage(languages[0]);
     setMinPrice("");
     setMaxPrice("");
 
@@ -138,9 +109,9 @@ const Shopping = () => {
     console.log("Filters reset");
   };
 
-  const handleLanguageChange = (language: Language) => {
-    setSelectedLanguage(language);
-  };
+  // const handleLanguageChange = (language: Language) => {
+  //   setSelectedLanguage(language);
+  // };
 
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
     categories[0]
@@ -255,8 +226,8 @@ const Shopping = () => {
               handleSelectMajor={setSelectedMajor}
               handleFilter={handleFilter}
               handleResetFilters={handleResetFilters}
-              selectedLanguage={selectedLanguage}
-              handleSelectLanguage={handleLanguageChange}
+              // selectedLanguage={selectedLanguage}
+              // handleSelectLanguage={handleLanguageChange}
               minPrice={minPrice}
               maxPrice={maxPrice}
               setMinPrice={setMinPrice}
@@ -387,8 +358,8 @@ const Shopping = () => {
                 handleSelectMajor={setSelectedMajor}
                 handleFilter={handleFilter}
                 handleResetFilters={handleResetFilters}
-                selectedLanguage={selectedLanguage}
-                handleSelectLanguage={handleLanguageChange}
+                // selectedLanguage={selectedLanguage}
+                // handleSelectLanguage={handleLanguageChange}
                 minPrice={minPrice}
                 maxPrice={maxPrice}
                 setMinPrice={setMinPrice}

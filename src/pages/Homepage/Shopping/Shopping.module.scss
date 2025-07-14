@@ -426,7 +426,24 @@
       & .Filter {
         display: block;
       }
+      &-icon {
+        display: block;
+        border: 0.5px solid $gray;
+        width: 3.5rem;
+        aspect-ratio: 1/1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        svg {
+          path {
+            stroke-width: 1px;
+          }
+        }
+      }
     }
+    // Shopping-mobile-filter-icon
 
     &-pagination {
       margin-top: 1.5rem;

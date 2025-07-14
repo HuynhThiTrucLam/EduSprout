@@ -28,7 +28,7 @@ export const categories: Category[] = [
     id: 1,
     title: "Khoá học",
     iconName: "course",
-    slug: "course",
+    slug: "courses",
     description: "Online courses and tutorials",
   },
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 // import { getLanguagesService } from "../../services/language_service";
-import type { Language } from "../../types/language";
+// import type { Language } from "../../types/language";
 import { majors, type Major } from "../../types/major";
 import { Selection } from "../Selection/Selection";
 import Button from "../commons/Button";
@@ -9,8 +9,8 @@ import styles from "./Filter.module.scss";
 interface FilterProps {
   selectedMajor: Major | null;
   handleSelectMajor: (option: Major) => void;
-  selectedLanguage: Language | null;
-  handleSelectLanguage: (option: Language) => void;
+  // selectedLanguage: Language | null;
+  // handleSelectLanguage: (option: Language) => void;
   handleFilter: () => void;
   handleResetFilters: () => void;
   minPrice: string;

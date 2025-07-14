@@ -172,7 +172,7 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
           <div className={styles["Detail-book-content"]}>
             <div className={styles["Detail-book-info"]}>
               <div className={styles["Detail-book-info-description"]}>
-                <h2>Description</h2>
+                <h2>Mô tả sách</h2>
                 <p>
                   {currentProduct?.infor?.description ||
                     "No description available"}
@@ -181,7 +181,7 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
               <div className={styles["Detail-book-info-item"]}>
                 <div className={styles["title"]}>
                   <Author />
-                  <strong>Authors:</strong>
+                  <strong>Tác giả:</strong>
                 </div>
                 <span>
                   {(currentProduct as Book)?.authors
@@ -192,7 +192,7 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
               <div className={styles["Detail-book-info-item"]}>
                 <div className={styles["title"]}>
                   <Publisher />
-                  <strong>Publisher:</strong>
+                  <strong>Nhà xuất bản:</strong>
                 </div>
                 <span>
                   {(currentProduct as Book)?.publisher
@@ -203,7 +203,7 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
               <div className={styles["Detail-book-info-item"]}>
                 <div className={styles["title"]}>
                   <Time />
-                  <strong>Publication Year:</strong>
+                  <strong>Năm xuất bản:</strong>
                 </div>
                 <span>
                   {(currentProduct as Book)?.publicationYear || "Unknown"}

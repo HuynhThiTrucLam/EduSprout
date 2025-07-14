@@ -25,7 +25,7 @@ const ProductItem = ({ productInfor }: ProductItemProps) => {
       className={styles["ProductItem"]}
       onClick={() =>
         handleNavigateToProductDetail(
-          productInfor.infor.category.title.toLowerCase(),
+          productInfor.infor.category.slug,
           productInfor.id.toString()
         )
       }
@@ -59,7 +59,7 @@ const ProductItem = ({ productInfor }: ProductItemProps) => {
               className={styles["ProductItem-CTA-button"]}
               onClick={() =>
                 handleNavigateToProductDetail(
-                  productInfor.infor.category.title.toLowerCase(),
+                  productInfor.infor.category.slug,
                   productInfor.id.toString()
                 )
               }

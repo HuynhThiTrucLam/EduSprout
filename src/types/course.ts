@@ -656,6 +656,113 @@ export const mockCourses: Course[] = [
     createdAt: "2025-05-25",
     updatedAt: "2025-07-10",
   },
+  {
+    id: "course-009",
+    infor: {
+      id: "prod-001",
+      title: "Thành thạo Thiết kế UI/UX",
+      image:
+        "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg",
+      price: 199999,
+      description:
+        "Học cách thiết kế giao diện số ấn tượng và thân thiện với người dùng từ cơ bản.",
+      sellNumber: 230,
+      discount: 0.15,
+      rating: 4.8,
+      category: {
+        id: 1,
+        title: "Khoá học",
+        iconName: "course",
+        slug: "courses",
+        description: "Online courses and tutorials",
+      },
+      comments: [
+        {
+          id: 1,
+          user: {
+            id: "user-101",
+            name: "John Doe",
+            email: "john.doe@example.com",
+            phone: "1234567890",
+            image:
+              "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900",
+          },
+          content:
+            "Tuyệt vời! Các yếu tố tương tác giúp tôi học tập dễ dàng hơn rất nhiều.",
+          rating: 5,
+          createdAt: "2025-06-01T10:15:00Z",
+          updatedAt: "2025-06-01T10:15:00Z",
+        },
+      ],
+      majors: [
+        {
+          id: 1,
+          title: "Thiết kế UI/UX",
+          description:
+            "UI/UX là nghệ thuật thiết kế trải nghiệm số thân thiện và hấp dẫn với người dùng.",
+        },
+        {
+          id: 2,
+          title: "Công nghệ Thông tin",
+          description: "Chuyên sâu về hệ thống máy tính, mạng và dữ liệu.",
+        },
+      ],
+      language: [{ id: "en", title: "Tiếng Anh" }],
+      values: [
+        "Sáng tạo là khả năng tư duy vượt khuôn khổ.",
+        "Đồng cảm giúp hiểu được nhu cầu người dùng.",
+        "Tư duy thiết kế giúp giải quyết vấn đề thực tế.",
+        "Nghiên cứu người dùng để tạo sản phẩm phù hợp.",
+        "Trải nghiệm người dùng là yếu tố then chốt.",
+        "Giao diện người dùng tạo ra sự tương tác hiệu quả.",
+      ],
+      skills: [
+        "Phác thảo giao diện",
+        "Tạo nguyên mẫu",
+        "Nghiên cứu người dùng",
+      ],
+      user: {
+        id: "user-001",
+        name: "CreativeDesign Co.",
+        email: "hello@creativedesign.co",
+        phone: "1234567890",
+        image:
+          "https://images.pexels.com/photos/18960521/pexels-photo-18960521.jpeg",
+      },
+    },
+    introVideoUrl:
+      "https://d3c33hcgiwev3.cloudfront.net/.../Welcome-to-the-Google-UX-Design-Certificate.mp4",
+    chapters: [
+      {
+        id: "ch1",
+        title: "Giới thiệu về UI/UX",
+        description: "Kiến thức cơ bản và khái niệm nền tảng",
+      },
+      {
+        id: "ch2",
+        title: "Công cụ Wireframing",
+        description: "Khám phá Figma, Sketch và các công cụ khác",
+      },
+      {
+        id: "ch3",
+        title: "Nghiên cứu người dùng",
+        description: "Tìm hiểu hành vi và nhu cầu người dùng",
+      },
+      {
+        id: "ch4",
+        title: "Tạo nguyên mẫu",
+        description: "Thiết kế mẫu tương tác hiệu quả",
+      },
+      {
+        id: "ch5",
+        title: "Nguyên lý thiết kế",
+        description: "Nguyên tắc thiết kế chất lượng cao",
+      },
+    ],
+    time: "10 tháng",
+    createdAt: "2025-01-10",
+    updatedAt: "2025-05-20",
+  },
 ];
 
 export const mockFinishedCourses: Course[] = [mockCourses[0]];

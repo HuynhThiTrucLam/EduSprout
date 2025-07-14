@@ -21,11 +21,11 @@ export const mockBooks: Book[] = [
       title: "Fundamentals of Information Technology",
       image:
         "https://images.pexels.com/photos/3747279/pexels-photo-3747279.jpeg",
-      price: 59.99,
+      price: 590000,
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       sellNumber: 1500,
-      discount: 10,
+      discount: 0.1,
       rating: 4.5,
       comments: [],
       category: {
@@ -66,11 +66,11 @@ export const mockBooks: Book[] = [
       title: "Principles of Business Management",
       image:
         "https://images.pexels.com/photos/7821487/pexels-photo-7821487.jpeg",
-      price: 69.0,
+      price: 690000,
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       sellNumber: 2000,
-      discount: 15,
+      discount: 0.15,
       rating: 4.7,
       comments: [],
       category: {
@@ -111,11 +111,11 @@ export const mockBooks: Book[] = [
       title: "Introduction to Environmental Science",
       image:
         "https://images.pexels.com/photos/32894584/pexels-photo-32894584.jpeg",
-      price: 54.5,
+      price: 545999,
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       sellNumber: 1200,
-      discount: 5,
+      discount: 0.05,
       rating: 4.6,
       comments: [],
       category: {
@@ -156,11 +156,11 @@ export const mockBooks: Book[] = [
       title: "Mastering Front-End Development",
       image:
         "https://m.media-amazon.com/images/I/71jLZu9sC3L._UF350,350_QL50_.jpg",
-      price: 69.99,
+      price: 699999,
       description:
         "A comprehensive guide to mastering front-end web development using HTML, CSS, JavaScript, and modern frameworks like React and Vue. Ideal for students and aspiring developers seeking to build solid UI skills.",
       sellNumber: 980,
-      discount: 15,
+      discount: 0.15,
       rating: 4.7,
       comments: [],
       category: {
@@ -201,11 +201,11 @@ export const mockBooks: Book[] = [
       title: "The Art of Public Speaking",
       image:
         "https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg",
-      price: 42.99,
+      price: 429999,
       description:
         "A timeless guide to mastering the skill of speaking in public with confidence and clarity.",
       sellNumber: 1340,
-      discount: 5,
+      discount: 0.05,
       rating: 4.6,
       comments: [],
       category: {
@@ -246,11 +246,11 @@ export const mockBooks: Book[] = [
       title: "Data Structures & Algorithms in JavaScript",
       image:
         "https://images.pexels.com/photos/11035324/pexels-photo-11035324.jpeg",
-      price: 54.5,
+      price: 549999,
       description:
         "A practical book to help developers learn and implement data structures in JavaScript effectively.",
       sellNumber: 890,
-      discount: 12,
+      discount: 0.12,
       rating: 4.8,
       comments: [],
       category: {
@@ -296,11 +296,11 @@ export const mockBooks: Book[] = [
       title: "Emotional Intelligence 101",
       image:
         "https://images.pexels.com/photos/5709010/pexels-photo-5709010.jpeg",
-      price: 47.0,
+      price: 470000,
       description:
         "An introductory book on understanding emotions, self-regulation, and empathy for personal growth.",
       sellNumber: 1120,
-      discount: 10,
+      discount: 0.1,
       rating: 4.7,
       comments: [],
       category: {
