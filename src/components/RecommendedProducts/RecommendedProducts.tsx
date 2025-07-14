@@ -27,8 +27,7 @@ const RecommendedProducts = ({
   const [hasFetched, setHasFetched] = useState(false);
 
   // Use the recommendations hook
-  const { recommendations, isLoading: isLoadingRecommendations } =
-    useRecommendations(allProducts, 6);
+  const { recommendations } = useRecommendations(allProducts, 6);
   const isLoading = isLoadingProducts || (showRecommendations && !hasFetched);
 
   const handleShowRecommendations = async () => {

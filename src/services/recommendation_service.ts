@@ -325,8 +325,8 @@ export class RecommendationService {
 
   // Get user language preferences from viewed products
   private getUserLanguagePreferences(userBehavior: UserBehavior): string[] {
-    // Analyze user's viewed products to determine language preferences
-    const languageCounts: { [key: string]: number } = {};
+    // // Analyze user's viewed products to determine language preferences
+    // const languageCounts: { [key: string]: number } = {};
 
     // This would be implemented by analyzing the user's viewed products
     // For now, return common languages based on user behavior
@@ -340,8 +340,8 @@ export class RecommendationService {
 
   // Get user major preferences from viewed products
   private getUserMajorPreferences(userBehavior: UserBehavior): string[] {
-    // Analyze user's viewed products to determine major preferences
-    const majorCounts: { [key: string]: number } = {};
+    // // Analyze user's viewed products to determine major preferences
+    // const majorCounts: { [key: string]: number } = {};
 
     // This would be implemented by analyzing the user's viewed products
     // For now, return common majors based on user behavior
