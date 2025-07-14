@@ -152,7 +152,7 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
             className={styles["Detail-course-mobile"]}
           >
             <AccordionItem value="item-1">
-              <AccordionTrigger>Course Content</AccordionTrigger>
+              <AccordionTrigger>Nội dung khóa học</AccordionTrigger>
               <AccordionContent className={styles["Detail-course-mobile-item"]}>
                 <div className={styles["Detail-course-mobile-content"]}>
                   <ChapterComponent

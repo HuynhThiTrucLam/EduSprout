@@ -1,7 +1,8 @@
 interface MenuProps {
   className?: string;
+  onClick?: () => void;
 }
-const Menu = ({ className }: MenuProps) => {
+const Menu = ({ className, onClick }: MenuProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10,6 +11,7 @@ const Menu = ({ className }: MenuProps) => {
       strokeWidth={1.5}
       stroke="currentColor"
       className={`size-6 ${className}`}
+      onClick={onClick}
     >
       <path
         strokeLinecap="round"
