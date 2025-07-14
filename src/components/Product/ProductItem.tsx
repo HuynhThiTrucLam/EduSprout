@@ -124,13 +124,14 @@ const ProductItem = ({ productInfor }: ProductItemProps) => {
                 />
               </svg>
               {productInfor.infor.skills
-                .slice(0, 3)
+                .slice(0, 2)
                 .map((skill, index, arr) => (
                   <p key={skill}>
                     {skill}
                     {index < arr.length - 1 && ","}
                   </p>
                 ))}
+              {productInfor.infor.skills.length > 2 && <p>...</p>}
             </div>
           )}
           <div className={styles["ProductItem-Price"]}>
