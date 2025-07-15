@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Input } from "../../components/ui/input";
+import { EyeOff } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import Button from "../../components/commons/Button";
+import { Input } from "../../components/ui/input";
+import { Toaster } from "../../components/ui/sonner";
 import { useAuth } from "../../services/auth_service";
 import styles from "./Auth.module.scss";
-import { Toaster } from "../../components/ui/sonner";
-import { toast } from "sonner";
-import { EyeOff } from "lucide-react";
-import logo from "../../assets/images/Logo.svg";
 
 interface AuthFormData {
   email: string;
