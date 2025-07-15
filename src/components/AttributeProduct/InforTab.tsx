@@ -112,7 +112,7 @@ const InforTab = ({
                 />
               </svg>
               <span>Cập nhật lần cuối</span>
-              <p>{updatedAt || "Không có thông tin"}</p>
+              <p>{updatedAt.split("T")[0] || "Không có thông tin"}</p>
             </div>
           </div>
         </div>

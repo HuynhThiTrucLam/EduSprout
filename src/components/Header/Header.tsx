@@ -232,7 +232,19 @@ const Header = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className={styles["Header-mobile-menu-header"]}>
-              <h3>Menu</h3>
+              {user ? (
+                <div className={styles["Header-mobile-menu-avatar"]}>
+                  <div className={styles["Header-mobile-menu-avatar-image"]}>
+                    <img src={user.image} alt="avatar" />
+                  </div>
+                  <div className={styles["Header-mobile-menu-avatar-info"]}>
+                    <h4>{user.name}</h4>
+                    <p>{user.email}</p>
+                  </div>
+                </div>
+              ) : (
+                <h3>Menu</h3>
+              )}
               <button
                 className={styles["Header-mobile-menu-close"]}
                 onClick={() => {

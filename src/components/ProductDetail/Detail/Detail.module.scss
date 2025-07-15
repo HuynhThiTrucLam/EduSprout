@@ -620,6 +620,20 @@
         width: 100%;
       }
       &-info {
+        &-item {
+          align-items: self-start;
+          strong {
+            width: max-content;
+          }
+          span {
+            width: max-content;
+          }
+        }
+        &-description {
+          p {
+            text-align: start;
+          }
+        }
         &-CTA {
           & .button {
             width: 100%;
