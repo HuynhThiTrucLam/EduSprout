@@ -16,30 +16,37 @@ export function filterProducts(
   options: FilterOptions
 ): Book[] | Course[] | Document[] {
   return products.filter((product) => {
-    const { majors, language, minPrice, maxPrice } = options;
+    const { majors, minPrice, maxPrice } = options;
 
     // Major filter - if majors are selected, product must have at least one matching major
-
     if (majors && majors.length > 0) {
-      const hasMatchingMajor = product.infor.majors?.some((productMajor) =>
-        majors.some((selectedMajor) => selectedMajor.code === productMajor.code)
-      );
-      if (!hasMatchingMajor) return false;
+      // If the only selected major is 'ALL', skip major filtering
+      if (!(majors.length === 1 && majors[0].code === "ALL")) {
+        const hasMatchingMajor = product.infor.majors?.some((productMajor) =>
+          majors.some(
+            (selectedMajor) => selectedMajor.code === productMajor.code
+          )
+        );
+        if (!hasMatchingMajor) return false;
+      }
     }
 
-    // Language filter
-    if (
-      language &&
-      language.title !== "All" &&
-      product.infor.language?.some((l) => l.id === language.id)
-    ) {
+    // Price filter with validation
+    const price = product.infor.price;
+
+    // Ensure price is a valid number
+    if (typeof price !== "number" || isNaN(price)) {
       return false;
     }
 
-    // Price filter
-    const price = product.infor.price;
-    if (typeof minPrice === "number" && price < minPrice) return false;
-    if (typeof maxPrice === "number" && price > maxPrice) return false;
+    // Apply price filters only if they are valid numbers
+    if (typeof minPrice === "number" && !isNaN(minPrice) && price < minPrice) {
+      return false;
+    }
+
+    if (typeof maxPrice === "number" && !isNaN(maxPrice) && price > maxPrice) {
+      return false;
+    }
 
     return true;
   });

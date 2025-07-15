@@ -7,6 +7,7 @@ import Filter from "../../../components/Filter/Filter";
 import NoData from "../../../components/NoData/NoData";
 import ProductItem from "../../../components/Product/ProductItem";
 import { Input } from "../../../components/ui/input";
+import { toast } from "sonner";
 
 import { filterProducts, type FilterOptions } from "../../../lib/filterUtils";
 import { trackSearch } from "../../../lib/recommendationUtils";
@@ -84,7 +85,31 @@ const Shopping = () => {
   };
 
   const handleFilter = async () => {
-    setIsLoading(true);
+    // Validation: Check if user has entered any filter criteria
+    const hasMinPrice = minPrice.trim() !== "";
+    const hasMaxPrice = maxPrice.trim() !== "";
+    const hasMajorSelected = selectedMajors.length > 0;
+
+    // Exception 1: No filter criteria entered
+    if (!hasMinPrice && !hasMaxPrice && !hasMajorSelected) {
+      toast.error(
+        "Vui lòng chọn ít nhất một tiêu chí lọc (giá hoặc chuyên ngành)"
+      );
+      return;
+    }
+
+    // Exception 2: maxPrice < minPrice
+    if (hasMinPrice && hasMaxPrice) {
+      const minPriceNum = Number(minPrice);
+      const maxPriceNum = Number(maxPrice);
+
+      if (maxPriceNum < minPriceNum) {
+        toast.error("Giá tối đa phải lớn hơn hoặc bằng giá tối thiểu");
+        return;
+      }
+    }
+
+    setIsLoading(true); // Show skeleton
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const options: FilterOptions = {
       majors: selectedMajors,
@@ -97,6 +122,9 @@ const Shopping = () => {
     setIsOpenMobileFilter(false);
     setIsOpenFilterTag(true);
     setIsLoading(false); // Hide skeleton
+
+    // Show success message with results count
+    toast.success(`Đã lọc thành công! Tìm thấy ${filtered.length} sản phẩm`);
   };
 
   const handleResetFilters = () => {
@@ -122,6 +150,28 @@ const Shopping = () => {
         return [...prev, major];
       }
     });
+  };
+
+  // Helper function to validate price input
+  const validatePriceInput = (value: string): boolean => {
+    // Allow empty string, positive numbers, and decimal points
+    return value === "" || /^\d*\.?\d*$/.test(value);
+  };
+
+  // Helper function to handle price input changes
+  const handlePriceChange = (
+    value: string,
+    setter: (price: string) => void
+  ) => {
+    if (validatePriceInput(value)) {
+      // Additional validation: prevent values that are too large
+      const numValue = Number(value);
+      if (value !== "" && (numValue < 0 || numValue > 999999999)) {
+        toast.error("Giá phải nằm trong khoảng từ 0 đến 999,999,999");
+        return;
+      }
+      setter(value);
+    }
   };
 
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
@@ -390,13 +440,17 @@ const Shopping = () => {
                       type="number"
                       placeholder="Từ ..."
                       value={minPrice}
-                      onChange={(e) => setMinPrice(e.target.value)}
+                      onChange={(e) =>
+                        handlePriceChange(e.target.value, setMinPrice)
+                      }
                     />
                     <input
                       type="number"
                       placeholder="Đến ..."
                       value={maxPrice}
-                      onChange={(e) => setMaxPrice(e.target.value)}
+                      onChange={(e) =>
+                        handlePriceChange(e.target.value, setMaxPrice)
+                      }
                     />
                   </div>
                 </div>

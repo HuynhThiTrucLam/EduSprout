@@ -5,6 +5,7 @@ import { majors, type Major } from "../../types/major";
 // import { Selection } from "../Selection/Selection";
 import Button from "../commons/Button";
 import styles from "./Filter.module.scss";
+import { toast } from "sonner";
 
 interface FilterProps {
   selectedMajors: Major[];
@@ -33,6 +34,28 @@ const Filter = ({
 }: FilterProps) => {
   const [majorsList, setMajorsList] = useState<Major[]>([]);
 
+  // Helper function to validate price input
+  const validatePriceInput = (value: string): boolean => {
+    // Allow empty string, positive numbers, and decimal points
+    return value === "" || /^\d*\.?\d*$/.test(value);
+  };
+
+  // Helper function to handle price input changes
+  const handlePriceChange = (
+    value: string,
+    setter: (price: string) => void
+  ) => {
+    if (validatePriceInput(value)) {
+      // Additional validation: prevent values that are too large
+      const numValue = Number(value);
+      if (value !== "" && (numValue < 0 || numValue > 999999999)) {
+        toast.error("Giá phải nằm trong khoảng từ 0 đến 999,999,999");
+        return;
+      }
+      setter(value);
+    }
+  };
+
   useEffect(() => {
     setMajorsList(majors);
   }, []);
@@ -57,13 +80,13 @@ const Filter = ({
             type="number"
             placeholder="Từ ..."
             value={minPrice}
-            onChange={(e) => setMinPrice(e.target.value)}
+            onChange={(e) => handlePriceChange(e.target.value, setMinPrice)}
           />
           <input
             type="number"
             placeholder="Đến ..."
             value={maxPrice}
-            onChange={(e) => setMaxPrice(e.target.value)}
+            onChange={(e) => handlePriceChange(e.target.value, setMaxPrice)}
           />
         </div>
       </div>

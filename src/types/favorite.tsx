@@ -118,12 +118,14 @@ export const mockFavorites: Favorite[] = [
           {
             id: 1,
             title: "UI/UX Design",
+            code: "UIUX",
             description:
               "UI/UX Design is the practice of designing user-friendly and engaging digital experiences",
           },
           {
             id: 2,
             title: "Information Technology",
+            code: "IT",
             description:
               "Information Technology focuses on managing and supporting computer systems, networks, and data.",
           },
