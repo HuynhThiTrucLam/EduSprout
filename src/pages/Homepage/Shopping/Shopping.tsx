@@ -20,8 +20,8 @@ import {
 import { categories, type Category } from "../../../types/categories";
 import { majors, type Major } from "../../../types/major";
 import styles from "./Shopping.module.scss";
-// import { Selection } from "../../../components/Selection/Selection";
 import Button from "../../../components/commons/Button";
+import { formatPrice } from "../../../lib/utils";
 
 const Shopping = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -348,10 +348,10 @@ const Shopping = () => {
                   ) : (
                     <div className={styles["Shopping-Filter-tag-item"]}>
                       <p>
-                        Khoảng giá:{" "}
-                        <span>
-                          {minPrice} - {maxPrice}
-                        </span>
+                        {minPrice === "" ? 0 : formatPrice(parseInt(minPrice))}
+                        VND -{" "}
+                        {maxPrice === "" ? 0 : formatPrice(parseInt(maxPrice))}
+                        VND
                       </p>
                     </div>
                   )}

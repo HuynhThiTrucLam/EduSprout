@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Input } from "../../components/ui/input";
 import Button from "../../components/commons/Button";
 import { useAuth } from "../../services/auth_service";
@@ -7,6 +7,7 @@ import styles from "./Auth.module.scss";
 import { Toaster } from "../../components/ui/sonner";
 import { toast } from "sonner";
 import { EyeOff } from "lucide-react";
+import logo from "../../assets/images/Logo.svg";
 
 interface AuthFormData {
   email: string;
@@ -110,6 +111,7 @@ const Auth = () => {
           src="https://images.pexels.com/photos/4238485/pexels-photo-4238485.jpeg"
           alt=""
         />
+
         <div className={styles["Auth-card"]}>
           <div className={styles["Auth-header"]}>
             <h1>{isSignUp ? "Tạo tài khoản" : "Đăng nhập"}</h1>

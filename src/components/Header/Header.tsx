@@ -16,6 +16,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import styles from "./Header.module.scss";
 import { toast } from "sonner";
 import SignOut from "../../assets/Icons/SignOut";
+import SignIn from "../../assets/Icons/SignIn";
 
 const Header = () => {
   const { user, signOut } = useAuth();
@@ -44,6 +45,10 @@ const Header = () => {
     await setTimeOut();
 
     signOut();
+  };
+
+  const handleSignIn = () => {
+    navigate("/auth");
   };
 
   const handleToast = () => {
@@ -306,18 +311,37 @@ const Header = () => {
               >
                 <Contact /> Trợ giúp
               </Link>
-              <button
-                className={`${styles["Header-mobile-menu-item"]} ${
-                  isActive("#") ? styles["Header-mobile-menu-item--active"] : ""
-                }`}
-                onClick={() => {
-                  closeMobileMenu();
-                  handleSignOut();
-                }}
-                data-tooltip="Đăng xuất"
-              >
-                <SignOut /> Đăng xuất
-              </button>
+              {user ? (
+                <button
+                  className={`${styles["Header-mobile-menu-item"]} ${
+                    isActive("#")
+                      ? styles["Header-mobile-menu-item--active"]
+                      : ""
+                  }`}
+                  onClick={() => {
+                    closeMobileMenu();
+                    handleSignOut();
+                  }}
+                  data-tooltip="Đăng xuất"
+                >
+                  <SignOut /> Đăng xuất
+                </button>
+              ) : (
+                <button
+                  className={`${styles["Header-mobile-menu-item"]} ${
+                    isActive("#")
+                      ? styles["Header-mobile-menu-item--active"]
+                      : ""
+                  }`}
+                  onClick={() => {
+                    closeMobileMenu();
+                    handleSignIn();
+                  }}
+                  data-tooltip="Đăng xuất"
+                >
+                  <SignIn /> Đăng nhập
+                </button>
+              )}
             </div>
           </div>
         </div>

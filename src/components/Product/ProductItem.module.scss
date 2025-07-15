@@ -188,6 +188,7 @@
 
 @media (max-width: 425.5px) {
   .ProductItem {
+    height: max-content;
     &-container {
       gap: 1rem;
     }
