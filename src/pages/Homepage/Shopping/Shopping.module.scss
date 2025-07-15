@@ -345,7 +345,57 @@
   }
 }
 
-@media (max-width: 425.5px) {
+@media (min-width: 768.5px) and (max-width: 1124.9px) {
+  .Shopping {
+    &-header {
+      gap: 0.25rem;
+      h2 {
+        font-size: 1.6rem;
+      }
+      p {
+        font-size: 11px;
+      }
+    }
+    &-categories {
+      height: 120px;
+      margin-bottom: 1.5rem;
+    }
+    &-products {
+      gap: 1rem;
+    }
+    &-filter {
+      width: 26%;
+    }
+    &-list {
+      width: 74%;
+      &-products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      &-header {
+        &-left {
+          p {
+            font-size: 11px;
+          }
+        }
+        &-right {
+          &-item {
+            padding: 0.5rem;
+            svg {
+              path {
+                stroke-width: 1px;
+              }
+            }
+          }
+          &-search {
+            padding: 0.5rem 0.75rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768.5px) {
   .Shopping {
     &-container {
       width: 90%;

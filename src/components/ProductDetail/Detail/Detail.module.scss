@@ -530,7 +530,160 @@
   will-change: transform, opacity;
 }
 
-@media (max-width: 425.5px) {
+@media (min-width: 768.5px) and (max-width: 1124.9px) {
+  .Detail {
+    &-header {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      &-left {
+        width: 100%;
+        gap: 0.75rem;
+        &-title {
+          flex-direction: column;
+          align-items: center;
+          gap: 0.25rem;
+          h1 {
+            text-align: center;
+            font-size: 2.25rem;
+          }
+        }
+        &-share {
+          margin-top: 0;
+        }
+        & .share,
+        & .favorite {
+          margin-top: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          svg {
+            width: 1.25rem;
+            height: 1.25rem;
+          }
+          & .share {
+            width: 1.5rem;
+            height: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            &:hover {
+              background-color: #eff3f3;
+            }
+          }
+        }
+        &-info {
+          justify-content: center;
+        }
+      }
+      &-right {
+        width: 100%;
+        align-items: center;
+        gap: 1.5rem;
+      }
+    }
+    &-button {
+      width: 80%;
+    }
+    &-course {
+      max-height: 70vh;
+      min-height: auto;
+      flex-direction: column;
+      img {
+        width: 100%;
+        aspect-ratio: 2/1;
+      }
+      &-content {
+        display: none;
+      }
+      &-mobile {
+        z-index: 10;
+        background-color: white;
+        display: block;
+        border-radius: 0.5rem;
+        border: 0.25px solid $gray;
+        padding: 1rem;
+        button {
+          font-family: "Poppins SemiBold";
+          font-size: 13px;
+          color: $black;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 100%;
+          transition: all 0.2s ease;
+        }
+        &-item {
+          height: 310px;
+          overflow-y: scroll;
+        }
+        &-content {
+          display: flex;
+        }
+        [data-state="open"] {
+          transform-origin: top;
+          animation: slideDown 0.3s ease-out;
+        }
+
+        [data-state="closed"] {
+          transform-origin: bottom;
+          animation: slideUp 0.3s ease-out;
+        }
+      }
+    }
+    &-chapter {
+      &-list {
+        padding: 0;
+        gap: 0;
+      }
+      &-item {
+        padding-block: 1.5rem;
+        border-top: 0.1px solid $gray;
+        border-bottom: 0;
+        &:first-child {
+          margin-top: 1rem;
+        }
+      }
+    }
+    &-description {
+      padding: 1rem 1.5rem;
+    }
+    &-book {
+      min-height: auto;
+      flex-direction: column-reverse;
+      img {
+        width: 100%;
+        aspect-ratio: 2/1;
+      }
+      &-content {
+        width: 100%;
+      }
+      &-info {
+        &-item {
+          align-items: self-start;
+          strong {
+            width: max-content;
+          }
+          span {
+            width: max-content;
+          }
+        }
+        &-description {
+          p {
+            text-align: start;
+          }
+        }
+        &-CTA {
+          & .button {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
   .Detail {
     &-header {
       flex-direction: column;
@@ -590,7 +743,7 @@
       flex-direction: column;
       img {
         width: 100%;
-        aspect-ratio: 1/1;
+        aspect-ratio: 2/1;
       }
       &-content {
         display: none;
@@ -677,6 +830,16 @@
             width: 100%;
           }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 425.5px) {
+  .Detail {
+    &-course {
+      img {
+        aspect-ratio: 1/1;
       }
     }
   }

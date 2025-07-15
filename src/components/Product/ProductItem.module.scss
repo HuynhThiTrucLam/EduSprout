@@ -186,6 +186,64 @@
   }
 }
 
+@media (min-width: 768.5px) and (max-width: 1124.9px) {
+  .ProductItem {
+    min-width: 230px;
+    &-container {
+      gap: 1rem;
+      padding: 1rem;
+    }
+    &-Title {
+      font-size: 13px;
+    }
+    &-organization {
+      gap: 0.45rem;
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+      p {
+        font-size: 8px;
+      }
+    }
+    &-CTA {
+      &-button {
+        padding-block: 0.25rem;
+        padding-inline: 0.5rem;
+        font-size: 8px;
+      }
+    }
+    &-info {
+      gap: 0.65rem;
+    }
+    &-Subtitle {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.45rem;
+      p {
+        font-size: 10px;
+      }
+      &-book {
+        p {
+          font-size: 10px;
+        }
+      }
+    }
+    &-Price {
+      flex-direction: column-reverse;
+      gap: 0.5rem;
+      &-container {
+        &-discount {
+          font-size: 8px;
+        }
+        &-end {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 425.5px) {
   .ProductItem {
     height: max-content;

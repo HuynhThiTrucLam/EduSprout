@@ -72,7 +72,34 @@
   stroke: $white !important;
 }
 
-@media (max-width: 425.5px) {
+@media (min-width: 768.5px) and (max-width: 1124.9px) {
+  .Categories {
+    &-header {
+      h3 {
+        font-size: 8px;
+      }
+    }
+    &-container {
+      height: 100%;
+      gap: 1rem;
+    }
+  }
+
+  .CategoryItem {
+    &--active {
+      gap: 0.25rem;
+    }
+    svg {
+      width: 2.5rem;
+    }
+    p {
+      font-family: "Poppins Medium";
+      font-size: 10px;
+    }
+  }
+}
+
+@media (max-width: 768.5px) {
   .Categories {
     &-container {
       grid-template-columns: repeat(3, 1fr);
@@ -89,6 +116,11 @@
     }
     p {
       font-size: 10px;
+    }
+    &--active {
+      p {
+        color: $white;
+      }
     }
   }
 }

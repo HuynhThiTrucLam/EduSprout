@@ -191,7 +191,52 @@
   }
 }
 
-@media (max-width: 425.5px) {
+@media (min-width: 768.5px) and (max-width: 1124.9px) {
+  .Filter {
+    gap: 1rem;
+    &-header {
+      margin-bottom: 0.75rem;
+      align-items: center;
+      padding-bottom: 0.5rem;
+      &-title {
+        font-size: 11px;
+      }
+    }
+    &-price {
+      gap: 0.5rem;
+      p {
+        font-size: 10px;
+      }
+    }
+    &-input {
+      input {
+        padding: 0.5rem;
+      }
+      p {
+        font-size: 10px;
+      }
+    }
+    &-majors {
+      margin-top: 1rem;
+      gap: 0.5rem;
+      &-title {
+        font-size: 11px;
+        color: $gray;
+      }
+      &-list {
+        max-height: 240px;
+        gap: 0.65rem;
+      }
+    }
+    &-button {
+      padding: 0.5rem 1rem;
+      p {
+        font-size: 10px;
+      }
+    }
+  }
+}
+@media (max-width: 768.5px) {
   .Filter {
     display: none;
   }
