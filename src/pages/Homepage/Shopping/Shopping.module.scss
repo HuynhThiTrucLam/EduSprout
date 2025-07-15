@@ -347,6 +347,7 @@
       gap: 1rem;
     }
     &-list {
+      position: relative;
       width: 100%;
       gap: 1rem;
 
@@ -416,29 +417,124 @@
         }
       }
     }
-    &-mobile-filter {
-      display: block;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      height: 200px;
-      background-color: $white;
-      z-index: 100;
 
-      & .Filter {
-        display: block;
-      }
-      &-icon {
-        display: block;
+    &-mobile {
+      &-tab {
+        position: absolute;
+        top: 15%;
+        left: 0;
+        width: 100%;
+        height: max-content;
+        background-color: $white;
+        border-radius: 0.5rem;
+        padding: 1.5rem 1rem;
         border: 0.5px solid $gray;
-        width: 3.5rem;
-        aspect-ratio: 1/1;
+        z-index: 99;
+
         display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        &-header {
+          display: flex !important;
+          flex-direction: row !important;
+          justify-content: space-between !important;
+          align-items: center !important;
+          padding-bottom: 0.5rem;
+          border-bottom: 0.25px solid $gray;
+          p {
+            font-family: "Poppins SemiBold";
+            font-size: 13px;
+            color: $black;
+            line-height: 1.62;
+          }
+          p:last-child {
+            font-family: "Poppins Light";
+            font-size: 12px;
+            color: $gray;
+            line-height: 1.62;
+            padding: 0.5rem 1rem;
+            background-color: #f0f4fa;
+            text-align: center;
+            border-radius: 10rem;
+          }
+        }
+        & .price {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          &-input {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            input {
+              width: 50%;
+            }
+          }
+          p {
+            font-family: "Poppins SemiBold";
+            font-size: 12px;
+            color: #828282;
+          }
+        }
+        & .input {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          gap: 0.5rem;
+          p {
+            font-family: "Poppins SemiBold";
+            font-size: 11px;
+            color: $gray;
+          }
+
+          input {
+            width: 100%;
+            border: 0.25px solid $gray;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            font-size: 11px;
+            font-family: "Poppins Regular";
+            color: $gray;
+            ::placeholder {
+              font-family: "Poppins Light";
+              font-size: 12px;
+              color: $gray;
+            }
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+        & .Button {
+          width: 100%;
+          height: 100%;
+          background-color: $primary-color;
+          padding: 0.75rem 1.5rem;
+          border-top-left-radius: 1rem;
+          border-bottom-left-radius: 1rem;
+          border-top-right-radius: 1rem;
+          border-bottom-right-radius: 0.1rem;
+          p {
+            color: $white !important;
+            font-family: "Poppins Medium";
+            font-size: 12px !important;
+            color: $white;
+            line-height: 1.62;
+          }
+        }
+      }
+
+      &-filter-icon {
+        display: flex !important; // ← Add this
         align-items: center;
         justify-content: center;
-        border-radius: 0.5rem;
+        z-index: 95;
+        position: relative; // or absolute if needed
         cursor: pointer;
+        width: 3.5rem;
+        height: 3rem;
+        border: 0.5px solid $gray;
+        border-radius: 0.5rem;
         svg {
           path {
             stroke-width: 1px;
@@ -446,48 +542,19 @@
         }
       }
     }
-    // Shopping-mobile-filter-icon
 
-    &-pagination {
-      margin-top: 1.5rem;
-      padding: 0.75rem 0;
-      gap: 0.75rem;
-
-      .pagination-container {
-        gap: 0.25rem;
-
-        .pagination-btn {
-          min-width: 2rem;
-          height: 2rem;
-          padding: 0.25rem 0.5rem;
-          font-size: 0.75rem;
-
-          .pagination-text {
-            display: none;
-          }
-        }
-
-        .pagination-numbers {
-          margin: 0 0.5rem;
-          gap: 0.125rem;
-
-          .pagination-number {
-            width: 2rem;
-            height: 2rem;
-            font-size: 0.75rem;
-          }
-
-          .pagination-ellipsis {
-            width: 2rem;
-            height: 2rem;
-            font-size: 0.75rem;
-          }
-        }
-      }
-
-      .pagination-info {
-        span {
-          font-size: 0.75rem;
+    &-Filter-tag {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      &-item {
+        padding: 0.5rem 0.75rem;
+        border-radius: 10rem;
+        background-color: #eef3f4;
+        p {
+          font-family: "Poppins SemiBold";
+          font-size: 10px;
+          color: $primary-color;
         }
       }
     }

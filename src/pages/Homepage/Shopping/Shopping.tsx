@@ -19,6 +19,8 @@ import {
 import { categories, type Category } from "../../../types/categories";
 import { majors, type Major } from "../../../types/major";
 import styles from "./Shopping.module.scss";
+import { Selection } from "../../../components/Selection/Selection";
+import Button from "../../../components/commons/Button";
 
 const Shopping = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -31,7 +33,8 @@ const Shopping = () => {
 
   const [isActiveFilter, setIsActiveFilter] = useState<boolean>(false);
   const [isChangeLayout, setIsChangeLayout] = useState<boolean>(false);
-  const [isOpenMobileFilter, setIsOpenMobileFilter] = useState<boolean>(false);
+  const [isOpenMobileFilter, setIsOpenMobileFilter] = useState<boolean>();
+  const [isOpenFilterTab, setIsOpenFilterTab] = useState<boolean>(false);
 
   const [searchTerm, setSearchTerm] = useState<string>("");
 
@@ -82,10 +85,6 @@ const Shopping = () => {
     }
   };
 
-  const handleOpenMobileFilter = () => {
-    setIsOpenMobileFilter(true);
-  };
-
   const handleFilter = async () => {
     setIsLoading(true); // Show skeleton
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -97,6 +96,8 @@ const Shopping = () => {
     };
     const filtered = filterProducts(allProducts, options);
     setProductList(filtered);
+    setIsOpenMobileFilter(false);
+    setIsOpenFilterTab(true);
     setIsLoading(false); // Hide skeleton
   };
 
@@ -207,6 +208,7 @@ const Shopping = () => {
     }
     setIsActiveFilter(false);
     resetPagination();
+    setIsOpenMobileFilter(false);
   }, [isActiveFilter, selectedCategory]);
   return (
     <div id="shopping-section" className={styles["Shopping"]}>
@@ -247,7 +249,9 @@ const Shopping = () => {
                   className={`${styles["Shopping-mobile-filter-icon"]} ${
                     isActiveFilter ? styles["active"] : ""
                   }`}
-                  onClick={handleOpenMobileFilter}
+                  onClick={() => {
+                    setIsOpenMobileFilter(!isOpenMobileFilter);
+                  }}
                 >
                   <FilterIcon />
                 </div>
@@ -275,6 +279,7 @@ const Shopping = () => {
                 </div>
               </div>
             </div>
+
             {/* Custom Pagination */}
             {totalPages > 1 && (
               <div className={styles["Shopping-pagination"]}>
@@ -327,6 +332,75 @@ const Shopping = () => {
               </div>
             )}
 
+            {/* Mobile Filter Tab In Mobile */}
+            {isOpenMobileFilter && (
+              <div className={styles["Shopping-mobile-tab"]}>
+                <div className={styles["Shopping-mobile-tab-header"]}>
+                  <p>Bộ lọc tìm kiếm</p>
+                  <div
+                    className={styles["Shopping-mobile-tab-header-reset"]}
+                    onClick={handleResetFilters}
+                  >
+                    <p>Bỏ lọc</p>
+                  </div>
+                </div>
+                <div className={styles["price"]}>
+                  <p>
+                    Khoảng giá <span>(VND)</span>
+                  </p>
+                  <div className={styles["input"]}>
+                    <input
+                      type="number"
+                      placeholder="Từ ..."
+                      value={minPrice}
+                      onChange={(e) => setMinPrice(e.target.value)}
+                    />
+                    <input
+                      type="number"
+                      placeholder="Đến ..."
+                      value={maxPrice}
+                      onChange={(e) => setMaxPrice(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <Selection
+                  title="Chuyên ngành"
+                  options={majors}
+                  selectedOption={selectedMajor}
+                  handleSelect={(option) => setSelectedMajor(option as Major)}
+                  getOptionLabel={(option) => option.title}
+                  getOptionValue={(option) => option.id.toString()}
+                />
+                <Button
+                  text="Áp dụng"
+                  onClick={handleFilter}
+                  className={styles["Button"]}
+                />
+              </div>
+            )}
+
+            {isOpenFilterTab ? (
+              <div className={styles["Shopping-Filter-tag"]}>
+                {minPrice === "" && maxPrice === "" ? (
+                  ""
+                ) : (
+                  <div className={styles["Shopping-Filter-tag-item"]}>
+                    <p>
+                      Khoảng giá:{" "}
+                      <span>
+                        {minPrice} - {maxPrice}
+                      </span>
+                    </p>
+                  </div>
+                )}
+                <div className={styles["Shopping-Filter-tag-item"]}>
+                  <p>Chuyên ngành: {selectedMajor?.title}</p>
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+
             {isLoading ? (
               <div className={styles["Shopping-list-products"]}>
                 {Array.from({ length: 6 }).map((_, index) => (
@@ -353,22 +427,6 @@ const Shopping = () => {
               <NoData text="Hiện chưa có sản phẩm nào" />
             )}
           </div>
-          {isOpenMobileFilter && (
-            <div className={styles["Shopping-mobile-filter"]}>
-              <Filter
-                selectedMajor={selectedMajor}
-                handleSelectMajor={setSelectedMajor}
-                handleFilter={handleFilter}
-                handleResetFilters={handleResetFilters}
-                // selectedLanguage={selectedLanguage}
-                // handleSelectLanguage={handleLanguageChange}
-                minPrice={minPrice}
-                maxPrice={maxPrice}
-                setMinPrice={setMinPrice}
-                setMaxPrice={setMaxPrice}
-              />
-            </div>
-          )}
         </div>
       </div>
     </div>
