@@ -81,7 +81,10 @@ const Header = () => {
                 isActive("/my-course") ? styles["Header-item--active"] : ""
               }`}
             >
-              <Link to="/my-course" className={styles["Header-item-link"]}>
+              <Link
+                to={user ? "/my-course" : "/auth"}
+                className={styles["Header-item-link"]}
+              >
                 Khóa học của tôi
               </Link>
             </div>
@@ -90,7 +93,10 @@ const Header = () => {
                 isActive("/my-favorite") ? styles["Header-item--active"] : ""
               }`}
             >
-              <Link to="/my-favorite" className={styles["Header-item-link"]}>
+              <Link
+                to={user ? "/my-favorite" : "/auth"}
+                className={styles["Header-item-link"]}
+              >
                 Danh sách yêu thích
               </Link>
             </div>
@@ -250,7 +256,7 @@ const Header = () => {
                 <Home /> Trang chủ
               </Link>
               <Link
-                to="/my-course"
+                to={user ? "/my-course" : "/auth"}
                 className={`${styles["Header-mobile-menu-item"]} ${
                   isActive("/my-course")
                     ? styles["Header-mobile-menu-item--active"]
@@ -262,7 +268,7 @@ const Header = () => {
                 <CourseIcon /> Khóa học của tôi
               </Link>
               <Link
-                to="/my-favorite"
+                to={user ? "/my-favorite" : "/auth"}
                 className={`${styles["Header-mobile-menu-item"]} ${
                   isActive("/my-favorite")
                     ? styles["Header-mobile-menu-item--active"]

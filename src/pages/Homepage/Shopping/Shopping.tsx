@@ -14,6 +14,7 @@ import {
   getAllBooksService,
   getAllCoursesService,
   getAllDocumentsService,
+  searchProductsService,
 } from "../../../services/product_service";
 import { categories, type Category } from "../../../types/categories";
 import { majors, type Major } from "../../../types/major";
@@ -136,14 +137,6 @@ const Shopping = () => {
     // Add loading state for smooth transition
     setIsPaginationLoading(true);
 
-    // Smooth scroll to top of product list
-    const productListElement = document.querySelector(
-      `.${styles["Shopping-list-products"]}`
-    );
-    if (productListElement) {
-      productListElement.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-
     // Simulate loading delay for better UX
     setTimeout(() => {
       setCurrentPage(page);
@@ -190,11 +183,20 @@ const Shopping = () => {
   };
 
   // Handle search
-  const handleSearch = (searchString: string) => {
+  const handleSearch = async (searchString: string) => {
+    setIsLoading(true);
     if (searchString.trim()) {
       trackSearch(searchString.trim());
     }
-    console.log("searchTerm: ", searchString);
+    let response: any[] = [];
+    if (selectedCategory?.slug) {
+      response = await searchProductsService(
+        selectedCategory?.slug.toLowerCase() || "",
+        searchString
+      );
+    }
+    setProductList(response || []);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -259,15 +261,15 @@ const Shopping = () => {
                 </div>
                 <div className={styles["Shopping-list-header-right-search"]}>
                   <Input
-                    type="email"
-                    placeholder="Search"
+                    type="text"
+                    placeholder="Tìm kiếm"
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={(e) => {
+                      setSearchTerm(e.target.value);
+                      handleSearch(e.target.value.trim());
+                    }}
                   />
-                  <div
-                    className="&:hover:rouded-full "
-                    onClick={() => handleSearch(searchTerm)}
-                  >
+                  <div className="&:hover:rouded-full ">
                     <SearchIcon strokeColor="var(--search-icon-stroke)" />
                   </div>
                 </div>

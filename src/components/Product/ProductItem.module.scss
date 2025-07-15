@@ -2,6 +2,7 @@
 
 .ProductItem {
   width: 100%;
+  min-width: 320px;
   border: 0.5px solid $gray;
   border-radius: 0.75rem;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
@@ -172,7 +173,7 @@
       &-end {
         color: $primary-color;
         font-family: "Poppins SemiBold";
-        font-size: 14px;
+        font-size: 13px;
       }
       &-discount {
         color: $primary-color;
@@ -213,11 +214,6 @@
       &-subtitle {
         font-size: 12px;
       }
-    }
-    &-Subtitle {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.6rem;
     }
     &-Price {
       padding: 0.5rem;

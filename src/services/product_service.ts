@@ -262,3 +262,33 @@ export const suggestProductsService = async () => {
     return [];
   }
 };
+
+//search products
+export const searchProductsService = async (
+  typeOfProduct: string,
+  query: string
+) => {
+  try {
+    const lowerQuery = query.toLowerCase();
+    if (typeOfProduct === "courses") {
+      const response = mockCourses.filter((course) =>
+        course.infor.title.toLowerCase().includes(lowerQuery)
+      );
+      return response;
+    } else if (typeOfProduct === "books") {
+      const response = mockBooks.filter((book) =>
+        book.infor.title.toLowerCase().includes(lowerQuery)
+      );
+      return response;
+    } else if (typeOfProduct === "documents") {
+      const response = mockDocuments.filter((document) =>
+        document.infor.title.toLowerCase().includes(lowerQuery)
+      );
+      return response;
+    }
+    return [];
+  } catch (error) {
+    console.error("Error searching products:", error);
+    return [];
+  }
+};
