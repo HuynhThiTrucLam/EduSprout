@@ -473,7 +473,7 @@
   }
 
   &-mobile-menu-content {
-    width: 80%;
+    width: 50%;
     height: 100%;
     background-color: $white;
     padding: 1.5rem;
@@ -811,6 +811,18 @@
             font-family: "Poppins SemiBold", "Poppins", sans-serif;
             font-size: 14px;
           }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425.5px) {
+  .Header {
+    &-mobile {
+      &-menu {
+        &-content {
+          width: 80%;
         }
       }
     }

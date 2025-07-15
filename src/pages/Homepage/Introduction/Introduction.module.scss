@@ -262,74 +262,117 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 768.5px) and (max-width: 1124.9px) {
   .Introduction {
-    padding-top: 4.5rem;
-
+    padding-top: 7.5rem;
+    min-height: auto;
     &-container {
-      width: 90%;
-      padding: 0 1rem;
-      gap: 2rem;
+      width: $container-width;
+      padding: 0;
+      gap: 1.5rem;
+      h1 {
+        span {
+          svg {
+            width: 50%;
+          }
+        }
+      }
     }
-
     &-left {
-      width: 50%;
-      gap: 2rem;
+      gap: 1rem;
+      h1 {
+        width: 90%;
+        font-size: 2.5rem;
+        line-height: 1.5;
+        svg {
+          width: 50%;
+        }
+      }
 
       &-top {
-        margin-left: 1rem;
-
-        h1 {
-          font-size: 3.5rem;
-          line-height: 80px;
-        }
-
+        margin-left: 0;
         p {
-          width: 70%;
-          font-size: 12px;
+          font-size: 11px;
+          width: 80%;
         }
-
+        span {
+          svg {
+            width: 40%;
+          }
+        }
         &-button {
-          width: 35%;
+          width: 50%;
+          padding: 0.1rem 0.4rem;
         }
       }
-
       &-bottom {
-        padding-left: 4rem;
-        gap: 0.8rem;
-
+        width: 90%;
+        padding-left: 0;
         &-content {
-          width: 45%;
+          padding: 0.65rem;
+          h2 {
+            font-size: 10px;
+          }
         }
-
         &-content2 {
-          width: 85%;
+          padding: 0.65rem;
+          &-image {
+            p {
+              font-size: 10px;
+              width: 80%;
+            }
+          }
+        }
+        &-decorate {
+          svg {
+            display: none;
+          }
         }
       }
     }
-
-    &-right {
-      width: 45%;
-
-      &-decorate {
-        width: 90%;
+    &-image {
+      &-decorate2 {
+        text-align: center;
+        svg {
+          width: 24%;
+        }
       }
-
+    }
+    &-number {
+      span {
+        font-size: 8px;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+    &-decorate2 {
+      right: 0;
+      svg {
+        width: 40%;
+      }
+    }
+    &-right {
+      &-decorate {
+        width: 80%;
+      }
       &-image {
-        width: 85%;
+        width: 80%;
       }
     }
   }
 }
 
-@media (max-width: 768.5px) {
+@media (min-width: 425.8px) and (max-width: 768.5px) {
   .Introduction {
-    padding-top: 4rem;
     min-height: auto;
+    // padding-top: 3.5rem;
+    padding-top: 4rem;
 
     &-container {
-      width: 95%;
-      padding: 0 0.5rem;
+      width: 100%;
+      // padding: 0 1rem;
+      padding: 0;
       flex-direction: column-reverse;
       gap: 1.5rem;
       padding-block: 2rem;
@@ -337,18 +380,20 @@
 
     &-left {
       width: 100%;
-      gap: 2rem;
-
+      gap: 6rem;
       &-top {
         margin-left: 0;
-
+        align-items: center;
+        gap: 1.25rem;
         h1 {
+          text-align: center;
           font-size: 2.5rem;
           line-height: 1.3;
           margin-bottom: 0;
 
           span {
-            right: -10%;
+            top: 90%;
+            transform: translateX(-35%);
             svg {
               width: 60%;
             }
@@ -356,39 +401,50 @@
         }
 
         p {
-          width: 90%;
-          font-size: 14px;
+          margin: 0 auto;
+          width: 60%;
+          padding: 0;
+          font-size: 12px;
+          text-align: center;
         }
 
         &-button {
-          width: 40%;
+          width: 50%;
+          padding: 0.65rem;
 
           p {
-            font-size: 13px;
+            font-size: 12px;
           }
         }
       }
 
       &-bottom {
+        width: 95%;
+        margin: 0 auto;
         padding-left: 0;
-        flex-direction: column;
+        flex-direction: row;
         gap: 1rem;
-
         &-content {
           width: 100%;
+          margin-left: 6rem;
         }
-
+        &-decorate {
+          svg {
+            width: 90%;
+          }
+        }
         &-content2 {
           width: 100%;
-
           &-image {
             img {
-              width: 80%;
+              width: 60%;
+              aspect-ratio: 2/1;
             }
 
             p {
               width: 80%;
-              font-size: 13px;
+              font-size: 12px;
+              line-height: 1.9;
             }
           }
         }
@@ -398,25 +454,21 @@
     &-right {
       width: 100%;
       justify-content: center;
-
-      &-decorate {
-        width: 100%;
-      }
-
       &-image {
+        width: 48% !important;
         position: relative;
         bottom: 0;
         right: 0;
         width: 80%;
       }
+      &-decorate {
+        display: none;
+      }
     }
-
     &-decorate2 {
-      top: 50%;
-      right: -15%;
-
+      top: -80%;
       svg {
-        width: 50%;
+        width: 60%;
       }
     }
   }
@@ -424,23 +476,31 @@
 
 @media (max-width: 425.5px) {
   .Introduction {
-    padding-top: 3.5rem;
+    min-height: auto;
+    // padding-top: 3.5rem;
+    padding-top: 4rem;
 
     &-container {
       width: 100%;
-      padding: 0 1rem;
-      gap: 1rem;
-      padding-block: 1.5rem;
+      // padding: 0 1rem;
+      padding: 0 0.5rem;
+      flex-direction: column-reverse;
+      gap: 1.5rem;
+      padding-block: 2rem;
     }
 
     &-left {
+      width: 100%;
       gap: 3rem;
       &-top {
+        margin-left: 0;
         align-items: center;
+        gap: 0.5rem;
         h1 {
           text-align: center;
-          font-size: 2.5rem;
-          line-height: 1.6;
+          font-size: 2.3rem;
+          line-height: 1.3;
+          margin-bottom: 0;
 
           span {
             left: 3%;
@@ -467,10 +527,19 @@
       }
 
       &-bottom {
+        width: 95%;
+        margin: 0 auto;
+        padding-left: 0;
+        flex-direction: column;
+        gap: 1rem;
+        &-content {
+          width: 100%;
+        }
         &-decorate {
           display: none;
         }
         &-content2 {
+          width: 100%;
           &-image {
             img {
               width: 60%;
@@ -487,8 +556,14 @@
     }
 
     &-right {
+      width: 100%;
+      justify-content: center;
       &-image {
         width: 90%;
+        position: relative;
+        bottom: 0;
+        right: 0;
+        width: 80%;
       }
       &-decorate {
         display: none;
