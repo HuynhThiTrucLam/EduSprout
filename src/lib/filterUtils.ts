@@ -5,7 +5,7 @@ import type { Language } from "../types/language";
 import type { Major } from "../types/major";
 
 export interface FilterOptions {
-  major?: Major | null;
+  majors?: Major[];
   language?: Language | null;
   minPrice?: number;
   maxPrice?: number;
@@ -16,15 +16,15 @@ export function filterProducts(
   options: FilterOptions
 ): Book[] | Course[] | Document[] {
   return products.filter((product) => {
-    const { major, language, minPrice, maxPrice } = options;
+    const { majors, language, minPrice, maxPrice } = options;
 
-    // Major filter
-    if (
-      major &&
-      major.title !== "All" &&
-      product.infor.majors?.some((m) => m.id === major.id)
-    ) {
-      return false;
+    // Major filter - if majors are selected, product must have at least one matching major
+
+    if (majors && majors.length > 0) {
+      const hasMatchingMajor = product.infor.majors?.some((productMajor) =>
+        majors.some((selectedMajor) => selectedMajor.code === productMajor.code)
+      );
+      if (!hasMatchingMajor) return false;
     }
 
     // Language filter

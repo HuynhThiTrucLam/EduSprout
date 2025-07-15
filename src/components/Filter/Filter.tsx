@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 // import { getLanguagesService } from "../../services/language_service";
 // import type { Language } from "../../types/language";
 import { majors, type Major } from "../../types/major";
-import { Selection } from "../Selection/Selection";
+// import { Selection } from "../Selection/Selection";
 import Button from "../commons/Button";
 import styles from "./Filter.module.scss";
 
 interface FilterProps {
-  selectedMajor: Major | null;
-  handleSelectMajor: (option: Major) => void;
+  selectedMajors: Major[];
+  handleMajorToggle: (major: Major) => void;
   // selectedLanguage: Language | null;
   // handleSelectLanguage: (option: Language) => void;
   handleFilter: () => void;
@@ -20,8 +20,8 @@ interface FilterProps {
 }
 
 const Filter = ({
-  selectedMajor,
-  handleSelectMajor,
+  selectedMajors,
+  handleMajorToggle,
   // selectedLanguage,
   // handleSelectLanguage,
   handleFilter,
@@ -32,16 +32,9 @@ const Filter = ({
   setMaxPrice,
 }: FilterProps) => {
   const [majorsList, setMajorsList] = useState<Major[]>([]);
-  // const [languagesList, setLanguagesList] = useState<Language[]>([]);
-
-  // const getLanguages = async () => {
-  //   const languages = await getLanguagesService();
-  //   setLanguagesList(languages);
-  // };
 
   useEffect(() => {
     setMajorsList(majors);
-    // getLanguages();
   }, []);
 
   return (
@@ -74,14 +67,28 @@ const Filter = ({
           />
         </div>
       </div>
-      <Selection
-        title="Chuyên ngành"
-        options={majorsList}
-        selectedOption={selectedMajor}
-        handleSelect={(option) => handleSelectMajor(option as Major)}
-        getOptionLabel={(option) => option.title}
-        getOptionValue={(option) => option.id.toString()}
-      />
+      <div className={styles["Filter-majors"]}>
+        <p className={styles["Filter-majors-title"]}>Chuyên ngành</p>
+        <div className={styles["Filter-majors-list"]}>
+          {majorsList.map((major) => (
+            <div key={major.id} className={styles["Filter-majors-item"]}>
+              <input
+                type="checkbox"
+                id={`major-${major.id}`}
+                checked={selectedMajors.some((m) => m.id === major.id)}
+                onChange={() => handleMajorToggle(major)}
+                className={styles["Filter-majors-checkbox"]}
+              />
+              <label
+                htmlFor={`major-${major.id}`}
+                className={styles["Filter-majors-label"]}
+              >
+                {major.title}
+              </label>
+            </div>
+          ))}
+        </div>
+      </div>
       {/* <Selection
         title="Ngôn ngữ"
         options={languagesList}

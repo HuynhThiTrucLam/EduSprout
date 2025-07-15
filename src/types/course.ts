@@ -125,12 +125,14 @@ export const mockCourses: Course[] = [
         {
           id: 1,
           title: "UI/UX Design",
+          code: "UIUX",
           description:
             "UI/UX Design is the practice of designing user-friendly and engaging digital experiences",
         },
         {
           id: 2,
           title: "Information Technology",
+          code: "IT",
           description:
             "Information Technology focuses on managing and supporting computer systems, networks, and data.",
         },
@@ -233,6 +235,7 @@ export const mockCourses: Course[] = [
         {
           id: 2,
           title: "Information Technology",
+          code: "IT",
           description:
             "Information Technology focuses on managing and supporting computer systems, networks, and data.",
         },
@@ -296,6 +299,7 @@ export const mockCourses: Course[] = [
       majors: [
         {
           id: 3,
+          code: "BA",
           title: "Business Administration",
           description:
             "Business Administration is the management of business operations and decision-making",
@@ -360,6 +364,7 @@ export const mockCourses: Course[] = [
         {
           id: 4,
           title: "Psychology",
+          code: "PSY",
           description:
             "Psychology is the study of the human mind, behavior, and mental processes",
         },
@@ -427,6 +432,7 @@ export const mockCourses: Course[] = [
         {
           id: 6,
           title: "Sociology",
+          code: "SOC",
           description:
             "Sociology is the study of social life, groups, and societies.",
         },
@@ -497,8 +503,9 @@ export const mockCourses: Course[] = [
       comments: [],
       majors: [
         {
-          id: 7,
+          id: 8,
           title: "Data Science",
+          code: "DS",
           description:
             "Study of extracting insights from structured and unstructured data.",
         },
@@ -616,8 +623,9 @@ export const mockCourses: Course[] = [
       comments: [],
       majors: [
         {
-          id: 5,
+          id: 7,
           title: "Design",
+          code: "DESIGN",
           description:
             "The discipline of visual, interaction, and product design",
         },
@@ -698,12 +706,14 @@ export const mockCourses: Course[] = [
         {
           id: 1,
           title: "Thiết kế UI/UX",
+          code: "UIUX",
           description:
             "UI/UX là nghệ thuật thiết kế trải nghiệm số thân thiện và hấp dẫn với người dùng.",
         },
         {
           id: 2,
           title: "Công nghệ Thông tin",
+          code: "IT",
           description: "Chuyên sâu về hệ thống máy tính, mạng và dữ liệu.",
         },
       ],
