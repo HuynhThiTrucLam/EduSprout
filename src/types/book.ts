@@ -27,7 +27,40 @@ export const mockBooks: Book[] = [
       sellNumber: 1500,
       discount: 0.1,
       rating: 4.5,
-      comments: [],
+      comments: [
+        {
+          id: 1,
+          user: {
+            id: "user-001",
+            name: "John Doe",
+            email: "john.doe@example.com",
+            phone: "1234567890",
+            image:
+              "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlfGVufDB8fDB8fHww",
+          },
+          content:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          rating: 4,
+          createdAt: "2025-06-03T08:40:00Z",
+          updatedAt: "2025-06-03T08:40:00Z",
+        },
+        {
+          id: 2,
+          user: {
+            id: "user-001",
+            name: "John Doe",
+            email: "john.doe@example.com",
+            phone: "1234567890",
+            image:
+              "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlfGVufDB8fDB8fHww",
+          },
+          content:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          rating: 4,
+          createdAt: "2025-06-03T08:40:00Z",
+          updatedAt: "2025-06-03T08:40:00Z",
+        },
+      ],
       category: {
         id: 3,
         title: "Books",
@@ -72,7 +105,40 @@ export const mockBooks: Book[] = [
       sellNumber: 2000,
       discount: 0.15,
       rating: 4.7,
-      comments: [],
+      comments: [
+        {
+          id: 1,
+          user: {
+            id: "user-001",
+            name: "John Doe",
+            email: "john.doe@example.com",
+            phone: "1234567890",
+            image:
+              "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlfGVufDB8fDB8fHww",
+          },
+          content:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          rating: 4,
+          createdAt: "2025-06-03T08:40:00Z",
+          updatedAt: "2025-06-03T08:40:00Z",
+        },
+        {
+          id: 2,
+          user: {
+            id: "user-001",
+            name: "John Doe",
+            email: "john.doe@example.com",
+            phone: "1234567890",
+            image:
+              "https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlfGVufDB8fDB8fHww",
+          },
+          content:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          rating: 4,
+          createdAt: "2025-06-03T08:40:00Z",
+          updatedAt: "2025-06-03T08:40:00Z",
+        },
+      ],
       category: {
         id: 3,
         title: "Books",
@@ -117,7 +183,38 @@ export const mockBooks: Book[] = [
       sellNumber: 1200,
       discount: 0.05,
       rating: 4.6,
-      comments: [],
+      comments: [
+        {
+          id: 1,
+          user: {
+            id: "user-002",
+            name: "Alice Smith",
+            email: "alice.smith@example.com",
+            phone: "5551234567",
+            image: "https://randomuser.me/api/portraits/women/44.jpg",
+          },
+          content:
+            "A great introduction to environmental science. The examples are very practical and easy to follow!",
+          rating: 5,
+          createdAt: "2025-07-01T10:00:00Z",
+          updatedAt: "2025-07-01T10:00:00Z",
+        },
+        {
+          id: 2,
+          user: {
+            id: "user-003",
+            name: "Bob Lee",
+            email: "bob.lee@example.com",
+            phone: "5559876543",
+            image: "https://randomuser.me/api/portraits/men/32.jpg",
+          },
+          content:
+            "Informative and well-structured. Helped me a lot in my studies.",
+          rating: 4,
+          createdAt: "2025-07-02T09:30:00Z",
+          updatedAt: "2025-07-02T09:30:00Z",
+        },
+      ],
       category: {
         id: 3,
         title: "Books",
@@ -162,7 +259,38 @@ export const mockBooks: Book[] = [
       sellNumber: 980,
       discount: 0.15,
       rating: 4.7,
-      comments: [],
+      comments: [
+        {
+          id: 1,
+          user: {
+            id: "user-004",
+            name: "Carol Nguyen",
+            email: "carol.nguyen@example.com",
+            phone: "5552223333",
+            image: "https://randomuser.me/api/portraits/women/68.jpg",
+          },
+          content:
+            "Excellent resource for front-end developers. The section on accessibility is especially useful!",
+          rating: 5,
+          createdAt: "2025-07-01T12:00:00Z",
+          updatedAt: "2025-07-01T12:00:00Z",
+        },
+        {
+          id: 2,
+          user: {
+            id: "user-005",
+            name: "David Kim",
+            email: "david.kim@example.com",
+            phone: "5554445555",
+            image: "https://randomuser.me/api/portraits/men/45.jpg",
+          },
+          content:
+            "Covers all the essentials and more. Highly recommended for beginners and pros alike.",
+          rating: 4,
+          createdAt: "2025-07-02T14:20:00Z",
+          updatedAt: "2025-07-02T14:20:00Z",
+        },
+      ],
       category: {
         id: 3,
         title: "Books",
@@ -207,7 +335,38 @@ export const mockBooks: Book[] = [
       sellNumber: 1340,
       discount: 0.05,
       rating: 4.6,
-      comments: [],
+      comments: [
+        {
+          id: 1,
+          user: {
+            id: "user-006",
+            name: "Emily Carter",
+            email: "emily.carter@example.com",
+            phone: "5556667777",
+            image: "https://randomuser.me/api/portraits/women/77.jpg",
+          },
+          content:
+            "A must-read for anyone looking to improve their public speaking skills.",
+          rating: 5,
+          createdAt: "2025-06-21T11:30:00Z",
+          updatedAt: "2025-06-21T11:30:00Z",
+        },
+        {
+          id: 2,
+          user: {
+            id: "user-007",
+            name: "Frank Zhang",
+            email: "frank.zhang@example.com",
+            phone: "5558889999",
+            image: "https://randomuser.me/api/portraits/men/53.jpg",
+          },
+          content:
+            "Very practical advice and easy to understand. Helped me overcome my fear of public speaking!",
+          rating: 4,
+          createdAt: "2025-06-22T10:10:00Z",
+          updatedAt: "2025-06-22T10:10:00Z",
+        },
+      ],
       category: {
         id: 3,
         title: "Books",
@@ -252,7 +411,38 @@ export const mockBooks: Book[] = [
       sellNumber: 890,
       discount: 0.12,
       rating: 4.8,
-      comments: [],
+      comments: [
+        {
+          id: 1,
+          user: {
+            id: "user-008",
+            name: "Grace Lin",
+            email: "grace.lin@example.com",
+            phone: "5551112222",
+            image: "https://randomuser.me/api/portraits/women/12.jpg",
+          },
+          content:
+            "Great explanations of data structures. The coding challenges are very helpful!",
+          rating: 5,
+          createdAt: "2025-07-03T09:00:00Z",
+          updatedAt: "2025-07-03T09:00:00Z",
+        },
+        {
+          id: 2,
+          user: {
+            id: "user-009",
+            name: "Henry Ford",
+            email: "henry.ford@example.com",
+            phone: "5553334444",
+            image: "https://randomuser.me/api/portraits/men/21.jpg",
+          },
+          content:
+            "Perfect for interview prep. Clear and concise explanations.",
+          rating: 4,
+          createdAt: "2025-07-04T10:45:00Z",
+          updatedAt: "2025-07-04T10:45:00Z",
+        },
+      ],
       category: {
         id: 3,
         title: "Books",

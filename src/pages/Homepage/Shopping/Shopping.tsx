@@ -116,7 +116,11 @@ const Shopping = () => {
     setIsLoading(false);
     resetPagination();
 
-    toast.success(`Đã lọc thành công! Tìm thấy ${filtered.length} sản phẩm`);
+    if (filtered.length === 0) {
+      toast.error("Không tìm thấy sản phẩm nào");
+    } else {
+      toast.success(`Đã lọc thành công! Tìm thấy ${filtered.length} sản phẩm`);
+    }
   };
 
   const handleResetFilters = () => {
@@ -328,14 +332,14 @@ const Shopping = () => {
                 >
                   <FilterIcon />
                 </div>
-                <div
+                {/* <div
                   className={`${styles["Shopping-list-header-right-item"]} ${
                     isChangeLayout ? styles["active"] : ""
                   }`}
                   onClick={() => setIsChangeLayout(!isChangeLayout)}
                 >
                   <GridIcon />
-                </div>
+                </div> */}
                 <div className={styles["Shopping-list-header-right-search"]}>
                   <Input
                     type="text"
