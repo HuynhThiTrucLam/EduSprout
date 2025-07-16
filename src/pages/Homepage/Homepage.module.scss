@@ -13,4 +13,32 @@
     width: $container-width;
     height: 100vh;
   }
+  &-Chatbot {
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    padding: 0.25rem;
+    background-color: $white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+@media (max-width: 425.5px) {
+  .Homepage {
+    &-Chatbot {
+      display: none;
+    }
+  }
 }
