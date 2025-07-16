@@ -1,0 +1,237 @@
+@use "../../styles/variables.scss" as *;
+
+@media (max-width: 768.5px) {
+  .Chat {
+    width: 100%;
+    height: 100vh;
+    background-color: #f9f8f4;
+    &-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    &-content {
+      height: 100%;
+      width: 92%;
+      margin: 0 auto;
+      margin-top: 6.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 1rem;
+      gap: 2rem;
+    }
+    &-messages {
+      flex: 1;
+      overflow-y: auto;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      scroll-behavior: smooth;
+      margin-bottom: 2rem;
+    }
+    &-message-bot {
+      align-self: flex-start;
+      background: linear-gradient(120deg, #f9f9f9 60%, #ffe7c7 100%);
+      color: #333;
+      border-radius: 1.2rem 1.2rem 1.2rem 0.3rem;
+      padding: 0.5rem 1rem;
+      margin-bottom: 0.2rem;
+      font-size: 11px;
+      font-family: "Poppins Regular";
+      box-shadow: 0 2px 8px 0 rgba(255, 157, 6, 0.08);
+      max-width: 80%;
+      animation: chat-msg-in-left 0.4s cubic-bezier(0.4, 1.4, 0.6, 1);
+    }
+    &-message-user {
+      align-self: flex-end;
+      background: linear-gradient(120deg, #f25214 60%, #ff9d06 100%);
+      color: #fff;
+      border-radius: 1.2rem 1.2rem 0.3rem 1.2rem;
+      padding: 0.5rem 1rem;
+      font-family: "Poppins Regular";
+      margin-bottom: 0.2rem;
+      font-size: 11px;
+      box-shadow: 0 2px 8px 0 rgba(242, 82, 20, 0.08);
+      max-width: 80%;
+      animation: chat-msg-in-right 0.4s cubic-bezier(0.4, 1.4, 0.6, 1);
+    }
+    &-typing {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      span {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #ff9d06;
+        border-radius: 50%;
+        opacity: 0.7;
+        animation: typing-bounce 1s infinite alternate;
+        &:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+        &:nth-child(3) {
+          animation-delay: 0.4s;
+        }
+      }
+    }
+    &-input-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom-left-radius: 1.5rem;
+      border-bottom-right-radius: 1.5rem;
+      box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, 0.04);
+      position: relative;
+    }
+    &-input {
+      width: 100%;
+      border: 0.25px solid #828282;
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      font-size: 11px;
+      font-family: "Poppins Regular";
+      color: #828282;
+      outline: none;
+      &:focus {
+        outline: none;
+        border: 0.25px solid $secondary-color;
+      }
+    }
+    &-send {
+      background: linear-gradient(120deg, #f25214 60%, #ff9d06 100%);
+      color: #fff;
+      border: none;
+      border-radius: 100rem;
+      padding: 0.7rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px 0 rgba(242, 82, 20, 0.08);
+      transition: background 0.2s, transform 0.2s;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:hover:not(:disabled) {
+        background: linear-gradient(120deg, #ff9d06 60%, #f25214 100%);
+        transform: scale(1.08);
+      }
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+    &-start {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      &-icon {
+        width: 5rem;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        //glassmorphism with rickled-down effect
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 100rem;
+        padding: 1rem;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+        transform: rotate(-2deg);
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          background: linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.05) 50%,
+            rgba(0, 0, 0, 0.05) 100%
+          );
+          border-radius: inherit;
+          z-index: -1;
+        }
+      }
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+      p {
+        width: 75%;
+        text-align: center;
+        font-family: "Poppins SemiBold";
+        font-size: 1rem;
+        line-height: 1.75;
+        color: #373735;
+      }
+      &-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        width: 90%;
+        justify-content: center;
+        align-items: center;
+      }
+      &-tag {
+        width: max-content;
+        padding: 0.5rem;
+        padding: 0.5rem;
+        background: #eff3f3;
+        border-radius: 10rem;
+
+        p {
+          width: max-content;
+          font-family: "Poppins Regular";
+          font-size: 9px;
+          color: #373735;
+        }
+      }
+      &-button {
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 0.1rem;
+        cursor: pointer;
+        background: $secondary-color;
+
+        padding: 0.5rem;
+        border: none;
+        outline: none;
+        cursor: pointer;
+
+        p {
+          font-family: "Poppins SemiBold";
+          font-size: 11px;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
