@@ -49,10 +49,12 @@ A modern web application built with React, TypeScript, and Vite.
 
 6. **Login Account**
 
+   This is mock data for Login feature
+
    Email:
 
    ```bash
-   john.doe@example.com"
+   john.doe@example.com
    ```
 
    Password:
