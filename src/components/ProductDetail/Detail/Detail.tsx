@@ -226,7 +226,7 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
                 <span>{(product as Book)?.publicationYear || "Unknown"}</span>
               </div>
               <div className={styles["Detail-book-info-CTA"]}>
-                <Button text="Add to cart" className={styles["button"]} />
+                <Button text="Thêm vào giỏ hàng" className={styles["button"]} />
               </div>
             </div>
           </div>

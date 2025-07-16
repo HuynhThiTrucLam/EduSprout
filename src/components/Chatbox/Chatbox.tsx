@@ -69,7 +69,7 @@ const Chatbox = ({ onClose }: ChatboxProps) => {
             <p>EduSprout bot</p>
           </div>
           <div className={styles["Chatbox-header-right"]}>
-            <ReloadIcon />
+            {/* <ReloadIcon /> */}
             <Close onClick={onClose} />
           </div>
         </div>
