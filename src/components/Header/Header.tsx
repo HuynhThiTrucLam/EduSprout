@@ -1,22 +1,21 @@
 import { StarIcon } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import Account from "../../assets/Icons/Account";
 import Cart from "../../assets/Icons/Cart";
 import Close from "../../assets/Icons/Close";
-import Contact from "../../assets/Icons/Contact";
 import CourseIcon from "../../assets/Icons/CourseIcon";
 import Home from "../../assets/Icons/Home";
 import Language from "../../assets/Icons/Language";
 import Menu from "../../assets/Icons/Menu";
 import Notification from "../../assets/Icons/Notification";
+import SignIn from "../../assets/Icons/SignIn";
+import SignOut from "../../assets/Icons/SignOut";
 import logo from "../../assets/images/Logo.svg";
 import { useAuth } from "../../services/auth_service";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import styles from "./Header.module.scss";
-import { toast } from "sonner";
-import SignOut from "../../assets/Icons/SignOut";
-import SignIn from "../../assets/Icons/SignIn";
 
 const Header = () => {
   const { user, signOut } = useAuth();

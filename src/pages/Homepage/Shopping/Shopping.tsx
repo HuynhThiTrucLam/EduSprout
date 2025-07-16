@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import FilterIcon from "../../../assets/Icons/FilterIcon";
-import GridIcon from "../../../assets/Icons/GridIcon";
 import SearchIcon from "../../../assets/Icons/SearchIcon";
 import Categories from "../../../components/Category/Categories";
 import Filter from "../../../components/Filter/Filter";
 import NoData from "../../../components/NoData/NoData";
 import ProductItem from "../../../components/Product/ProductItem";
 import { Input } from "../../../components/ui/input";
-import { toast } from "sonner";
 
+import Button from "../../../components/commons/Button";
 import { filterProducts, type FilterOptions } from "../../../lib/filterUtils";
 import { trackSearch } from "../../../lib/recommendationUtils";
+import { formatPrice } from "../../../lib/utils";
 import {
   getAllBooksService,
   getAllCoursesService,
@@ -20,8 +21,6 @@ import {
 import { categories, type Category } from "../../../types/categories";
 import { majors, type Major } from "../../../types/major";
 import styles from "./Shopping.module.scss";
-import Button from "../../../components/commons/Button";
-import { formatPrice } from "../../../lib/utils";
 
 const Shopping = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -31,7 +30,6 @@ const Shopping = () => {
   const [maxPrice, setMaxPrice] = useState<string>("");
 
   const [isActiveFilter, setIsActiveFilter] = useState<boolean>(false);
-  const [isChangeLayout, setIsChangeLayout] = useState<boolean>(false);
   const [isOpenMobileFilter, setIsOpenMobileFilter] = useState<boolean>();
   const [isOpenFilterTag, setIsOpenFilterTag] = useState<boolean>(false);
 
