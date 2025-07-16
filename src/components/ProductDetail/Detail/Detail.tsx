@@ -35,6 +35,14 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
   const navigate = useNavigate();
   const { user } = useAuth();
 
+  const handleBuyNow = () => {
+    toast.success("Chức năng thanh toán đang phát triển");
+  };
+
+  const handleAddToCart = () => {
+    toast.success("Chức năng giỏ hàng đang được phát triển");
+  };
+
   const handleAddToFavorite = () => {
     if (!user) {
       toast.error("Vui lòng đăng nhập để thêm vào danh sách yêu thích", {
@@ -149,7 +157,11 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
               VND
             </p>
           </div>
-          <Button text="Mua ngay" className={styles["Detail-button"]} />
+          <Button
+            text="Mua ngay"
+            className={styles["Detail-button"]}
+            onClick={handleBuyNow}
+          />
         </div>
       </div>
 
@@ -226,22 +238,17 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
                 <span>{(product as Book)?.publicationYear || "Unknown"}</span>
               </div>
               <div className={styles["Detail-book-info-CTA"]}>
-                <Button text="Thêm vào giỏ hàng" className={styles["button"]} />
+                <Button
+                  text="Thêm vào giỏ hàng"
+                  className={styles["button"]}
+                  onClick={handleAddToCart}
+                />
               </div>
             </div>
           </div>
           <img src={product?.infor?.image} alt={product?.infor?.title} />
         </div>
       )}
-      {/* //if typeOfProduct is documents, show document content */}
-      {/* {typeOfProduct.toLowerCase() === "documents" && (
-        <div className={styles["Detail-image"]}>
-          <img
-            src={product?.infor?.image}
-            alt={product?.infor?.title}
-          />
-        </div>
-      )} */}
 
       <div className={styles["Detail-description"]}>
         <AttributeTab product={product} />
