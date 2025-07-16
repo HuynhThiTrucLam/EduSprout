@@ -47,6 +47,20 @@ A modern web application built with React, TypeScript, and Vite.
 
    This will check the code for linting errors using ESLint.
 
+6. **Login Account**
+
+   Email:
+
+   ```bash
+   john.doe@example.com"
+   ```
+
+   Password:
+
+   ```bash
+   password
+   ```
+
 ## Project Structure
 
 - `src/` - Main source code (components, pages, assets, etc.)

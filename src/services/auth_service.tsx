@@ -85,7 +85,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         // Initialize recommendation service with user ID
         initializeRecommendationService(userData.id);
       } else {
-        throw new Error("Invalid email or password");
+        throw new Error("Mật khẩu hoặc email không chính xác");
       }
     } finally {
       setIsLoading(false);
