@@ -15,7 +15,7 @@ const Homepage = () => {
   const handleChatbotClick = () => {
     if (window.innerWidth > 768.5) {
       // Open Chatbox modal
-      setIsChatboxOpen(true);
+      setIsChatboxOpen(!isChatboxOpen);
     } else {
       // Navigate to chat page
       navigate("/chat");
