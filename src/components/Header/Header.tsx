@@ -159,9 +159,9 @@ const Header = () => {
                     </div>
                   </div>
                   <div className={styles["Header-popover-menu"]}>
-                    <Link to="/" className={styles["Header-popover-item"]}>
+                    {/* <Link to="/" className={styles["Header-popover-item"]}>
                       Trợ giúp
-                    </Link>
+                    </Link> */}
                     <button
                       className={styles["Header-popover-item"]}
                       onClick={handleSignOut}
@@ -199,9 +199,9 @@ const Header = () => {
               >
                 <div className={styles["Header-notAuth-content"]}>
                   <div className={styles["Header-notAuth-menu"]}>
-                    <Link to="/" className={styles["Header-notAuth-item"]}>
+                    {/* <Link to="/" className={styles["Header-notAuth-item"]}>
                       <Contact /> Trợ giúp
-                    </Link>
+                    </Link> */}
                     <button
                       className={styles["Header-notAuth-item"]}
                       onClick={() => {
@@ -301,7 +301,7 @@ const Header = () => {
                 />{" "}
                 Danh sách yêu thích
               </Link>
-              <Link
+              {/* <Link
                 to="/"
                 className={`${styles["Header-mobile-menu-item"]} ${
                   isActive("#") ? styles["Header-mobile-menu-item--active"] : ""
@@ -310,7 +310,7 @@ const Header = () => {
                 data-tooltip="Trợ giúp"
               >
                 <Contact /> Trợ giúp
-              </Link>
+              </Link> */}
               {user ? (
                 <button
                   className={`${styles["Header-mobile-menu-item"]} ${
