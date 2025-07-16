@@ -2,7 +2,6 @@ import { SendIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import ChatbotIcon from "../../assets/Icons/ChatbotIcon";
 import Close from "../../assets/Icons/Close";
-import ReloadIcon from "../../assets/Icons/ReloadIcon";
 import {
   initialMessages,
   mockNearlyTopics,
