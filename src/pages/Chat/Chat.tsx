@@ -18,6 +18,7 @@ const Chat = () => {
   const [startChat, setStartChat] = useState(false);
 
   const handleSend = () => {
+    setStartChat(true);
     if (!input.trim()) return;
     const userMsg: Message = {
       id: Date.now().toString(),
@@ -48,7 +49,6 @@ const Chat = () => {
 
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      setStartChat(true);
       handleSend();
     }
   };

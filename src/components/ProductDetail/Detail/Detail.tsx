@@ -1,5 +1,4 @@
 import { StarIcon } from "lucide-react";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import Author from "../../../assets/Icons/Author";
@@ -14,6 +13,8 @@ import {
   AccordionTrigger,
 } from "../../../components/ui/accordion";
 
+import { formatPrice } from "../../../lib/utils";
+import { useAuth } from "../../../services/auth_service";
 import type { Book } from "../../../types/book";
 import type { Course } from "../../../types/course";
 import type { Document } from "../../../types/documents";
@@ -22,8 +23,6 @@ import Button from "../../commons/Button";
 import SimilarProduct from "../../SimilarProduct/SimilarProduct";
 import ChapterComponent from "./Chapter";
 import styles from "./Detail.module.scss";
-import { useAuth } from "../../../services/auth_service";
-import { formatPrice } from "../../../lib/utils";
 
 type ProductType = Course | Book | Document;
 
@@ -35,9 +34,6 @@ interface DetailProps {
 const Detail = ({ product, typeOfProduct }: DetailProps) => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const [currentProduct, setCurrentProduct] = useState<ProductType | null>(
-    product
-  );
 
   const handleAddToFavorite = () => {
     if (!user) {
@@ -63,13 +59,37 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
     }
   };
 
-  useEffect(() => {
-    if (product) {
-      setCurrentProduct(product);
-    }
-  }, [product]);
+  const handleShare = async () => {
+    try {
+      const currentUrl = window.location.href;
+      console.log("Sharing URL:", currentUrl);
+      await navigator.clipboard.writeText(currentUrl);
 
-  if (!currentProduct) {
+      toast.success("Đã sao chép liên kết vào clipboard!", {
+        action: {
+          label: "Mở liên kết",
+          onClick: () => {
+            window.open(currentUrl, "_blank");
+          },
+        },
+      });
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement("textarea");
+      textArea.value = window.location.href;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+
+      toast.success("Đã sao chép liên kết vào clipboard!", {
+        description:
+          "Bạn có thể dán liên kết bằng Ctrl+V (Windows) hoặc Cmd+V (Mac)",
+      });
+    }
+  };
+
+  if (!product) {
     return (
       <div className={styles["Detail-skeleton"]}>
         <div className={styles["Detail-skeleton-header"]}>
@@ -86,9 +106,13 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
       <div className={styles["Detail-header"]}>
         <div className={styles["Detail-header-left"]}>
           <div className={styles["Detail-header-left-title"]}>
-            <h1>{currentProduct?.infor?.title}</h1>
+            <h1>{product?.infor?.title}</h1>
             <div className={styles["Detail-header-left-share"]}>
-              <div className={styles["share"]} data-tooltip={"Chia sẻ ngay"}>
+              <div
+                className={styles["share"]}
+                data-tooltip={"Chia sẻ ngay"}
+                onClick={handleShare}
+              >
                 <Share />
               </div>
               <div
@@ -106,7 +130,7 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
           </div>
           <div className={styles["Detail-header-left-info"]}>
             <Back />
-            <p>{currentProduct?.infor?.title}</p>
+            <p>{product?.infor?.title}</p>
           </div>
         </div>
         <div className={styles["Detail-header-right"]}>
@@ -115,14 +139,13 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
             <span>
               {formatPrice(
                 Math.round(
-                  currentProduct?.infor?.price *
-                    (1 - (currentProduct?.infor?.discount || 0))
+                  product?.infor?.price * (1 - (product?.infor?.discount || 0))
                 )
               )}{" "}
               VND
             </span>
             <p className={styles["ProductItem-price-discount"]}>
-              {formatPrice(currentProduct?.infor?.price || 0)}
+              {formatPrice(product?.infor?.price || 0)}
               VND
             </p>
           </div>
@@ -133,18 +156,15 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
       {/* //if typeOfProduct is courses, show chapters */}
       {typeOfProduct.toLowerCase() === "courses" && (
         <div className={styles["Detail-course"]}>
-          {(currentProduct as Course)?.chapters?.length > 0 && (
+          {(product as Course)?.chapters?.length > 0 && (
             <div className={styles["Detail-course-content"]}>
               <ChapterComponent
-                chapters={(currentProduct as Course)?.chapters || []}
-                time={(currentProduct as Course)?.time || ""}
+                chapters={(product as Course)?.chapters || []}
+                time={(product as Course)?.time || ""}
               />
             </div>
           )}
-          <img
-            src={currentProduct?.infor?.image}
-            alt={currentProduct?.infor?.title}
-          />
+          <img src={product?.infor?.image} alt={product?.infor?.title} />
 
           <Accordion
             type="single"
@@ -156,8 +176,8 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
               <AccordionContent className={styles["Detail-course-mobile-item"]}>
                 <div className={styles["Detail-course-mobile-content"]}>
                   <ChapterComponent
-                    chapters={(currentProduct as Course)?.chapters || []}
-                    time={(currentProduct as Course)?.time || ""}
+                    chapters={(product as Course)?.chapters || []}
+                    time={(product as Course)?.time || ""}
                   />
                 </div>
               </AccordionContent>
@@ -174,8 +194,7 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
               <div className={styles["Detail-book-info-description"]}>
                 <h2>Mô tả sách</h2>
                 <p>
-                  {currentProduct?.infor?.description ||
-                    "No description available"}
+                  {product?.infor?.description || "No description available"}
                 </p>
               </div>
               <div className={styles["Detail-book-info-item"]}>
@@ -184,7 +203,7 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
                   <strong>Tác giả:</strong>
                 </div>
                 <span>
-                  {(currentProduct as Book)?.authors
+                  {(product as Book)?.authors
                     ?.map((author) => author)
                     .join(", ") || "Unknown"}
                 </span>
@@ -195,9 +214,8 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
                   <strong>Nhà xuất bản:</strong>
                 </div>
                 <span>
-                  {(currentProduct as Book)?.publisher
-                    ?.map((pub) => pub)
-                    .join(", ") || "Unknown"}
+                  {(product as Book)?.publisher?.map((pub) => pub).join(", ") ||
+                    "Unknown"}
                 </span>
               </div>
               <div className={styles["Detail-book-info-item"]}>
@@ -205,33 +223,28 @@ const Detail = ({ product, typeOfProduct }: DetailProps) => {
                   <Time />
                   <strong>Năm xuất bản:</strong>
                 </div>
-                <span>
-                  {(currentProduct as Book)?.publicationYear || "Unknown"}
-                </span>
+                <span>{(product as Book)?.publicationYear || "Unknown"}</span>
               </div>
               <div className={styles["Detail-book-info-CTA"]}>
                 <Button text="Add to cart" className={styles["button"]} />
               </div>
             </div>
           </div>
-          <img
-            src={currentProduct?.infor?.image}
-            alt={currentProduct?.infor?.title}
-          />
+          <img src={product?.infor?.image} alt={product?.infor?.title} />
         </div>
       )}
       {/* //if typeOfProduct is documents, show document content */}
       {/* {typeOfProduct.toLowerCase() === "documents" && (
         <div className={styles["Detail-image"]}>
           <img
-            src={currentProduct?.infor?.image}
-            alt={currentProduct?.infor?.title}
+            src={product?.infor?.image}
+            alt={product?.infor?.title}
           />
         </div>
       )} */}
 
       <div className={styles["Detail-description"]}>
-        <AttributeTab product={currentProduct} />
+        <AttributeTab product={product} />
       </div>
 
       <div className={styles["Detail-similar"]}>
